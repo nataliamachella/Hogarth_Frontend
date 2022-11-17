@@ -1,9 +1,12 @@
+import Link from "next/link";
 import React from "react";
 
 const HomePage = () => {
-  return ( 
+  return (
     <div>
-        hola
+    <Link href="/Subcategories" as="UltimasNoticias">
+      WOW ! 
+    </Link>
       {/* <Header />
       <Widget />
       <PrimerBloque />
