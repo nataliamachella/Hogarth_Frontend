@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const UltimasNoticias = () => {
-  return (
-    <div>UltimasNoticias</div>
-  )
-}
+  return <div>UltimasNoticias</div>;
+};
 
-export default UltimasNoticias
+export default UltimasNoticias;
