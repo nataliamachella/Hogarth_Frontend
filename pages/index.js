@@ -1,13 +1,11 @@
-import Link from "next/link";
 import React from "react";
+import Navbar from "../components/Navbar/Navbar";
 
 const HomePage = () => {
   return (
     <div>
-    <Link href="/Subcategories" as="UltimasNoticias">
-      WOW ! 
-    </Link>
-      {/* <Header />
+      <Navbar />
+      {/* 
       <Widget />
       <PrimerBloque />
       <SegundoBloque />
