@@ -1,12 +1,13 @@
 import Link from "next/link";
 import React from "react";
+import BloqueA from "../components/BloqueA/BloqueA";
 
 const HomePage = () => {
   return (
     <div>
-    <Link href="/Subcategories" as="UltimasNoticias">
-      WOW ! 
-    </Link>
+    
+      <BloqueA />
+    
       {/* <Header />
       <Widget />
       <PrimerBloque />
