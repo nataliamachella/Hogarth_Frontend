@@ -30,9 +30,9 @@ const MenuCategory = ({ category }) => {
         <MenuList
           display={"flex"}
           w="1500px"
-          h="250px"
+          h="auto"
           bg="pink"
-          marginTop={"5"}
+          marginTop={"-1"}
           justifyContent="space-around"
         >
           <Box textAlign={"center"}>

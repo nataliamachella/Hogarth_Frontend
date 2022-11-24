@@ -23,17 +23,18 @@ const BloqueA = () => {
         border="1px"
         borderRadius="lg"
         borderColor=" #f0f0f0"
+        marginBottom="65"
       >
-        <Link>
-          <Text
-            fontSize="50px"
-            _hover={{
-              color: "purple",
-            }}
-          >
-            Actualidad
-          </Text>
-        </Link>
+          <Link>
+            <Text
+              fontSize="50px"
+              _hover={{
+                color: "purple",
+              }}
+            >
+              Actualidad
+            </Text>
+          </Link>
         <Image borderRadius="lg" src="/assets/oscar.webp" />
         <SimpleGrid
           display="flex"

@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <ChakraProvider>
       {categories ? (
-        <Container position="fixed" top="0" maxW="100%" background="white">
+        <Container position="fixed" top="0" maxW="100%" background="white" zIndex={10}>
           <Flex color="black">
             <Center w="170px" h="45px" marginTop="15px">
               <Image
