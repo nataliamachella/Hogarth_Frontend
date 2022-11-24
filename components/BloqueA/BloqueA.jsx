@@ -1,12 +1,12 @@
 import React from "react";
-import { Grid, GridItem, Box, Flex, Image,Text } from "@chakra-ui/react";
+import { Box, Flex, Image,Text } from "@chakra-ui/react";
 
 const BloqueA = () => {
   return (
-    <Flex h="60vh" margin="0 35% 0 15%">
+    <Box display="flex" h="60vh" margin="0 35% 0 15%">
       <Box width="70%" background="yellow" objectFit="cover">
       <Image src="/assets/oscar.webp" boxSize="100%" objectFit="cover" />
-        <Text color="red" position={"absolute"}>HOLA COMO ESTAN TODOS</Text>
+        <Text color="red" position={"absolute"} >HOLA COMO ESTAN TODOS</Text>
       </Box>
       <Box
         width="30%"
@@ -24,7 +24,7 @@ const BloqueA = () => {
           <Image src="/assets/oscar.webp" boxSize="100%" objectFit="cover" />
         </Box>
       </Box>
-    </Flex>
+    </Box>
   );
 };
 
