@@ -1,31 +1,13 @@
-import axios from "axios";
-import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Text,
-  Image,
-  Divider,
-  Heading,
-  ChakraProvider,
-  Center,
-} from "@chakra-ui/react";
+import { Box, Text, Image, Divider, Heading, Center } from "@chakra-ui/react";
 import List from "../../components/SeguirLeyendo/list";
+import fetch from "isomorphic-fetch";
 
-const Post = () => {
-  const router = useRouter();
-  let url = router.query.url;
-  const [note, setNote] = useState(null);
-  useEffect(() => {
-    axios
-      .get(`/api/notes/byURL/${url}`)
-      .then((res) => res.data)
-      .then((data) => setNote(data));
-  }, [router.isReady, url]);
+const Post = ({ note }) => {
   return (
-    <ChakraProvider>
+    <Box>
       {note ? (
-        <>
+        <Box>
+          <Box h="170px" w="100%"></Box>
           <Box mr={300} ml={300}>
             <Heading as="h1" fontSize={48} fontWeight="bold" textAlign="center">
               {note.field_title_pre + note.field_title}
@@ -87,12 +69,19 @@ const Post = () => {
               </Center>
             </Box>
           </Box>
-        </>
+        </Box>
       ) : (
         <p>loading</p>
       )}
-    </ChakraProvider>
+    </Box>
   );
 };
-//co
+
+Post.getInitialProps = async ({ query }) => {
+  const { url } = query;
+  const res = await fetch(`http://localhost:3001/api/notes/byURL/${url}`);
+  const data = await res.json();
+  return { note: data };
+};
+
 export default Post;
