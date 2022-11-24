@@ -23,7 +23,7 @@ const MenuCategory = ({ category }) => {
       .get(`/api/subcategories/findByCategory/${category.name}`)
       .then((subCat) => {
         console.log(subCat.data)
-        setSubCategories(subCat.data) 
+        setSubCategories(subCat.data)
       });
   };
 
@@ -51,8 +51,9 @@ const MenuCategory = ({ category }) => {
         justifyContent="space-around"
       >
         <Box textAlign={"center"}
-        onChange={fetchSubCategories}>
+        >
           {subCategories.map((subCategory)=>{
+          return(
             <MenuItem
             key={subCategory.url}
             border={"hidden"}
@@ -63,7 +64,7 @@ const MenuCategory = ({ category }) => {
           >
           {subCategory.name}
           </MenuItem>
-          })}
+          )})}
         </Box>
 
         <Card marginTop={"20px"}>

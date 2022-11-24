@@ -8,10 +8,9 @@ const HomePage = () => {
   return (
     <div>
       <Navbar />
-      <Container display="flex" flexDirection="column">
-        <BloquePrincipal />
-        <BloqueA />
-      </Container>
+      <BloquePrincipal />
+      <BloqueA />
+
       {/*
       <Widget />
       <PrimerBloque />

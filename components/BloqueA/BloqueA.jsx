@@ -10,6 +10,7 @@ import {
   Image,
   Link,
   Text,
+  SimpleGrid,
 } from "@chakra-ui/react";
 
 const BloqueA = () => {
@@ -17,9 +18,11 @@ const BloqueA = () => {
     <ChakraProvider>
       <Container
         display="flex"
-        background="orange"
         flexDir="column"
-        maxW="-moz-fit-content"
+        maxW="fit-content"
+        border="1px"
+        borderRadius="lg"
+        borderColor=" #f0f0f0"
       >
         <Link>
           <Text
@@ -31,21 +34,28 @@ const BloqueA = () => {
             Actualidad
           </Text>
         </Link>
-        <Image src="/assets/oscar.webp" />
-        <Container display="flex" flexDir="row" justifyContent="space-around">
+        <Image borderRadius="lg" src="/assets/oscar.webp" />
+        <SimpleGrid
+          display="flex"
+          flexDir="row"
+          justifyContent="space-around"
+          marginTop="15px"
+        >
           <Card maxW="sm">
             <CardBody>
               <Image
-                src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                src="assets/oscar.webp"
                 alt="Green double couch with wooden legs"
                 borderRadius="lg"
               />
               <Stack mt="6" spacing="3">
-                <Heading size="md">Living room Sofa</Heading>
+                <Heading size="md">TITULO</Heading>
                 <Text>
-                  This sofa is perfect for modern tropical spaces, baroque
-                  inspired spaces, earthy toned spaces and for people who love a
-                  chic design with a sprinkle of vintage design.
+                  "Michael J. Fox es el máximo ejemplo de cómo luchar y cómo
+                  vivir. Y hoy es tan querido por su activismo como por su
+                  actuación […] Nunca pidió el papel de paciente de párkinson o
+                  defensor de la enfermedad. Pero no se equivoquen, es su mejor
+                  interpretación".
                 </Text>
               </Stack>
             </CardBody>
@@ -54,48 +64,27 @@ const BloqueA = () => {
           <Card maxW="sm">
             <CardBody>
               <Image
-                src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                src="/assets/oscar.webp"
                 alt="Green double couch with wooden legs"
                 borderRadius="lg"
               />
               <Stack mt="6" spacing="3">
-                <Heading size="md">Living room Sofa</Heading>
+                <Heading size="md">TITULO</Heading>
                 <Text>
-                  This sofa is perfect for modern tropical spaces, baroque
-                  inspired spaces, earthy toned spaces and for people who love a
-                  chic design with a sprinkle of vintage design.
+                  "Michael J. Fox es el máximo ejemplo de cómo luchar y cómo
+                  vivir. Y hoy es tan querido por su activismo como por su
+                  actuación […] Nunca pidió el papel de paciente de párkinson o
+                  defensor de la enfermedad. Pero no se equivoquen, es su mejor
+                  interpretación".
                 </Text>
               </Stack>
             </CardBody>
             <Divider />
           </Card>
-        </Container>
+        </SimpleGrid>
       </Container>
     </ChakraProvider>
   );
 };
 
 export default BloqueA;
-
-{
-  /* <Box width="70%" background="yellow" objectFit="cover">
-<Image src="/assets/oscar.webp" boxSize="100%" objectFit="cover" />
-  <Text color="red" position={"absolute"} >HOLA COMO ESTAN TODOS</Text>
-</Box>
-<Box
-  width="30%"
-  background="orange"
-  display="flex"
-  flexDirection="column"
->
-  <Box background="blue" h="33%">
-    <Image src="/assets/oscar.webp" boxSize="100%" objectFit="cover" />
-  </Box>
-  <Box background="red" h="33%">
-    <Image src="/assets/oscar.webp" boxSize="100%" objectFit="cover" />
-  </Box>
-  <Box background="green" h="34%">
-    <Image src="/assets/oscar.webp" boxSize="100%" objectFit="cover" />
-  </Box>
-</Box> */
-}
