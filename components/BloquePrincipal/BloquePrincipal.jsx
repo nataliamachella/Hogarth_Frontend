@@ -1,4 +1,11 @@
-import { Flex, Box, Image, Text, ChakraProvider, Container } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Image,
+  Text,
+  ChakraProvider,
+  Container,
+} from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
@@ -15,7 +22,7 @@ const BloquePrincipal = () => {
 
   return (
     <ChakraProvider>
-    <Container maxW="100%" maxH="50%" marginTop="90" marginBottom="65">
+      <Container maxW="100%" maxH="50%" marginTop="90" marginBottom="65">
         <Image
           objectFit="cover"
           src="assets/nenearbol.webp"
@@ -30,12 +37,15 @@ const BloquePrincipal = () => {
           textAlign="left"
           paddingLeft="1100px"
         >
-          “Apareció mi ex”.<br/>
-          ¿Cómo reaccionar<br/>
-            cuando alguien del<br/>
-            pasado vuelve a tu vida?
+          “Apareció mi ex”.
+          <br />
+          ¿Cómo reaccionar
+          <br />
+          cuando alguien del
+          <br />
+          pasado vuelve a tu vida?
         </Text>
-    </Container>
+      </Container>
     </ChakraProvider>
   );
 };

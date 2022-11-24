@@ -49,7 +49,6 @@ const MenuCategory = ({ category }) => {
               </MenuItem>
             ))}
           </Box>
-
           <Card marginTop={"20px"}>
             <CardBody>
               <Image
