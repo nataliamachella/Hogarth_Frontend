@@ -1,7 +1,15 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
-import { Box, Text, Image, Divider, Heading } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Image,
+  Divider,
+  Heading,
+  ChakraProvider,
+  Center,
+} from "@chakra-ui/react";
 import List from "../../components/SeguirLeyendo/list";
 
 const Post = () => {
@@ -15,7 +23,7 @@ const Post = () => {
       .then((data) => setNote(data));
   }, [router.isReady, url]);
   return (
-    <>
+    <ChakraProvider>
       {note ? (
         <>
           <Box mr={300} ml={300}>
@@ -30,39 +38,60 @@ const Post = () => {
             >
               {note.field_description}
             </Heading>
-            <Divider
-              borderColor="#E32B6C"
-              borderStyle="solid"
-              borderWidth={2}
-              width={40}
-            />
+            <Center>
+              <Divider
+                borderColor="#E32B6C"
+                borderStyle="solid"
+                borderWidth="2px"
+                width="40px"
+              />
+            </Center>
             <Text fontSize={16} textAlign="center">
               por <b>{note.author}</b>.
             </Text>
             <Text fontSize={15} textAlign="center" color="#969696">
               {note.createdAt}
             </Text>
-            <Image
-              src={note.field_img_primary}
-              alt="Incendios forestales en el Río Paraná"
-              boxSize="900px"
-            />
-            {note.contents.map((itemContent, i) => (
-              <div
-                key={i}
-                className="text-container"
-                dangerouslySetInnerHTML={{ __html: itemContent.field_content }}
+            <Center>
+              <Image
+                src={note.field_img_primary}
+                alt="Incendios forestales en el Río Paraná"
+                boxSize="900px"
               />
+            </Center>
+            {note.contents.map((itemContent, i) => (
+              <Center>
+                <div
+                  key={i}
+                  className="text-container"
+                  dangerouslySetInnerHTML={{
+                    __html: itemContent.field_content,
+                  }}
+                />
+              </Center>
             ))}
           </Box>
+          <Box mt="40px" mb="113px"></Box>
           <Box>
-            <List />
+            <Box mr={300} ml={300} pt="30px">
+              <Heading
+                as="h3"
+                fontSize="26px"
+                fontWeight="normal"
+                textAlign="inherit"
+              >
+                SEGUIR LEYENDO
+              </Heading>
+              <Center>
+                <List />
+              </Center>
+            </Box>
           </Box>
         </>
       ) : (
         <p>loading</p>
       )}
-    </>
+    </ChakraProvider>
   );
 };
 

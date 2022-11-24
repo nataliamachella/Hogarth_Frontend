@@ -13,37 +13,27 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-const CardItem = () => {
+const CardItem = ({ note }) => {
   return (
     <Card maxW="sm">
       <CardBody>
         <Image
-          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          alt="Green double couch with wooden legs"
+          src={note.field_img_primary}
+          alt="Incendios forestales en el Río Paraná"
           borderRadius="lg"
         />
         <Stack mt="6" spacing="3">
-          <Heading size="md">Living room Sofa</Heading>
-          <Text>
-            This sofa is perfect for modern tropical spaces, baroque inspired
-            spaces, earthy toned spaces and for people who love a chic design
-            with a sprinkle of vintage design.
-          </Text>
-          <Text color="blue.600" fontSize="2xl">
-            $450
-          </Text>
+          <Heading as="h3" fontSize="16px">
+            <span>{note.field_title_pre}</span>
+            {note.field_title}
+          </Heading>
         </Stack>
       </CardBody>
-      <Divider />
+      <Divider borderColor="#E32B6C" borderStyle="solid" width="24px" />
       <CardFooter>
-        <ButtonGroup spacing="2">
-          <Button variant="solid" colorScheme="blue">
-            Buy now
-          </Button>
-          <Button variant="ghost" colorScheme="blue">
-            Add to cart
-          </Button>
-        </ButtonGroup>
+        <Heading as="h6" fontSize="sm" fontWeight="normal">
+          por <span>{note.author}</span>
+        </Heading>
       </CardFooter>
     </Card>
   );
