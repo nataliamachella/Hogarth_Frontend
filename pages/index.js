@@ -2,16 +2,16 @@ import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import BloqueA from "../components/BloqueA/BloqueA";
 import BloquePrincipal from "../components/BloquePrincipal/BloquePrincipal";
-import { Container, Spacer } from "@chakra-ui/react";
+import { ChakraProvider, Container, Spacer } from "@chakra-ui/react";
 
 const HomePage = () => {
   return (
-    <div>
-      <Navbar />
-      <BloquePrincipal />
-      <BloqueA />
-
-      {/*
+    <ChakraProvider>
+      <div>
+        <Navbar />
+        <BloquePrincipal />
+        <BloqueA />
+        {/*
       <Widget />
       <PrimerBloque />
       <SegundoBloque />
@@ -21,7 +21,8 @@ const HomePage = () => {
       <SextoBloque />
       <SeptimoBloque />
       <Footer /> */}
-    </div>
+      </div>
+    </ChakraProvider>
   );
 };
 
