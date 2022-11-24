@@ -8,8 +8,8 @@ import {
   Card,
   Text,
   CardBody,
-  Spacer,
-  textDecoration,
+  ChakraProvider,
+  Container,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -20,8 +20,11 @@ const MenuCategory = ({ category }) => {
 
   const fetchSubCategories = () => {
     axios
-      .get("/api/subcategories", { category })
-      .then((subCategories) => setSubCategories(subCategories.data));
+      .get(`/api/subcategories/findByCategory/${category.name}`)
+      .then((subCat) => {
+        console.log(subCat.data)
+        setSubCategories(subCat.data) 
+      });
   };
 
   useEffect(() => {
@@ -29,7 +32,8 @@ const MenuCategory = ({ category }) => {
   }, []);
 
   return (
-    <Menu>
+    <ChakraProvider>
+    <Menu >
       <MenuButton
         as={Button}
         border="hidden"
@@ -46,53 +50,20 @@ const MenuCategory = ({ category }) => {
         marginTop={"5"}
         justifyContent="space-around"
       >
-        <Box textAlign={"center"}>
-          <MenuItem
-            border={"hidden"}
-            bg="pink"
-            marginTop={"25px"}
-            fontWeight={"bold"}
-            _hover={{ color: "red", textDecoration: "underline" }}
-          >
-            Download
-          </MenuItem>
-          <Spacer />
-          <MenuItem
+        <Box textAlign={"center"}
+        onChange={fetchSubCategories}>
+          {subCategories.map((subCategory)=>{
+            <MenuItem
+            key={subCategory.url}
             border={"hidden"}
             bg="pink"
             marginTop={"15px"}
             fontWeight={"bold"}
             _hover={{ color: "red", textDecoration: "underline" }}
           >
-            Create a Copy
+          {subCategory.name}
           </MenuItem>
-          <MenuItem
-            border={"hidden"}
-            bg="pink"
-            marginTop={"15px"}
-            fontWeight={"bold"}
-            _hover={{ color: "red", textDecoration: "underline" }}
-          >
-            Mark as Draft
-          </MenuItem>
-          <MenuItem
-            border={"hidden"}
-            bg="pink"
-            marginTop={"15px"}
-            fontWeight={"bold"}
-            _hover={{ color: "red", textDecoration: "underline" }}
-          >
-            Delete
-          </MenuItem>
-          <MenuItem
-            border={"hidden"}
-            bg="pink"
-            marginTop={"15px"}
-            fontWeight={"bold"}
-            _hover={{ color: "red", textDecoration: "underline" }}
-          >
-            Attend a Workshop
-          </MenuItem>
+          })}
         </Box>
 
         <Card marginTop={"20px"}>
@@ -136,6 +107,7 @@ const MenuCategory = ({ category }) => {
         </Card>
       </MenuList>
     </Menu>
+    </ChakraProvider>
   );
 };
 
