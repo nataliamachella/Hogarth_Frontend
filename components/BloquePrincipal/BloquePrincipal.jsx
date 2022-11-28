@@ -1,25 +1,6 @@
-import {
-  Flex,
-  Box,
-  Image,
-  Text,
-  ChakraProvider,
-  Container,
-} from "@chakra-ui/react";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { Image, Text, ChakraProvider, Container } from "@chakra-ui/react";
 
 const BloquePrincipal = () => {
-  //   const [mainNote, setMainNote] = useState({});
-
-  //   useEffect(() => {
-  //     axios
-  //       .get(
-  //         "/api/notes/byURL/Incendios_en_el_Delta_quema_intencional_sequa_y_falta_de_accin"
-  //       )
-  //       .then((note) => setMainNote(note));
-  //   });
-
   return (
     <ChakraProvider>
       <Container

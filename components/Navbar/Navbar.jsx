@@ -4,7 +4,6 @@ import {
   Center,
   Button,
   ChakraProvider,
-  Box,
   Container,
   Text,
 } from "@chakra-ui/react";
@@ -76,7 +75,6 @@ const Navbar = () => {
             color="black"
             justifyContent={"center"}
             border="1px solid #f0f0f0"
-            onChange={fetchCategories}
           >
             {categories.map((category) => {
               return (

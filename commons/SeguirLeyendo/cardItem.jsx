@@ -1,16 +1,12 @@
 import React from "react";
 import {
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
   Stack,
   Heading,
   Divider,
-  ButtonGroup,
-  Button,
   Image,
-  Text,
 } from "@chakra-ui/react";
 
 const CardItem = ({ note }) => {
