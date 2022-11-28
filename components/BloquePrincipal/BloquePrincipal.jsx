@@ -11,7 +11,6 @@ const BloquePrincipal = () => {
         "api/notes/byURL/Horscopo_semanal_signo_por_signo_qu_te_dicen_los_astros"
       )
       .then((nota) => {
-        console.log(nota.data);
         setNotaPrincipal(nota.data);
       });
   }, []);
@@ -32,7 +31,7 @@ const BloquePrincipal = () => {
           height="100%"
           position="absolute"
           display="flex"
-          
+          sx={{background: "linear-gradient(to left, black, transparent)"}} 
         >
           {notaPrincipal ? (
             <Image
