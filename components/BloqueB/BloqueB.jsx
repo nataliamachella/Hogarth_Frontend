@@ -4,7 +4,6 @@ import {
   Container,
   IconButton,
   useBreakpointValue,
-  Link,
   Text,
 } from "@chakra-ui/react";
 // Here we have used react-icons package for the icons
@@ -52,16 +51,14 @@ export default function BloqueB() {
       borderRadius="lg"
       borderColor=" #f0f0f0"
     >
-      <Link>
-        <Text
-          fontSize="50px"
-          _hover={{
-            color: "purple",
-          }}
-        >
-          Actualidad
-        </Text>
-      </Link>
+      <Text
+        fontSize="50px"
+        _hover={{
+          color: "purple",
+        }}
+      >
+        Actualidad
+      </Text>
       <Box
         position={"relative"}
         height={"600px"}
@@ -70,7 +67,7 @@ export default function BloqueB() {
         borderRadius="lg"
       >
         {/* CSS files for react-slick */}
-        <link
+        {/* <link
           rel="stylesheet"
           type="text/css"
           charSet="UTF-8"
@@ -80,7 +77,7 @@ export default function BloqueB() {
           rel="stylesheet"
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-        />
+        /> */}
         {/* Left Icon */}
         <IconButton
           aria-label="left-arrow"
