@@ -2,18 +2,17 @@ import React from "react";
 import BloqueA from "../components/BloqueA/BloqueA";
 import BloquePrincipal from "../components/BloquePrincipal/BloquePrincipal";
 import BloqueB from "../components/BloqueB/BloqueB";
-import Widget from "../components/Widget/Widget"
+import Widget from "../components/Widget/Widget";
+import { Box } from "@chakra-ui/react";
 
 const HomePage = () => {
   return (
-    <ChakraProvider>
-      <div>
-        <Navbar />
-        <BloquePrincipal />
-        <BloqueA />
-        <BloqueB />
-        <Widget />
-        {/*
+    <Box>
+      <BloquePrincipal />
+      <BloqueA />
+      <BloqueB />
+      <Widget />
+      {/*
       <TercerBloque />
       <CuartoBloque />
       <QuintoBloque />
