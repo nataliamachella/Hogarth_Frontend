@@ -8,7 +8,6 @@ import {
   Heading,
   Divider,
   Image,
-  Link,
   Text,
   SimpleGrid,
 } from "@chakra-ui/react";
@@ -34,16 +33,14 @@ const BloqueA = () => {
         borderColor=" #f0f0f0"
         marginBottom="65"
       >
-          <Link>
-            <Text
-              fontSize="50px"
-              _hover={{
-                color: "purple",
-              }}
-            >
-              Actualidad
-            </Text>
-          </Link>
+        <Text
+          fontSize="50px"
+          _hover={{
+            color: "purple",
+          }}
+        >
+          Actualidad
+        </Text>
         <Image borderRadius="lg" src="/assets/oscar.webp" />
         <SimpleGrid
           display="flex"

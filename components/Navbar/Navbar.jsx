@@ -7,11 +7,11 @@ import {
   Container,
   Text,
 } from "@chakra-ui/react";
-import { Link } from "@chakra-ui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import MenuCategory from "./MenuCategory";
 import axios from "axios";
+import Link from "next/link";
 
 const Navbar = () => {
   const [categories, setCategories] = useState(null);
@@ -29,7 +29,13 @@ const Navbar = () => {
   return (
     <ChakraProvider>
       {categories ? (
-        <Container position="fixed" top="0" maxW="100%" background="white" zIndex={10}>
+        <Container
+          position="fixed"
+          top="0"
+          maxW="100%"
+          background="white"
+          zIndex={10}
+        >
           <Flex color="black">
             <Center w="170px" h="45px" marginTop="15px">
               <Image
@@ -47,12 +53,14 @@ const Navbar = () => {
             </Center>
             <Spacer />
             <Center bg="blue" h="40px" size="150px" marginTop="15px">
-              <Image
-                alt="wow-logo"
-                src="/assets/wow.png"
-                width="250"
-                height="50"
-              />
+              <Link href="/">
+                <Image
+                  alt="wow-logo"
+                  src="/assets/wow.png"
+                  width="250"
+                  height="50"
+                />
+              </Link>
             </Center>
             <Spacer />
             <Center w="170px" h="75px">
@@ -76,11 +84,11 @@ const Navbar = () => {
             justifyContent={"center"}
             border="1px solid #f0f0f0"
           >
-            {categories.map((category) => {
+            {categories.map((category, i) => {
               return (
-                <Center w="170px" h="45px" key={category.id}>
-                  <Link textDecoration={"none"}>
-                    <MenuCategory category={category} />
+                <Center w="170px" h="45px" key={i}>
+                  <Link href={`/${category.url}`} key={i}>
+                    <MenuCategory category={category} key={i} />
                   </Link>
                 </Center>
               );

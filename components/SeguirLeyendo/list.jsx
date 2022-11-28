@@ -14,7 +14,13 @@ const List = () => {
   return (
     <Grid templateColumns="repeat(5, 1fr)" gap={6}>
       {notes ? (
-        notes.map((note) => <CardItem note={note} />)
+        notes.map((note) => (
+          <CardItem
+            note={note}
+            urlSubcategory={note.subCategory.url}
+            urlCategory={note.subCategory.category.url}
+          />
+        ))
       ) : (
         <Text>Loading</Text>
       )}
