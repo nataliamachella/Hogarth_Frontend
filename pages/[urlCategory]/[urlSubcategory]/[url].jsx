@@ -1,5 +1,5 @@
 import { Box, Text, Image, Divider, Heading, Center } from "@chakra-ui/react";
-import List from "../../components/SeguirLeyendo/list";
+import List from "../../../components/SeguirLeyendo/list";
 import fetch from "isomorphic-fetch";
 
 const Post = ({ note }) => {
@@ -77,11 +77,11 @@ const Post = ({ note }) => {
   );
 };
 
-Post.getInitialProps = async ({ query }) => {
+export async function getServerSideProps({ query }) {
   const { url } = query;
   const res = await fetch(`http://localhost:3001/api/notes/byURL/${url}`);
   const data = await res.json();
-  return { note: data };
-};
+  return { props: { note: data } };
+}
 
 export default Post;

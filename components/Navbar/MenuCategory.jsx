@@ -1,4 +1,5 @@
 import {
+  useDisclosure,
   Menu,
   MenuButton,
   Button,
@@ -9,21 +10,22 @@ import {
   Text,
   CardBody,
   ChakraProvider,
-  Container,
 } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
 import Image from "next/image";
-import axios from "axios";
+import Link from "next/link";
 
 const MenuCategory = ({ category }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <ChakraProvider>
-      <Menu>
+      <Menu isOpen={isOpen}>
         <MenuButton
           as={Button}
           border="hidden"
           background={"white"}
           fontFamily="sans-serif"
+          onMouseEnter={onOpen}
+          onMouseLeave={onClose}
         >
           {category.name}
         </MenuButton>
@@ -34,20 +36,26 @@ const MenuCategory = ({ category }) => {
           bg="pink"
           marginTop={"-1"}
           justifyContent="space-around"
+          onMouseEnter={onOpen}
+          onMouseLeave={onClose}
         >
           <Box textAlign={"center"}>
-            {category.subCategories.map((subCategory) => (
-              <MenuItem
-                key={subCategory.url}
-                border={"hidden"}
-                bg="pink"
-                marginTop={"15px"}
-                fontWeight={"bold"}
-                _hover={{ color: "red", textDecoration: "underline" }}
-              >
-                {subCategory.name}
-              </MenuItem>
-            ))}
+            {category.subCategories.map((subCategory, i) => {
+              return (
+                <Link href={`/${category.url}/${subCategory.url}`} key={i}>
+                  <MenuItem
+                    key={i}
+                    border={"hidden"}
+                    bg="pink"
+                    marginTop={"15px"}
+                    fontWeight={"bold"}
+                    _hover={{ color: "red", textDecoration: "underline" }}
+                  >
+                    {subCategory.name}
+                  </MenuItem>
+                </Link>
+              );
+            })}
           </Box>
           <Card marginTop={"20px"}>
             <CardBody>
@@ -57,9 +65,7 @@ const MenuCategory = ({ category }) => {
                 width="190"
                 height="130"
               />
-              <Text>
-                <h3>Lorem ipsum dolor</h3>sit amet la la la.
-              </Text>
+              <Text>Lorem ipsum dolor sit amet la la la.</Text>
             </CardBody>
           </Card>
           <Card marginTop={"20px"}>
@@ -70,9 +76,7 @@ const MenuCategory = ({ category }) => {
                 width="190"
                 height="130"
               />
-              <Text>
-                <h3>Lorem ipsum dolor</h3>sit amet la la la.
-              </Text>
+              <Text>Lorem ipsum dolor sit amet la la la.</Text>
             </CardBody>
           </Card>
           <Card marginTop={"20px"}>
@@ -83,9 +87,7 @@ const MenuCategory = ({ category }) => {
                 width="190"
                 height="130"
               />
-              <Text>
-                <h3>Lorem ipsum dolor</h3>sit ametla la la.
-              </Text>
+              <Text>Lorem ipsum dolor sit ametla la la.</Text>
             </CardBody>
           </Card>
         </MenuList>
