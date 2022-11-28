@@ -58,7 +58,7 @@ const MenuCategory = ({ category }) => {
                 height="130"
               />
               <Text>
-                <h3>Lorem ipsum dolor</h3>sit amet la la la.
+                Lorem ipsum dolor sit amet la la la.
               </Text>
             </CardBody>
           </Card>
@@ -71,7 +71,7 @@ const MenuCategory = ({ category }) => {
                 height="130"
               />
               <Text>
-                <h3>Lorem ipsum dolor</h3>sit amet la la la.
+                Lorem ipsum dolor sit amet la la la.
               </Text>
             </CardBody>
           </Card>
@@ -84,7 +84,7 @@ const MenuCategory = ({ category }) => {
                 height="130"
               />
               <Text>
-                <h3>Lorem ipsum dolor</h3>sit ametla la la.
+                Lorem ipsum dolor sit ametla la la.
               </Text>
             </CardBody>
           </Card>

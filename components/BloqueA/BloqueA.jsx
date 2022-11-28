@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ChakraProvider,
   Container,
@@ -12,8 +12,17 @@ import {
   Text,
   SimpleGrid,
 } from "@chakra-ui/react";
+import axios from "axios";
 
 const BloqueA = () => {
+
+  const [actualidad, setActualidad] = useState(null)
+
+  useEffect(()=>{
+    axios.get("/api/categories/Actualidad")
+    .then(notas=>console.log(notas))
+  },[])
+
   return (
     <ChakraProvider>
       <Container
