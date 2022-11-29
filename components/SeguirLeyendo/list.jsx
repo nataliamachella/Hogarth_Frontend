@@ -12,7 +12,7 @@ const List = () => {
       .then((data) => setNotes(data));
   }, []);
   return (
-    <Grid templateColumns="repeat(5, 1fr)" gap={6}>
+    <Grid templateColumns="repeat(3, 1fr)" gap={6} width="60%">
       {notes ? (
         notes.map((note) => (
           <CardItem
