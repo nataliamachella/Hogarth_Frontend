@@ -19,11 +19,10 @@ const BloqueA = () => {
 
   useEffect(() => {
     axios.get("/api/notes/byCategory/Actualidad").then((notas) => {
-      console.log(notas.data);
       setActualidad(notas.data);
     });
   }, []);
- 
+
   return (
     <ChakraProvider>
       <Container

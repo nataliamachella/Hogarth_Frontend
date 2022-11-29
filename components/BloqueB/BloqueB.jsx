@@ -33,15 +33,12 @@ export default function BloqueB() {
 
   useEffect(() => {
     axios.get("/api/notes/byCategory/Calidad_de_Vida").then((notes) => {
-      console.log(notes.data);
       setNotas(notes.data);
     });
   }, []);
 
-  console.log(notas)
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "40px" });
-
 
   return (
     <Container
@@ -108,9 +105,8 @@ export default function BloqueB() {
         </IconButton>
 
         <Slider {...settings} ref={(slider) => setSlider(slider)}>
-          {
-            notas ? (
-              notas.map((nota) => (
+          {notas
+            ? notas.map((nota) => (
                 <Box
                   key={nota.id}
                   height={"100%"}
@@ -120,7 +116,11 @@ export default function BloqueB() {
                   backgroundSize="cover"
                   backgroundImage={`url(${nota.field_img_primary})`}
                 >
-                  <Container size="container.lg" height="600px" position="relative">
+                  <Container
+                    size="container.lg"
+                    height="600px"
+                    position="relative"
+                  >
                     <Stack
                       spacing={4}
                       w={"100%"}
@@ -129,7 +129,10 @@ export default function BloqueB() {
                       top="70%"
                       transform="translate(-40%, -50%)"
                     >
-                      <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }} color="white">
+                      <Heading
+                        fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+                        color="white"
+                      >
                         {nota.title}
                       </Heading>
                       <Text fontSize={{ base: "lg", lg: "xl" }} color="white">
@@ -138,9 +141,8 @@ export default function BloqueB() {
                     </Stack>
                   </Container>
                 </Box>
-            ))) : null
-          }
-          
+              ))
+            : null}
         </Slider>
       </Box>
     </Container>
