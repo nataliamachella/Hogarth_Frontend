@@ -58,8 +58,7 @@ const BloqueA = () => {
             display="flex"
             textAlign="center"
             alignItems="center"
-            transform="translate(-35%, -10%)
-            "
+            transform="translate(-35%, -10%)"
           >
             <Box
               display="flex"
