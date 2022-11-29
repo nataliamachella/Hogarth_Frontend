@@ -3,18 +3,23 @@ import {
   Spacer,
   Center,
   Button,
-  ChakraProvider,
   Container,
   Text,
+  Box,
+  Grid,
+  useDisclosure,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import MenuCategory from "./MenuCategory";
 import axios from "axios";
 import Link from "next/link";
+import CollapseComponent from "./Collapse";
 
 const Navbar = () => {
   const [categories, setCategories] = useState(null);
+  const [category, setCategory] = useState(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const fetchCategories = () => {
     axios
@@ -27,9 +32,9 @@ const Navbar = () => {
   }, []);
 
   return (
-    <ChakraProvider>
+    <Box width="100vw">
       {categories ? (
-        <Container
+        <Box
           position="fixed"
           top="0"
           maxW="100%"
@@ -79,26 +84,33 @@ const Navbar = () => {
               </Button>
             </Center>
           </Flex>
-          <Flex
-            color="black"
-            justifyContent={"center"}
-            border="1px solid #f0f0f0"
-          >
-            {categories.map((category, i) => {
-              return (
-                <Center w="170px" h="45px" key={i}>
-                  <Link href={`/${category.url}`} key={i}>
-                    <MenuCategory category={category} key={i} />
-                  </Link>
-                </Center>
-              );
-            })}
-          </Flex>
-        </Container>
+          <Box pos="absolute" display="block" width="100vw">
+            <Grid templateColumns={`repeat(${categories.length}, 1fr)`}>
+              {categories.map((category, i) => {
+                return (
+                  <MenuCategory
+                    category={category}
+                    key={i}
+                    onOpen={onOpen}
+                    onClose={onClose}
+                    setCategory={setCategory}
+                    isOpen={isOpen}
+                  />
+                );
+              })}
+            </Grid>
+            <CollapseComponent
+              onOpen={onOpen}
+              onClose={onClose}
+              isOpen={isOpen}
+              category={category}
+            />
+          </Box>
+        </Box>
       ) : (
         <Text>Loading</Text>
       )}
-    </ChakraProvider>
+    </Box>
   );
 };
 

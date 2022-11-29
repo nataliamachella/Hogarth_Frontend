@@ -5,26 +5,19 @@ import {
   DrawerContent,
   Flex,
   Icon,
-  Link,
-  Text,
+  Image,
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
-import {
-  FiHome,
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
-  FiSettings,
-} from "react-icons/fi";
+import { FiFileText, FiSettings, FiUser } from "react-icons/fi";
 
 const LinkItems = [
-  { name: "Home", icon: FiHome },
-  { name: "Trending", icon: FiTrendingUp },
-  { name: "Explore", icon: FiCompass },
-  { name: "Favourites", icon: FiStar },
-  { name: "Settings", icon: FiSettings },
+  { name: "Notas", icon: FiFileText, url: "/admin" },
+  { name: "Autores", icon: FiUser, url: "/admin" },
+  { name: "Contenidos", icon: FiFileText, url: "/admin" },
+  { name: "Settings", icon: FiSettings, url: "/admin" },
 ];
 
 export default function SimpleSidebar({ children }) {
@@ -48,7 +41,6 @@ export default function SimpleSidebar({ children }) {
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      {/* mobilenav */}
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
       </Box>
@@ -68,15 +60,17 @@ const SidebarContent = ({ onClose, ...rest }) => {
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
-        </Text>
+        <Link href={"/"}>
+          <Image alt="wow-logo" src="/assets/wow.png" width="250" height="50" />
+        </Link>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
-          {link.name}
-        </NavItem>
+        <Link href={link.url}>
+          <NavItem key={link.name} icon={link.icon}>
+            {link.name}
+          </NavItem>
+        </Link>
       ))}
     </Box>
   );
@@ -84,36 +78,30 @@ const SidebarContent = ({ onClose, ...rest }) => {
 
 const NavItem = ({ icon, children, ...rest }) => {
   return (
-    <Link
-      href="#"
-      style={{ textDecoration: "none" }}
-      _focus={{ boxShadow: "none" }}
+    <Flex
+      align="center"
+      p="4"
+      mx="4"
+      borderRadius="lg"
+      role="group"
+      cursor="pointer"
+      _hover={{
+        bg: "cyan.400",
+        color: "white",
+      }}
+      {...rest}
     >
-      <Flex
-        align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        _hover={{
-          bg: "cyan.400",
-          color: "white",
-        }}
-        {...rest}
-      >
-        {icon && (
-          <Icon
-            mr="4"
-            fontSize="16"
-            _groupHover={{
-              color: "white",
-            }}
-            as={icon}
-          />
-        )}
-        {children}
-      </Flex>
-    </Link>
+      {icon && (
+        <Icon
+          mr="4"
+          fontSize="16"
+          _groupHover={{
+            color: "white",
+          }}
+          as={icon}
+        />
+      )}
+      {children}
+    </Flex>
   );
 };
