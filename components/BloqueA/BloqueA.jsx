@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  ChakraProvider,
   Container,
   Card,
   CardBody,
@@ -24,7 +23,7 @@ const BloqueA = () => {
   }, []);
 
   return (
-    <ChakraProvider>
+    <Box>
       <Container
         marginTop="40px"
         display="flex"
@@ -150,7 +149,7 @@ const BloqueA = () => {
           </Card>
         </SimpleGrid>
       </Container>
-    </ChakraProvider>
+    </Box>
   );
 };
 
