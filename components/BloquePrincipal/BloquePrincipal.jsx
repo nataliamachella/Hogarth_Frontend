@@ -1,51 +1,74 @@
-import {
-  Flex,
-  Box,
-  Image,
-  Text,
-  ChakraProvider,
-  Container,
-} from "@chakra-ui/react";
+import { Image, Text, ChakraProvider, Box } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const BloquePrincipal = () => {
-  //   const [mainNote, setMainNote] = useState({});
+  const [notaPrincipal, setNotaPrincipal] = useState(null);
 
-  //   useEffect(() => {
-  //     axios
-  //       .get(
-  //         "/api/notes/byURL/Incendios_en_el_Delta_quema_intencional_sequa_y_falta_de_accin"
-  //       )
-  //       .then((note) => setMainNote(note));
-  //   });
+  useEffect(() => {
+    axios
+      .get(
+        "api/notes/byURL/Horscopo_semanal_signo_por_signo_qu_te_dicen_los_astros"
+      )
+      .then((nota) => {
+        setNotaPrincipal(nota.data);
+      });
+  }, []);
 
   return (
     <ChakraProvider>
-      <Container maxW="100%" maxH="50%" marginTop="90" marginBottom="65">
-        <Image
-          objectFit="cover"
-          src="assets/nenearbol.webp"
+      <Box
+        display="flex"
+        overflow="hidden"
+        height="490px"
+        position="relative"
+        width="100vw"
+        flexDirection="row"
+        marginTop="125px"
+        bgGradient='linear(to-r, rgb(0,0,0,0)65%, rgb(1,1,1,1)), url("https://bucket.somosohlala.com.ar/s3fs-public/styles/mainjumbo_1800/public/2022-11/astros-bomba_2.png.webp")'
+      >
+        <Box
+          width="100%"
+          height="auto"
+          position="absolute"
+          z-index="1000"
           display="flex"
-          width="1833px"
-          height="50vh"
-        />
-        <Text
-          fontSize="50px"
-          color="white"
-          marginTop="-350px"
           textAlign="left"
-          paddingLeft="1100px"
+          alignItems="center"
         >
-          “Apareció mi ex”.
-          <br />
-          ¿Cómo reaccionar
-          <br />
-          cuando alguien del
-          <br />
-          pasado vuelve a tu vida?
-        </Text>
-      </Container>
+          <Box
+            display="flex"
+            width="100%"
+            flexDir="row"
+            justifyContent="flex-end"
+            height="100%"
+          >
+            {notaPrincipal ? (
+              <Box
+                display="flex"
+                flexDir="column"
+                justifyContent="center"
+                width="700px"
+                paddingRight="10%"
+              >
+                <Text
+                  fontSize="4xl"
+                  color="white"
+                  width="400px"
+                  marginTop="15%"
+                >
+                  {notaPrincipal.field_title_pre}
+                  <br />
+                  {notaPrincipal.field_title}
+                </Text>
+                <Text fontSize="1xl" color="white" width="400px">
+                  por {notaPrincipal.author}
+                </Text>
+              </Box>
+            ) : null}
+            </Box>
+          </Box>
+      </Box>
     </ChakraProvider>
   );
 };

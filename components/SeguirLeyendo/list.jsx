@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, GridItem, Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Grid, Text } from "@chakra-ui/react";
 import CardItem from "../../commons/SeguirLeyendo/cardItem";
 import axios from "axios";
 
@@ -14,7 +14,13 @@ const List = () => {
   return (
     <Grid templateColumns="repeat(5, 1fr)" gap={6}>
       {notes ? (
-        notes.map((note) => <CardItem note={note} />)
+        notes.map((note) => (
+          <CardItem
+            note={note}
+            urlSubcategory={note.subCategory.url}
+            urlCategory={note.subCategory.category.url}
+          />
+        ))
       ) : (
         <Text>Loading</Text>
       )}
