@@ -1,25 +1,26 @@
 import { Box, Grid, Heading, Stack, Text, Textarea } from "@chakra-ui/react";
 import BloqueE from "../../components/BloqueE/BloqueE";
+import fetch from "isomorphic-fetch";
 
-const UltimasNoticias = () => {
+const UltimasNoticias = ( {categoryNotes, category } ) => {
+  console.log(category.name)
   return (
     <Box display="flex" flexDirection="column">
       <Box
         display="flex"
-        height="180"
+        height="220"
         width="100vw"
         flexDirection="row"
         marginTop="125px"
-        backgroundImage="https://bucket.somosohlala.com.ar/s3fs-public/styles/bg/public/2022-07/actualidad.png.webp?itok=T9S2RdC7"
+        backgroundImage={category.image}
         backgroundSize="cover"
         justifyContent="center"
         alignItems="center"
       >
         <Stack textAlign="center">
-          <Heading fontSize="5xl">ACTUALIDAD</Heading>
+          <Heading fontSize="5xl" textTransform="uppercase">{category.name}</Heading>
           <Text fontSize="md">
-            Noticias de actualidad y un squad de especialistas para abrir el
-            diálogo sobre todos esos temas que te interesan.
+            {category.description}
           </Text>
         </Stack>
       </Box>
@@ -29,5 +30,14 @@ const UltimasNoticias = () => {
     </Box>
   );
 };
+
+export async function getServerSideProps({ query }) {
+  const { urlCategory } = query;
+  const res = await fetch(`http://localhost:3001/api/notes/byCategory/${urlCategory}`)
+  const data = await res.json();
+  const resCategory = await fetch(`http://localhost:3001/api/categories/${urlCategory}`)
+  const dataCategory = await resCategory.json();
+  return { props: { categoryNotes: data, category: dataCategory } };
+}
 
 export default UltimasNoticias;
