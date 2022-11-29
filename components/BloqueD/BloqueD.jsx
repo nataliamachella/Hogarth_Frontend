@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  ChakraProvider,
   Grid,
   Card,
   CardBody,
@@ -12,6 +11,7 @@ import {
   CardFooter,
   ButtonGroup,
   Button,
+  Box,
 } from "@chakra-ui/react";
 import CardItem from "../../commons/SeguirLeyendo/cardItem";
 import axios from "axios";
@@ -28,7 +28,7 @@ const BloqueD = () => {
   }, []);
 
   return (
-    <ChakraProvider>
+    <Box>
       {notes ? (
         <Grid
           templateColumns="repeat(3, 2fr)"
@@ -77,7 +77,7 @@ const BloqueD = () => {
       ) : (
         <Text>Loading</Text>
       )}
-    </ChakraProvider>
+    </Box>
   );
 };
 

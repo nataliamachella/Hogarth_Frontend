@@ -1,4 +1,4 @@
-import { Image, Text, ChakraProvider, Box } from "@chakra-ui/react";
+import { Text, Box } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -16,7 +16,7 @@ const BloquePrincipal = () => {
   }, []);
 
   return (
-    <ChakraProvider>
+    <Box>
       <Box
         display="flex"
         overflow="hidden"
@@ -66,10 +66,10 @@ const BloquePrincipal = () => {
                 </Text>
               </Box>
             ) : null}
-            </Box>
           </Box>
+        </Box>
       </Box>
-    </ChakraProvider>
+    </Box>
   );
 };
 
