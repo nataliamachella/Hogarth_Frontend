@@ -24,7 +24,11 @@
     "@chakra-ui/react": "^2.4.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+<<<<<<< HEAD
+    "@fontsource/dancing-script": "^4.5.10",
+=======
     "@fontsource/inter": "^4.5.14",
+>>>>>>> 4ca0765e3f3e1e127d9cdac950b31904238e3344
     "@fontsource/open-sans": "^4.5.13",
     "@fontsource/raleway": "^4.5.11",
     "axios": "^1.2.0",
