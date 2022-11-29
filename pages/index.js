@@ -5,6 +5,7 @@ import BloqueB from "../components/BloqueB/BloqueB";
 import Widget from "../components/Widget/Widget";
 import { Box } from "@chakra-ui/react";
 import BloqueE from "../components/BloqueE/BloqueE";
+import BloqueD from "../components/BloqueD/BloqueD";
 
 const HomePage = () => {
   return (
@@ -22,6 +23,7 @@ const HomePage = () => {
       <SeptimoBloque />
       <Footer /> */}
     </Box>
+
   );
 };
 
