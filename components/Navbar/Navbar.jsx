@@ -3,6 +3,7 @@ import {
   Spacer,
   Center,
   Button,
+  Container,
   Text,
   Box,
   Grid,
@@ -33,8 +34,14 @@ const Navbar = () => {
   return (
     <Box width="100vw">
       {categories ? (
-        <Box position="fixed" top="0" background="white" zIndex={10}>
-          <Flex color="black" width="100vw">
+        <Box
+          position="fixed"
+          top="0"
+          maxW="100%"
+          background="white"
+          zIndex={10}
+        >
+          <Flex color="black">
             <Center w="170px" h="45px" marginTop="15px">
               <Image
                 alt="instagram-logo"
@@ -78,38 +85,20 @@ const Navbar = () => {
             </Center>
           </Flex>
           <Box pos="absolute" display="block" width="100vw">
-            <Flex
-              boxSizing="border-box"
-              justifyContent="center"
-              width="100%"
-              border="1px solid rgba(188, 188, 188, 0.5)"
-              bgColor="white"
-            >
-              <Flex
-                pe="0px"
-                ps="0px"
-                justifyContent="space-between"
-                width="100%"
-                maxWidth="1200px"
-                pt="10px"
-                pb="10px"
-                onMouseEnter={onOpen}
-                onMouseLeave={onClose}
-              >
-                {categories.map((category, i) => {
-                  return (
-                    <MenuCategory
-                      category={category}
-                      key={i}
-                      onOpen={onOpen}
-                      onClose={onClose}
-                      setCategory={setCategory}
-                      isOpen={isOpen}
-                    />
-                  );
-                })}
-              </Flex>
-            </Flex>
+            <Grid templateColumns={`repeat(${categories.length}, 1fr)`}>
+              {categories.map((category, i) => {
+                return (
+                  <MenuCategory
+                    category={category}
+                    key={i}
+                    onOpen={onOpen}
+                    onClose={onClose}
+                    setCategory={setCategory}
+                    isOpen={isOpen}
+                  />
+                );
+              })}
+            </Grid>
             <CollapseComponent
               onOpen={onOpen}
               onClose={onClose}
