@@ -42,7 +42,12 @@ const BloquePrincipal = () => {
             width="1833px"
             height="50vh"
           /> */}
-        <Text paddingRight="40px" fontSize="40px" color="white">
+        <Text
+          paddingRight="40px"
+          fontSize="40px"
+          color="white"
+          fontFamily={"PPEiko-Medium"}
+        >
           “Apareció mi ex”.
           <br />
           ¿Cómo reaccionar <br />

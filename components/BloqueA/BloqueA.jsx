@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   ChakraProvider,
   Container,
@@ -23,18 +24,17 @@ const BloqueA = () => {
         border="1px"
         borderRadius="lg"
         borderColor=" #f0f0f0"
-        marginBottom="65"
       >
-          <Link>
-            <Text
-              fontSize="50px"
-              _hover={{
-                color: "purple",
-              }}
-            >
-              Actualidad
-            </Text>
-          </Link>
+        <Link>
+          <Text
+            fontSize="50px"
+            _hover={{
+              color: "purple",
+            }}
+          >
+            Actualidad
+          </Text>
+        </Link>
         <Image borderRadius="lg" src="/assets/oscar.webp" />
         <SimpleGrid
           display="flex"
@@ -51,13 +51,13 @@ const BloqueA = () => {
               />
               <Stack mt="6" spacing="3">
                 <Heading size="md">TITULO</Heading>
-                <Text>
+                <h1>
                   "Michael J. Fox es el máximo ejemplo de cómo luchar y cómo
                   vivir. Y hoy es tan querido por su activismo como por su
                   actuación […] Nunca pidió el papel de paciente de párkinson o
                   defensor de la enfermedad. Pero no se equivoquen, es su mejor
                   interpretación".
-                </Text>
+                </h1>
               </Stack>
             </CardBody>
             <Divider />
@@ -65,13 +65,12 @@ const BloqueA = () => {
           <Card maxW="sm">
             <CardBody>
               <Image
-                src="/assets/oscar.webp"
                 alt="Green double couch with wooden legs"
                 borderRadius="lg"
               />
               <Stack mt="6" spacing="3">
                 <Heading size="md">TITULO</Heading>
-                <Text>
+                <Text fontFamily={"Inter"}>
                   "Michael J. Fox es el máximo ejemplo de cómo luchar y cómo
                   vivir. Y hoy es tan querido por su activismo como por su
                   actuación […] Nunca pidió el papel de paciente de párkinson o
