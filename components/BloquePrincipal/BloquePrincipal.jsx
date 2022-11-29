@@ -25,25 +25,8 @@ const BloquePrincipal = () => {
         width="100vw"
         flexDirection="row"
         marginTop="125px"
+        bgGradient='linear(to-r, rgb(0,0,0,0)65%, rgb(1,1,1,1)), url("https://bucket.somosohlala.com.ar/s3fs-public/styles/mainjumbo_1800/public/2022-11/astros-bomba_2.png.webp")'
       >
-        <picture
-          width="100vw"
-          height="100%"
-          position="absolute"
-          display="flex"
-          sx={{background: "linear-gradient(to left, black, transparent)"}} 
-        >
-          {notaPrincipal ? (
-            <Image
-              width="100vw"
-              height="auto"
-              backgroundSize="cover"
-              left="0px"
-              top="0px"
-              src="https://bucket.somosohlala.com.ar/s3fs-public/styles/mainjumbo_1800/public/2022-11/astros-bomba_2.png.webp"
-            />
-          ) : null}
-        </picture>
         <Box
           width="100%"
           height="auto"
@@ -83,8 +66,8 @@ const BloquePrincipal = () => {
                 </Text>
               </Box>
             ) : null}
+            </Box>
           </Box>
-        </Box>
       </Box>
     </ChakraProvider>
   );
