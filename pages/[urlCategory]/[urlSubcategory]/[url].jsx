@@ -8,11 +8,21 @@ const Post = ({ note }) => {
       {note ? (
         <Box>
           <Box h="170px" w="100%"></Box>
-          <Box mr={300} ml={300}>
-            <Heading as="h1" fontSize={48} fontWeight="bold" textAlign="center">
+          <Box
+            mr={300}
+            ml={300}
+            display="flex"
+            flexDir="column"
+           
+          >
+            <Box display="flex" flexDir="column" justifyContent="center" alignItems="center">
+            <Heading width="80%" as="h1" fontSize={48} fontWeight="bold" textAlign="center">
               {note.field_title_pre + note.field_title}
             </Heading>
             <Heading
+              alignContent="center"
+              width="70%"
+              marginTop="40px"
               as="h2"
               fontSize={21}
               textAlign="center"
@@ -20,29 +30,36 @@ const Post = ({ note }) => {
             >
               {note.field_description}
             </Heading>
+            </Box>
             <Center>
               <Divider
+                marginTop="20px"
                 borderColor="#E32B6C"
                 borderStyle="solid"
                 borderWidth="2px"
                 width="40px"
               />
             </Center>
-            <Text fontSize={16} textAlign="center">
+            <Text fontSize={16} textAlign="center" marginTop="20px">
               por <b>{note.author}</b>.
             </Text>
             <Text fontSize={15} textAlign="center" color="#969696">
               {note.createdAt}
             </Text>
-            <Center>
+            <Center marginTop="40px">
               <Image
                 src={note.field_img_primary}
                 alt="Incendios forestales en el Río Paraná"
-                boxSize="900px"
+                width="100%"
               />
             </Center>
             {note.contents.map((itemContent, i) => (
-              <Center>
+              <Center
+                display="flex"
+                flexDir="column"
+                width="60%"
+                marginTop="40px"
+              >
                 <div
                   key={i}
                   className="text-container"
@@ -53,18 +70,24 @@ const Post = ({ note }) => {
               </Center>
             ))}
           </Box>
-          <Box mt="40px" mb="113px"></Box>
-          <Box>
-            <Box mr={300} ml={300} pt="30px">
+          <Box marginTop="80px" width="100vw" backgroundColor=" #fff7f9">
+            <Box
+              display="flex"
+              flexDir="column"
+              justifyContent="center"
+              alignItems="center"
+              
+            >
               <Heading
                 as="h3"
                 fontSize="26px"
                 fontWeight="normal"
                 textAlign="inherit"
+                paddingTop="50px"
               >
                 SEGUIR LEYENDO
               </Heading>
-              <Center>
+              <Center marginTop="40px">
                 <List />
               </Center>
             </Box>

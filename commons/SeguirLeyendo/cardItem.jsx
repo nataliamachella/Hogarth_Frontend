@@ -13,7 +13,7 @@ import Link from "next/link";
 const CardItem = ({ note, urlSubcategory, urlCategory }) => {
   return (
     <Link href={`/${urlCategory}/${urlSubcategory}/${note.url}`}>
-      <Card maxW="sm">
+      <Card maxW="sm" backgroundColor="white">
         <CardBody>
           <Image
             src={note.field_img_primary}
