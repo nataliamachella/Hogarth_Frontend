@@ -30,7 +30,7 @@ const BloqueA = () => {
         marginTop="40px"
         display="flex"
         flexDir="column"
-        maxW="fit-content"
+        maxW="67%"
         border="1px"
         borderRadius="lg"
         borderColor=" #f0f0f0"
@@ -116,41 +116,37 @@ const BloqueA = () => {
           </Card>
           <Card maxW="sm">
             <CardBody>
-              <Image
-                src="/assets/oscar.webp"
-                alt="Green double couch with wooden legs"
-                borderRadius="lg"
-              />
-              <Stack mt="6" spacing="3">
-                <Heading size="md">TITULO</Heading>
-                <Text>
-                  "Michael J. Fox es el máximo ejemplo de cómo luchar y cómo
-                  vivir. Y hoy es tan querido por su activismo como por su
-                  actuación […] Nunca pidió el papel de paciente de párkinson o
-                  defensor de la enfermedad. Pero no se equivoquen, es su mejor
-                  interpretación".
-                </Text>
-              </Stack>
+              {actualidad ? (
+                <>
+                  <Image
+                    src={actualidad[2].field_img_primary}
+                    alt="Green double couch with wooden legs"
+                    borderRadius="lg"
+                  />
+                  <Stack mt="6" spacing="3">
+                    <Heading size="md">{actualidad[2].title}</Heading>
+                    <Text>{actualidad[2].field_description}</Text>
+                  </Stack>
+                </>
+              ) : null}
             </CardBody>
             <Divider />
           </Card>
           <Card maxW="sm">
             <CardBody>
-              <Image
-                src="/assets/oscar.webp"
-                alt="Green double couch with wooden legs"
-                borderRadius="lg"
-              />
-              <Stack mt="6" spacing="3">
-                <Heading size="md">TITULO</Heading>
-                <Text>
-                  "Michael J. Fox es el máximo ejemplo de cómo luchar y cómo
-                  vivir. Y hoy es tan querido por su activismo como por su
-                  actuación […] Nunca pidió el papel de paciente de párkinson o
-                  defensor de la enfermedad. Pero no se equivoquen, es su mejor
-                  interpretación".
-                </Text>
-              </Stack>
+              {actualidad ? (
+                <>
+                  <Image
+                    src={actualidad[3].field_img_primary}
+                    alt="Green double couch with wooden legs"
+                    borderRadius="lg"
+                  />
+                  <Stack mt="6" spacing="3">
+                    <Heading size="md">{actualidad[3].title}</Heading>
+                    <Text>{actualidad[3].field_description}</Text>
+                  </Stack>
+                </>
+              ) : null}
             </CardBody>
             <Divider />
           </Card>
