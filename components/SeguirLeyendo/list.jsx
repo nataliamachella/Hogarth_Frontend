@@ -4,15 +4,9 @@ import CardItem from "../../commons/SeguirLeyendo/cardItem";
 import axios from "axios";
 
 const List = ({notas}) => {
-  console.log(notas)
+  
   const notes = notas
-  // const [notes, setNotes] = useState(null);
-  // useEffect(() => {
-  //   axios
-  //     .get(`/api/notes`)
-  //     .then((res) => res.data)
-  //     .then((data) => setNotes(data));
-  // }, []);
+
   return (
     <Box marginTop="80px" width="100vw" backgroundColor=" #fff7f9">
       <Box
@@ -35,6 +29,7 @@ const List = ({notas}) => {
             {notes ? (
               notes.map((note) => (
                 <CardItem
+                  key={note.id}
                   note={note}
                   urlSubcategory={note.subCategory.url}
                   urlCategory={note.subCategory.category.url}
