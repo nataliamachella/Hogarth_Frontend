@@ -14,11 +14,11 @@ import {
 import axios from "axios";
 
 const BloqueA = () => {
-  const [actualidad, setActualidad] = useState(null);
+  const [notas, setNotas] = useState(null);
 
   useEffect(() => {
     axios.get("/api/notes/byCategory/Actualidad").then((notas) => {
-      setActualidad(notas.data);
+      setNotas(notas.data);
     });
   }, []);
 
@@ -33,6 +33,7 @@ const BloqueA = () => {
         borderRadius="lg"
         borderColor=" #f0f0f0"
         height="auto"
+        position="relative"
       >
         <Text
           fontSize="50px"
@@ -42,49 +43,33 @@ const BloqueA = () => {
         >
           Actualidad
         </Text>
-        <Box display="flex" position="relative" flexDirection="row">
-          <picture position="absolute" display="flex">
-            {actualidad ? (
-              <Image borderRadius="lg" src={actualidad[0].field_img_primary} />
-            ) : null}
-          </picture>
+        <Box display="flex" flexDir="row">
+          <Box width="100%" height="50%" maxH="50%">
+            <picture position="absolute" display="flex">
+              {notas ? (
+                <Image borderRadius="lg" src={notas[0].field_img_primary} />
+              ) : null}
+            </picture>
+          </Box>
           <Box
-            width="100%"
-            height="100%"
+            maxH="50%"
+            width="90%"
             position="absolute"
             z-index="1000"
             display="flex"
             textAlign="center"
-            alignItems="center"
-            transform="translate(-35%, -10%)"
+            bottom="50%"
           >
-            <Box
-              display="flex"
-              width="100%"
-              flexDir="row"
-              justifyContent="flex-end"
-              height="100%"
-            >
-              <Box
-                display="flex"
-                flexDir="column"
-                justifyContent="end"
-                width="60%"
-                paddingRight="10%"
-                textAlign="left"
-              >
-                {actualidad ? (
-                  <>
-                    <Text fontSize="5xl" color="white" marginTop="15%" as="b">
-                      {actualidad[0].field_title_pre}
-                    </Text>
-                    <Text float="right" fontSize="5xl" color="white">
-                      {actualidad[0].field_title}
-                    </Text>
-                  </>
-                ) : null}
-              </Box>
-            </Box>
+            {notas ? (
+              <Text position="relative" textAlign="left" paddingLeft="20px">
+                <Text fontSize="5xl" color="white" as="b">
+                  {notas[0].field_title_pre}
+                </Text> 
+                <Text fontSize="4xl" color="white">
+                  {notas[0].field_title}
+                </Text>
+              </Text>
+            ) : null}
           </Box>
         </Box>
         <SimpleGrid
@@ -95,16 +80,16 @@ const BloqueA = () => {
         >
           <Card maxW="sm">
             <CardBody>
-              {actualidad ? (
+              {notas ? (
                 <>
                   <Image
-                    src={actualidad[1].field_img_primary}
+                    src={notas[1].field_img_primary}
                     alt="Green double couch with wooden legs"
                     borderRadius="lg"
                   />
                   <Stack mt="6" spacing="3">
-                    <Heading size="md">{actualidad[1].title}</Heading>
-                    <Text>{actualidad[1].field_description}</Text>
+                    <Heading size="md">{notas[1].title}</Heading>
+                    <Text>{notas[1].field_description}</Text>
                   </Stack>
                 </>
               ) : null}
@@ -113,16 +98,16 @@ const BloqueA = () => {
           </Card>
           <Card maxW="sm">
             <CardBody>
-              {actualidad ? (
+              {notas ? (
                 <>
                   <Image
-                    src={actualidad[2].field_img_primary}
+                    src={notas[2].field_img_primary}
                     alt="Green double couch with wooden legs"
                     borderRadius="lg"
                   />
                   <Stack mt="6" spacing="3">
-                    <Heading size="md">{actualidad[2].title}</Heading>
-                    <Text>{actualidad[2].field_description}</Text>
+                    <Heading size="md">{notas[2].title}</Heading>
+                    <Text>{notas[2].field_description}</Text>
                   </Stack>
                 </>
               ) : null}
@@ -131,16 +116,16 @@ const BloqueA = () => {
           </Card>
           <Card maxW="sm">
             <CardBody>
-              {actualidad ? (
+              {notas ? (
                 <>
                   <Image
-                    src={actualidad[3].field_img_primary}
+                    src={notas[3].field_img_primary}
                     alt="Green double couch with wooden legs"
                     borderRadius="lg"
                   />
                   <Stack mt="6" spacing="3">
-                    <Heading size="md">{actualidad[3].title}</Heading>
-                    <Text>{actualidad[3].field_description}</Text>
+                    <Heading size="md">{notas[3].title}</Heading>
+                    <Text>{notas[3].field_description}</Text>
                   </Stack>
                 </>
               ) : null}
