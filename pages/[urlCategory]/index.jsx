@@ -1,5 +1,7 @@
-import { Box, Grid, Heading, Stack, Text, Textarea } from "@chakra-ui/react";
+import { Box, Heading, Stack, Text } from "@chakra-ui/react";
+import BloqueA from "../../components/BloqueA/BloqueA";
 import BloqueE from "../../components/BloqueE/BloqueE";
+import MasNotas from "../../components/SeguirLeyendo/list"
 import fetch from "isomorphic-fetch";
 
 const UltimasNoticias = ({ categoryNotes, category }) => {

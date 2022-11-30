@@ -1,5 +1,5 @@
 import { Box, Text, Image, Divider, Heading, Center } from "@chakra-ui/react";
-import List from "../../../components/SeguirLeyendo/list";
+import MasNotas from "../../../components/SeguirLeyendo/list";
 import fetch from "isomorphic-fetch";
 
 const Post = ({ note }) => {
@@ -70,28 +70,7 @@ const Post = ({ note }) => {
               </Center>
             ))}
           </Box>
-          <Box marginTop="80px" width="100vw" backgroundColor=" #fff7f9">
-            <Box
-              display="flex"
-              flexDir="column"
-              justifyContent="center"
-              alignItems="center"
-              
-            >
-              <Heading
-                as="h3"
-                fontSize="26px"
-                fontWeight="normal"
-                textAlign="inherit"
-                paddingTop="50px"
-              >
-                SEGUIR LEYENDO
-              </Heading>
-              <Center marginTop="40px">
-                <List />
-              </Center>
-            </Box>
-          </Box>
+          <MasNotas />
         </Box>
       ) : (
         <p>loading</p>
