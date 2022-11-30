@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Text, Box, Heading, Center } from "@chakra-ui/react";
 import CardItem from "../../commons/SeguirLeyendo/cardItem";
-import axios from "axios";
 
 const List = ({notas}) => {
   

@@ -28,7 +28,9 @@ const UltimasNoticias = ({ categoryNotes, category, url }) => {
             </Stack>
           </Box>
           <Box width="70%">
+
             <BloqueE url={url} />
+
           </Box>
         </Box>
       ) : null}
