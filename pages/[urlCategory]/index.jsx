@@ -1,12 +1,10 @@
 import { Box, Heading, Stack, Text } from "@chakra-ui/react";
 import BloqueA from "../../components/BloqueA/BloqueA";
 import BloqueE from "../../components/BloqueE/BloqueE";
-import MasNotas from "../../components/SeguirLeyendo/list"
+import MasNotas from "../../components/SeguirLeyendo/list";
 import fetch from "isomorphic-fetch";
 
-
-const UltimasNoticias = ({ categoryNotes, category }) => {
-
+const UltimasNoticias = ({ categoryNotes, category, url }) => {
   return (
     <Box>
       {category ? (
@@ -30,9 +28,9 @@ const UltimasNoticias = ({ categoryNotes, category }) => {
             </Stack>
           </Box>
           <Box width="70%">
-            <BloqueA />
-            <BloqueE />
-            <MasNotas notas={categoryNotes}/>
+
+            <BloqueE url={url} />
+
           </Box>
         </Box>
       ) : null}
@@ -50,7 +48,9 @@ export async function getServerSideProps({ query }) {
     `http://localhost:3001/api/categories/${urlCategory}`
   );
   const dataCategory = await resCategory.json();
-  return { props: { categoryNotes: data, category: dataCategory } };
+  return {
+    props: { categoryNotes: data, category: dataCategory, url: urlCategory },
+  };
 }
 
 export default UltimasNoticias;

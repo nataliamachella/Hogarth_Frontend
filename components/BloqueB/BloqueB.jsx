@@ -27,15 +27,19 @@ const settings = {
   slidesToScroll: 1,
 };
 
-export default function BloqueB() {
+export default function BloqueB({ url }) {
   const [slider, setSlider] = useState(null);
   const [notas, setNotas] = useState(null);
+  const [category, setCategory] = useState(null);
 
   useEffect(() => {
-    axios.get("/api/notes/byCategory/Calidad_de_Vida").then((notes) => {
+    axios.get(`/api/notes/byCategory/${url}`).then((notes) => {
       setNotas(notes.data);
     });
-  }, []);
+    axios.get(`/api/categories/${url}`).then((category) => {
+      setCategory(category.data);
+    });
+  }, [url]);
 
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "40px" });
@@ -56,7 +60,7 @@ export default function BloqueB() {
           color: "purple",
         }}
       >
-        Calidad de Vida
+        {category ? category.name : null}
       </Text>
       <Box
         marginTop="40px"
