@@ -30,7 +30,9 @@ const UltimasNoticias = ({ categoryNotes, category }) => {
             </Stack>
           </Box>
           <Box width="70%">
+            <BloqueA />
             <BloqueE />
+            <MasNotas notas={categoryNotes}/>
           </Box>
         </Box>
       ) : null}
