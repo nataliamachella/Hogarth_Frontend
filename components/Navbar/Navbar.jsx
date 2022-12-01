@@ -3,18 +3,22 @@ import {
   Spacer,
   Center,
   Button,
-  ChakraProvider,
-  Container,
   Text,
+  Box,
+  Grid,
+  useDisclosure,
 } from "@chakra-ui/react";
-import { Link } from "@chakra-ui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import MenuCategory from "./MenuCategory";
 import axios from "axios";
+import Link from "next/link";
+import CollapseComponent from "./Collapse";
 
 const Navbar = () => {
   const [categories, setCategories] = useState(null);
+  const [category, setCategory] = useState(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const fetchCategories = () => {
     axios
@@ -27,10 +31,10 @@ const Navbar = () => {
   }, []);
 
   return (
-    <ChakraProvider>
+    <Box width="100vw">
       {categories ? (
-        <Container position="fixed" top="0" maxW="100%" background="white" zIndex={10}>
-          <Flex color="black">
+        <Box position="fixed" top="0" background="white" zIndex={10}>
+          <Flex color="black" width="100vw">
             <Center w="170px" h="45px" marginTop="15px">
               <Image
                 alt="instagram-logo"
@@ -47,12 +51,14 @@ const Navbar = () => {
             </Center>
             <Spacer />
             <Center bg="blue" h="40px" size="150px" marginTop="15px">
-              <Image
-                alt="wow-logo"
-                src="/assets/wow.png"
-                width="250"
-                height="50"
-              />
+              <Link href="/">
+                <Image
+                  alt="wow-logo"
+                  src="/assets/wow.png"
+                  width="250"
+                  height="50"
+                />
+              </Link>
             </Center>
             <Spacer />
             <Center w="170px" h="75px">
@@ -71,26 +77,53 @@ const Navbar = () => {
               </Button>
             </Center>
           </Flex>
-          <Flex
-            color="black"
-            justifyContent={"center"}
-            border="1px solid #f0f0f0"
-          >
-            {categories.map((category) => {
-              return (
-                <Center w="170px" h="45px" key={category.id}>
-                  <Link textDecoration={"none"}>
-                    <MenuCategory category={category} />
-                  </Link>
-                </Center>
-              );
-            })}
-          </Flex>
-        </Container>
+          <Box pos="absolute" display="block" width="100vw">
+            <Flex
+              boxSizing="border-box"
+              justifyContent="center"
+              width="100%"
+              border="1px solid rgba(188, 188, 188, 0.5)"
+              bgColor="white"
+            >
+              <Flex
+                pe="0px"
+                ps="0px"
+                justifyContent="space-between"
+                width="100%"
+                maxWidth="1200px"
+                pt="10px"
+                pb="10px"
+                onMouseEnter={onOpen}
+                onMouseLeave={onClose}
+              >
+                {categories.map((category, i) => {
+                  return (
+                    <MenuCategory
+                      category={category}
+                      key={i}
+                      onOpen={onOpen}
+                      onClose={onClose}
+                      setCategory={setCategory}
+                      isOpen={isOpen}
+                    />
+                  );
+                })}
+              </Flex>
+            </Flex>
+            {category ? (
+              <CollapseComponent
+                onOpen={onOpen}
+                onClose={onClose}
+                isOpen={isOpen}
+                category={category}
+              />
+            ) : null}
+          </Box>
+        </Box>
       ) : (
         <Text>Loading</Text>
       )}
-    </ChakraProvider>
+    </Box>
   );
 };
 

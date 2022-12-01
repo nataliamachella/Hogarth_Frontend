@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
-  Container,
   IconButton,
   useBreakpointValue,
-  Link,
+  Stack,
+  Heading,
   Text,
+  Container,
 } from "@chakra-ui/react";
-// Here we have used react-icons package for the icons
+
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
-import { useState } from "react";
+import axios from "axios";
 
 // Settings for the slider
 const settings = {
@@ -26,50 +27,49 @@ const settings = {
   slidesToScroll: 1,
 };
 
-export default function BloqueB() {
-  // As we have used custom buttons, we need a reference variable to
-  // change the state
+export default function BloqueB({ url }) {
   const [slider, setSlider] = useState(null);
+  const [notas, setNotas] = useState(null);
+  const [category, setCategory] = useState(null);
 
-  // These are the breakpoints which changes the position of the
-  // buttons as the screen size changes
+  useEffect(() => {
+    axios.get(`/api/notes/byCategory/${url}`).then((notes) => {
+      setNotas(notes.data);
+    });
+    axios.get(`/api/categories/${url}`).then((category) => {
+      setCategory(category.data);
+    });
+  }, [url]);
+
   const top = useBreakpointValue({ base: "90%", md: "50%" });
-  const side = useBreakpointValue({ base: "30%", md: "10px" });
-
-  // These are the images used in the slide
-  const cards = [
-    "https://images.unsplash.com/photo-1612852098516-55d01c75769a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
-    "https://images.unsplash.com/photo-1627875764093-315831ac12f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
-    "https://images.unsplash.com/photo-1571432248690-7fd6980a1ae2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
-  ];
+  const side = useBreakpointValue({ base: "30%", md: "40px" });
 
   return (
     <Container
+      marginTop="40px"
       display="flex"
       flexDir="column"
-      maxW="60%"
+      maxW="67%"
       border="1px"
       borderRadius="lg"
       borderColor=" #f0f0f0"
     >
-      <Link>
-        <Text
-          fontSize="50px"
-          _hover={{
-            color: "purple",
-          }}
-        >
-          Actualidad
-        </Text>
-      </Link>
+      <Text
+        fontSize="50px"
+        _hover={{
+          color: "purple",
+        }}
+      >
+        {category ? category.name : null}
+      </Text>
       <Box
+        marginTop="40px"
         position={"relative"}
         height={"600px"}
-        width={"full"}
+        width={"100%"}
         overflow={"hidden"}
         borderRadius="lg"
       >
-        {/* CSS files for react-slick */}
         <link
           rel="stylesheet"
           type="text/css"
@@ -81,11 +81,10 @@ export default function BloqueB() {
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
-        {/* Left Icon */}
+
         <IconButton
           aria-label="left-arrow"
-          colorScheme="messenger"
-          borderRadius="full"
+          variant="ghost"
           position="absolute"
           left={side}
           top={top}
@@ -93,13 +92,12 @@ export default function BloqueB() {
           zIndex={2}
           onClick={() => slider?.slickPrev()}
         >
-          <BiLeftArrowAlt />
+          <BiLeftArrowAlt size="40px" />
         </IconButton>
-        {/* Right Icon */}
+
         <IconButton
           aria-label="right-arrow"
-          colorScheme="messenger"
-          borderRadius="full"
+          variant="ghost"
           position="absolute"
           right={side}
           top={top}
@@ -107,21 +105,48 @@ export default function BloqueB() {
           zIndex={2}
           onClick={() => slider?.slickNext()}
         >
-          <BiRightArrowAlt />
+          <BiRightArrowAlt size="40px" />
         </IconButton>
-        {/* Slider */}
+
         <Slider {...settings} ref={(slider) => setSlider(slider)}>
-          {cards.map((url, index) => (
-            <Box
-              key={index}
-              height={"6xl"}
-              position="relative"
-              backgroundPosition="center"
-              backgroundRepeat="no-repeat"
-              backgroundSize="cover"
-              backgroundImage={`url(${url})`}
-            />
-          ))}
+          {notas
+            ? notas.map((nota) => (
+                <Box
+                  key={nota.id}
+                  height={"100%"}
+                  position="relative"
+                  backgroundPosition="center"
+                  backgroundRepeat="no-repeat"
+                  backgroundSize="cover"
+                  backgroundImage={`url(${nota.field_img_primary})`}
+                >
+                  <Container
+                    size="container.lg"
+                    height="600px"
+                    position="relative"
+                  >
+                    <Stack
+                      spacing={4}
+                      w={"100%"}
+                      maxW={"100%"}
+                      position="absolute"
+                      top="70%"
+                      transform="translate(-40%, -50%)"
+                    >
+                      <Heading
+                        fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+                        color="white"
+                      >
+                        {nota.title}
+                      </Heading>
+                      <Text fontSize={{ base: "lg", lg: "xl" }} color="white">
+                        {nota.field_description}
+                      </Text>
+                    </Stack>
+                  </Container>
+                </Box>
+              ))
+            : null}
         </Slider>
       </Box>
     </Container>
