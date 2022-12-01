@@ -14,7 +14,7 @@ const ContentAdmin = () => {
   },[]);
 
   return (
-    <Box width="100%" height="100%" marginLeft="300px">
+    <Box width="84vw" height="100%" marginLeft="300px">
       <Box
         height="100px"
         display="flex"

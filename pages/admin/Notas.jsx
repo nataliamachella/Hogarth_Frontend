@@ -12,7 +12,7 @@ const Notas = () => {
   }, []);
 
   return (
-    <Box width="100%" height="100%" ml="300px">
+    <Box width="99%" height="100%" ml="300px">
       <Box
         height="100px"
         display="flex"
