@@ -10,14 +10,13 @@ import {
     useDisclosure,
   } from "@chakra-ui/react";
   import Link from "next/link";
-  
-  import { FiFileText, FiSettings, FiUser } from "react-icons/fi";
+  import { FiFileText, FiUser } from "react-icons/fi";
   
   const LinkItems = [
     { name: "Notas", icon: FiFileText, url: "/admin" },
-    { name: "Autores", icon: FiUser, url: "/admin" },
-    { name: "Contenidos", icon: FiFileText, url: "/admin" },
-    { name: "Settings", icon: FiSettings, url: "/admin" },
+    { name: "Categorias", icon: FiUser, url: "/admin/Categorias" },
+    { name: "Subcategorias", icon: FiFileText, url: "/admin/Subcategorias" },
+    
   ];
   
   export default function SimpleSidebar({ children }) {

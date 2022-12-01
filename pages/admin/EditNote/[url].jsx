@@ -10,7 +10,7 @@ import {
   Select,
   Textarea,
 } from "@chakra-ui/react";
-//import { SmallCloseIcon } from "@chakra-ui/icons";
+import fetch from "isomorphic-fetch";
 
 
 function ordenarContents(note1,note2) {
@@ -139,7 +139,7 @@ export default function UserProfileEdit({ note, subCategories }) {
               bg: "red.500",
             }}
           >
-            Cancel
+            CANCELAR
           </Button>
           <Button
             bg={"blue.400"}
@@ -149,7 +149,7 @@ export default function UserProfileEdit({ note, subCategories }) {
               bg: "blue.500",
             }}
           >
-            Submit
+            EDITAR
           </Button>
         </Stack>
       </Stack>

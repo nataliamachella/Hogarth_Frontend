@@ -14,13 +14,14 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import axios from "axios";
+import CreateButtons from "../../components/Admin/CreateButtons";
 
-const ContentAdmin = () => {
+const Notas = () => {
   const [notas, setNotas] = useState(null);
 
   useEffect(() => {
     axios.get("/api/notes").then((notes) => setNotas(notes.data));
-  });
+  },[]);
 
   return (
     <Box width="100%" height="100%">
@@ -32,13 +33,16 @@ const ContentAdmin = () => {
       >
         <Text>NOTAS</Text>
       </Box>
+      <Box display="flex" justifyContent="space-around">
+        <CreateButtons />
+      </Box>
       <Box>
         <Box h="170px" w="70%" marginTop="40px">
           <Grid templateColumns="repeat( 1fr)" gap={6}>
             {notas ? (
               notas.map((note, i) => (
                 <Box display="flex" flexDirection="row" minW="100vh">
-                  <Box  minW={"100%"}>
+                  <Box minW={"100%"}>
                     <Card
                       direction={{ base: "column", sm: "row" }}
                       overflow="</Link>hidden"
@@ -49,6 +53,7 @@ const ContentAdmin = () => {
                         maxW={{ base: "100%", sm: "200px" }}
                         src={note.field_img_primary}
                         alt="Caffe Latte"
+                        key={i}
                       />
 
                       <Stack>
@@ -73,11 +78,7 @@ const ContentAdmin = () => {
                     </Card>
                   </Box>
                   <Box />
-                  <Box
-                    marginLeft="40px"
-                    display="flex"
-                    alignItems="center"
-                  >
+                  <Box marginLeft="40px" display="flex" alignItems="center">
                     <Link href={`/admin/EditNote/${note.url}`}>
                       <Button colorScheme="blue">EDITAR</Button>
                     </Link>
@@ -94,4 +95,4 @@ const ContentAdmin = () => {
   );
 };
 
-export default ContentAdmin;
+export default Notas;
