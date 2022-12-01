@@ -8,7 +8,7 @@ const ContentAdmin = () => {
 
   useEffect(() => {
     axios.get("/api/notes").then((notes) => setNotas(notes.data));
-  });
+  }, []);
 
   return (
     <Box width="100%" height="100%" ml="300px">

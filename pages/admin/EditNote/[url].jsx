@@ -8,9 +8,9 @@ import {
   useColorModeValue,
   Box,
   Select,
-  Textarea,
 } from "@chakra-ui/react";
-import EditContent from "../../../commons/Admin/EditContent";
+import EditContent from "../../../commons/Admin/Editor/EditContent";
+import { FiPlus } from "react-icons/fi";
 //import { SmallCloseIcon } from "@chakra-ui/icons";
 
 function ordenarContents(note1, note2) {
@@ -82,15 +82,6 @@ export default function UserProfileEdit({ note, subCategories }) {
             defaultValue={note.author}
           />
         </FormControl>
-        <FormControl id="field_content" isRequired>
-          <FormLabel>Contents</FormLabel>
-        </FormControl>
-        {note
-          ? note.contents
-              .sort(ordenarContents)
-              .map((content, i) => <EditContent content={content} key={i} />)
-          : null}
-
         <FormControl id="field_img_primary" isRequired>
           <FormLabel>Imagen (url)</FormLabel>
           <Input
@@ -114,6 +105,19 @@ export default function UserProfileEdit({ note, subCategories }) {
               : null}
           </Select>
         </FormControl>
+        <FormControl id="field_content" isRequired>
+          <FormLabel>Contents</FormLabel>
+        </FormControl>
+        <Box border="1px solid grey" borderRadius="5px">
+          {note
+            ? note.contents
+                .sort(ordenarContents)
+                .map((content, i) => <EditContent content={content} key={i} />)
+            : null}
+          <Button border="1px solid grey" borderRadius="5px" mb="10px">
+            <FiPlus />
+          </Button>
+        </Box>
         <Stack spacing={6} direction={["column", "row"]}>
           <Button
             bg={"red.400"}
