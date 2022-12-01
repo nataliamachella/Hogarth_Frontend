@@ -10,10 +10,9 @@ import {
   Box,
   Select,
 } from "@chakra-ui/react";
-import { SmallCloseIcon } from "@chakra-ui/icons";
+//import { SmallCloseIcon } from "@chakra-ui/icons";
 
 export default function UserProfileEdit({ note, subCategories }) {
-  console.log(subCategories);
   return (
     <Box
       minH={"100vh"}
@@ -88,15 +87,18 @@ export default function UserProfileEdit({ note, subCategories }) {
           />
         </FormControl>
         <FormControl id="urlSubCategory" isRequired>
-          <FormLabel>Subcategoria (url)</FormLabel>
-          <Select placeholder="Select option">
+          <FormLabel>Subcategoria</FormLabel>
+          <Select
+            placeholder="Select option"
+            value={note.subCategory.id}
+            defaultValue={note.subCategory.id}
+          >
             {subCategories
-              ? subCategories.map((subCategory) => {
-                  console.log(subCategory.name); 
+              ? subCategories.map((subCategory) => (
                   <option key={subCategory.url} value={subCategory.id}>
-                    {subCategory.name}rfgsdg
-                  </option>;
-                })
+                    {subCategory.name}
+                  </option>
+                ))
               : null}
           </Select>
         </FormControl>
