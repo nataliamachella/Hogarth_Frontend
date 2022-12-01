@@ -5,7 +5,6 @@ import axios from "axios";
 
 const Footer = () => {
   const [categories, setCategories] = useState(null);
-
   const fetchCategories = () => {
     axios
       .get("/api/categories")
@@ -76,11 +75,20 @@ const Footer = () => {
                 DESCUBRÍ
               </Text>
             </Box>
-            {/*   {categories.map((category) => {
-              return <Text>{category.name}</Text>;
-            })} */}
+            {categories ? (
+              categories.map((category, i) => {
+                return (
+                  <Text key={i} fontSize="14px">
+                    {category.name}
+                  </Text>
+                );
+              })
+            ) : (
+              <Text>Loading</Text>
+            )}
           </Box>
         </Box>
+        <Divider />
         <Flex w="1250px" h="40px">
           <Stack
             direction="row"
