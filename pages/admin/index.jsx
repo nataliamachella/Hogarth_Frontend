@@ -1,15 +1,14 @@
-import { Box,useColorModeValue, } from '@chakra-ui/react'
-import React from 'react'
-import SidebarAdmin from './SidebarAdmin'
-import Notas from './Notas.jsx'
+import { Box } from "@chakra-ui/react";
+import React from "react";
+
+import ContentAdmin from "./ContentAdmin.jsx";
 
 const AdminPage = () => {
   return (
     <Box display="flex" flexDir="row">
-      <SidebarAdmin />
-      <Notas />
+      <ContentAdmin />
     </Box>
-  )
-}
+  );
+};
 
-export default AdminPage
+export default AdminPage;

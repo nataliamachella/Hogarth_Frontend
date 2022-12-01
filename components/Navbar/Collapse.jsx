@@ -15,12 +15,10 @@ const CollapseComponent = ({ isOpen, onOpen, onClose, category }) => {
   const [notes, setNotes] = useState(null);
 
   useEffect(() => {
-    category
-      ? axios.get(`api/notes/byCategory/${category.url}`)
-      .then((notes) => setNotes(notes.data)
-        )
-      : null;
-  },[category]);
+    axios
+      .get(`api/notes/byCategory/${category.url}`)
+      .then((notes) => setNotes(notes.data));
+  }, [category]);
 
   return (
     <Collapse

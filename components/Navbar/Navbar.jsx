@@ -110,12 +110,14 @@ const Navbar = () => {
                 })}
               </Flex>
             </Flex>
-            <CollapseComponent
-              onOpen={onOpen}
-              onClose={onClose}
-              isOpen={isOpen}
-              category={category}
-            />
+            {category ? (
+              <CollapseComponent
+                onOpen={onOpen}
+                onClose={onClose}
+                isOpen={isOpen}
+                category={category}
+              />
+            ) : null}
           </Box>
         </Box>
       ) : (
