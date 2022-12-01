@@ -10,20 +10,19 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import Link from "next/link";
-
-import { FiFileText, FiSettings, FiUser } from "react-icons/fi";
+import { FiFileText, FiUser } from "react-icons/fi";
 
 const LinkItems = [
   { name: "Notas", icon: FiFileText, url: "/admin" },
-  { name: "Autores", icon: FiUser, url: "/admin" },
-  { name: "Contenidos", icon: FiFileText, url: "/admin" },
-  { name: "Settings", icon: FiSettings, url: "/admin" },
+  { name: "Categorias", icon: FiUser, url: "/admin/Categorias" },
+  { name: "Subcategorias", icon: FiFileText, url: "/admin/Subcategorias" },
+  
 ];
 
 export default function SimpleSidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box>
+    <Box >
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
@@ -65,9 +64,9 @@ const SidebarContent = ({ onClose, ...rest }) => {
         </Link>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {LinkItems.map((link, i) => (
-        <Link href={link.url} key={i}>
-          <NavItem key={i} icon={link.icon}>
+      {LinkItems.map((link) => (
+        <Link href={link.url}>
+          <NavItem key={link.name} icon={link.icon}>
             {link.name}
           </NavItem>
         </Link>

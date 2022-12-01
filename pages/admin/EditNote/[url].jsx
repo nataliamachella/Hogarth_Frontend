@@ -9,6 +9,7 @@ import {
   Box,
   Select,
 } from "@chakra-ui/react";
+import fetch from "isomorphic-fetch";
 import EditContent from "../../../commons/Admin/Editor/EditContent";
 import { FiPlus } from "react-icons/fi";
 //import { SmallCloseIcon } from "@chakra-ui/icons";
@@ -127,7 +128,7 @@ export default function UserProfileEdit({ note, subCategories }) {
               bg: "red.500",
             }}
           >
-            Cancel
+            CANCELAR
           </Button>
           <Button
             bg={"blue.400"}
@@ -137,7 +138,7 @@ export default function UserProfileEdit({ note, subCategories }) {
               bg: "blue.500",
             }}
           >
-            Submit
+            EDITAR
           </Button>
         </Stack>
       </Stack>

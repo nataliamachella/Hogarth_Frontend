@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Box, Text, Grid } from "@chakra-ui/react";
 import axios from "axios";
+import CreateButtons from "../../components/Admin/CreateButtons";
 import CardNotes from "../../commons/Admin/CardNotes";
 
-const ContentAdmin = () => {
+const Notas = () => {
   const [notas, setNotas] = useState(null);
 
   useEffect(() => {
@@ -20,6 +21,9 @@ const ContentAdmin = () => {
       >
         <Text>NOTAS</Text>
       </Box>
+      <Box display="flex" justifyContent="space-around">
+        <CreateButtons />
+      </Box>
       <Box>
         <Box h="170px" w="70%" marginTop="40px">
           <Grid templateColumns="repeat( 1fr)" gap={6}>
@@ -35,4 +39,4 @@ const ContentAdmin = () => {
   );
 };
 
-export default ContentAdmin;
+export default Notas;
