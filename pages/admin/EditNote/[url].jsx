@@ -1,6 +1,5 @@
 import {
   Button,
-  Flex,
   FormControl,
   FormLabel,
   Heading,
@@ -9,8 +8,16 @@ import {
   useColorModeValue,
   Box,
   Select,
+  Textarea,
 } from "@chakra-ui/react";
 //import { SmallCloseIcon } from "@chakra-ui/icons";
+
+
+function ordenarContents(note1,note2) {
+  if(note1.position>note2.position) return 1
+  if(note1.position<note2.position) return -1
+  return 0
+}
 
 export default function UserProfileEdit({ note, subCategories }) {
   return (
@@ -75,9 +82,31 @@ export default function UserProfileEdit({ note, subCategories }) {
           />
         </FormControl>
         <FormControl id="field_content" isRequired>
-          <FormLabel>Content</FormLabel>
-          <Input _placeholder={{ color: "gray.500" }} type="text" />
+          <FormLabel>Contents</FormLabel>
         </FormControl>
+        {note
+          ? note.contents.sort(ordenarContents).map((content) => {
+            return <>
+            <FormControl id="position" isRequired>
+              <FormLabel>{content.position}</FormLabel>
+              <FormLabel>Titulo de Content</FormLabel>
+              <Input
+                _placeholder={{ color: "gray.500" }}
+                type="text"
+                defaultValue={content.field_content_title || "no title"} 
+              />
+              <FormLabel>Content</FormLabel>
+              <Textarea
+                _placeholder={{ color: "gray.500" }}
+                type="text"
+                defaultValue={content.field_content}
+              />
+              
+            </FormControl>
+          </>;
+            })
+          : console.log("tu vieja")}
+
         <FormControl id="field_img_primary" isRequired>
           <FormLabel>Imagen (url)</FormLabel>
           <Input
@@ -90,7 +119,6 @@ export default function UserProfileEdit({ note, subCategories }) {
           <FormLabel>Subcategoria</FormLabel>
           <Select
             placeholder="Select option"
-            value={note.subCategory.id}
             defaultValue={note.subCategory.id}
           >
             {subCategories
