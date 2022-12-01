@@ -8,28 +8,33 @@ const Post = ({ note }) => {
       {note ? (
         <Box>
           <Box h="170px" w="100%"></Box>
-          <Box
-            mr={300}
-            ml={300}
-            display="flex"
-            flexDir="column"
-           
-          >
-            <Box display="flex" flexDir="column" justifyContent="center" alignItems="center">
-            <Heading width="80%" as="h1" fontSize={48} fontWeight="bold" textAlign="center">
-              {note.field_title_pre + note.field_title}
-            </Heading>
-            <Heading
-              alignContent="center"
-              width="70%"
-              marginTop="40px"
-              as="h2"
-              fontSize={21}
-              textAlign="center"
-              fontWeight="normal"
+          <Box mr={300} ml={300} display="flex" flexDir="column">
+            <Box
+              display="flex"
+              flexDir="column"
+              justifyContent="center"
+              alignItems="center"
             >
-              {note.field_description}
-            </Heading>
+              <Heading
+                width="80%"
+                as="h1"
+                fontSize={48}
+                fontWeight="bold"
+                textAlign="center"
+              >
+                {note.field_title_pre + note.field_title}
+              </Heading>
+              <Heading
+                alignContent="center"
+                width="70%"
+                marginTop="40px"
+                as="h2"
+                fontSize={21}
+                textAlign="center"
+                fontWeight="normal"
+              >
+                {note.field_description}
+              </Heading>
             </Box>
             <Center>
               <Divider

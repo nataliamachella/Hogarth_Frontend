@@ -28,9 +28,7 @@ const UltimasNoticias = ({ categoryNotes, category, url }) => {
             </Stack>
           </Box>
           <Box width="70%">
-
             <BloqueE url={url} />
-
           </Box>
         </Box>
       ) : null}
@@ -62,7 +60,7 @@ export default UltimasNoticias;
 // import fetch from "isomorphic-fetch";
 
 // const UltimasNoticias = ( {categoryNotes, category } ) => {
-//   console.log(categoryNotes); 
+//   console.log(categoryNotes);
 //   console.log(category)
 //   return (
 //     <Box display="flex" flexDirection="column">
