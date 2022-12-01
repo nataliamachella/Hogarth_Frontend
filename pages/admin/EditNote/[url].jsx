@@ -8,15 +8,15 @@ import {
   useColorModeValue,
   Box,
   Select,
-  Textarea,
 } from "@chakra-ui/react";
+import EditContent from "../../../commons/Admin/Editor/EditContent";
+import { FiPlus } from "react-icons/fi";
 //import { SmallCloseIcon } from "@chakra-ui/icons";
 
-
-function ordenarContents(note1,note2) {
-  if(note1.position>note2.position) return 1
-  if(note1.position<note2.position) return -1
-  return 0
+function ordenarContents(note1, note2) {
+  if (note1.position > note2.position) return 1;
+  if (note1.position < note2.position) return -1;
+  return 0;
 }
 
 export default function UserProfileEdit({ note, subCategories }) {
@@ -27,6 +27,7 @@ export default function UserProfileEdit({ note, subCategories }) {
       align={"center"}
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}
+      ml="300px"
     >
       <Stack
         spacing={4}
@@ -81,32 +82,6 @@ export default function UserProfileEdit({ note, subCategories }) {
             defaultValue={note.author}
           />
         </FormControl>
-        <FormControl id="field_content" isRequired>
-          <FormLabel>Contents</FormLabel>
-        </FormControl>
-        {note
-          ? note.contents.sort(ordenarContents).map((content) => {
-            return <>
-            <FormControl id="position" isRequired>
-              <FormLabel>{content.position}</FormLabel>
-              <FormLabel>Titulo de Content</FormLabel>
-              <Input
-                _placeholder={{ color: "gray.500" }}
-                type="text"
-                defaultValue={content.field_content_title || "no title"} 
-              />
-              <FormLabel>Content</FormLabel>
-              <Textarea
-                _placeholder={{ color: "gray.500" }}
-                type="text"
-                defaultValue={content.field_content}
-              />
-              
-            </FormControl>
-          </>;
-            })
-          : console.log("tu vieja")}
-
         <FormControl id="field_img_primary" isRequired>
           <FormLabel>Imagen (url)</FormLabel>
           <Input
@@ -130,6 +105,19 @@ export default function UserProfileEdit({ note, subCategories }) {
               : null}
           </Select>
         </FormControl>
+        <FormControl id="field_content" isRequired>
+          <FormLabel>Contents</FormLabel>
+        </FormControl>
+        <Box border="1px solid grey" borderRadius="5px">
+          {note
+            ? note.contents
+                .sort(ordenarContents)
+                .map((content, i) => <EditContent content={content} key={i} />)
+            : null}
+          <Button border="1px solid grey" borderRadius="5px" mb="10px">
+            <FiPlus />
+          </Button>
+        </Box>
         <Stack spacing={6} direction={["column", "row"]}>
           <Button
             bg={"red.400"}
