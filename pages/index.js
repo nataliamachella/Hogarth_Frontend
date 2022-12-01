@@ -5,10 +5,11 @@ import BloquePrincipal from "../components/BloquePrincipal/BloquePrincipal";
 import { ChakraProvider, Container, Spacer } from "@chakra-ui/react";
 import BloqueB from "../components/BloqueB/BloqueB";
 import Widget from "../components/Widget/Widget"
+import theme from "../utils/theme"
 
 const HomePage = () => {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <div>
         <Navbar />
         <BloquePrincipal />
