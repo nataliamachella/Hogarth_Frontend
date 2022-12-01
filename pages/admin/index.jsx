@@ -1,12 +1,11 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
-
-import ContentAdmin from "./ContentAdmin.jsx";
+import Notas from "./Notas.jsx";
 
 const AdminPage = () => {
   return (
     <Box display="flex" flexDir="row">
-      <ContentAdmin />
+      <Notas />
     </Box>
   );
 };
