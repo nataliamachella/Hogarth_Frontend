@@ -7,9 +7,21 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
+import axios from "axios";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const CollapseComponent = ({ isOpen, onOpen, onClose, category }) => {
+  const [notes, setNotes] = useState(null);
+
+  useEffect(() => {
+    category
+      ? axios.get(`api/notes/byCategory/${category.url}`)
+      .then((notes) => setNotes(notes.data)
+        )
+      : null;
+  },[category]);
+
   return (
     <Collapse
       in={isOpen}
@@ -54,39 +66,51 @@ const CollapseComponent = ({ isOpen, onOpen, onClose, category }) => {
           </Flex>
           <Flex maxWidth="75%" flexDirection="column">
             <Grid templateColumns={`repeat(3, 1fr)`} gridGap="16px">
-              <Card marginTop={"20px"}>
-                <CardBody>
-                  <Image
-                    alt="photo"
-                    src="/assets/photoFaker.jpg"
-                    width="190"
-                    height="130"
-                  />
-                  <Text>Lorem ipsum dolor sit amet la la la.</Text>
-                </CardBody>
-              </Card>
-              <Card marginTop={"20px"}>
-                <CardBody>
-                  <Image
-                    alt="photo"
-                    src="/assets/photoFaker.jpg"
-                    width="190"
-                    height="130"
-                  />
-                  <Text>Lorem ipsum dolor sit amet la la la.</Text>
-                </CardBody>
-              </Card>
-              <Card marginTop={"20px"}>
-                <CardBody>
-                  <Image
-                    alt="photo"
-                    src="/assets/photoFaker.jpg"
-                    width="190"
-                    height="130"
-                  />
-                  <Text>Lorem ipsum dolor sit ametla la la.</Text>
-                </CardBody>
-              </Card>
+              {notes ? (
+                <>
+                  {notes[0] ? (
+                    <Card marginTop={"20px"}>
+                      <CardBody>
+                        <Image
+                          alt="photo"
+                          src={notes[0].field_img_primary}
+                          width="190"
+                          height="130"
+                        />
+                        <Text>{notes[0].title}</Text>
+                      </CardBody>
+                    </Card>
+                  ) : null}
+
+                  {notes[1] ? (
+                    <Card marginTop={"20px"}>
+                      <CardBody>
+                        <Image
+                          alt="photo"
+                          src={notes[1].field_img_primary}
+                          width="190"
+                          height="130"
+                        />
+                        <Text>{notes[1].title}</Text>
+                      </CardBody>
+                    </Card>
+                  ) : null}
+
+                  {notes[2] ? (
+                    <Card marginTop={"20px"}>
+                      <CardBody>
+                        <Image
+                          alt="photo"
+                          src={notes[2].field_img_primary}
+                          width="190"
+                          height="130"
+                        />
+                        <Text>{notes[2].title}</Text>
+                      </CardBody>
+                    </Card>
+                  ) : null}
+                </>
+              ) : null}
             </Grid>
           </Flex>
         </Flex>
