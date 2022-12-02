@@ -5,6 +5,7 @@ import BloqueB from "../components/BloqueB/BloqueB";
 import Widget from "../components/Widget/Widget";
 import { Box } from "@chakra-ui/react";
 import BloqueE from "../components/BloqueE/BloqueE";
+import Footer from "../components/Footer/Footer";
 
 const HomePage = ({ typeContent }) => {
   const bloques = [<BloqueA />, <BloqueB />, <BloqueE />, <Widget />];
@@ -28,6 +29,7 @@ const HomePage = ({ typeContent }) => {
       <SextoBloque />
       <SeptimoBloque />
       <Footer /> */}
+      <Footer />
     </Box>
   );
 };
