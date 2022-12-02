@@ -106,9 +106,15 @@ const MenuBar = ({ editor }) => {
 };
 
 const EditContent = ({ content }) => {
+  let cont;
+  content ? (cont = content.field_content) : (cont = null);
   const editor = useEditor({
     extensions: [StarterKit, Underline],
-    content: content.field_content,
+    content: cont,
+
+    onUpdate: ({ editor }) => {
+      const html = editor.getHTML();
+    },
   });
 
   return (

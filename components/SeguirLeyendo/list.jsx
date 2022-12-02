@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Text, Box, Heading, Center } from "@chakra-ui/react";
 import CardItem from "../../commons/SeguirLeyendo/cardItem";
+import axios from "axios";
 
-const List = ({notas}) => {
-  
-  const notes = notas
+const List = ({ notas }) => {
+  const [notes, setNotes] = useState(null);
+
+  useEffect(() => {
+    axios.get("/api/notes").then((res) => setNotes(res.data));
+  }, []);
 
   return (
     <Box marginTop="80px" width="100vw" backgroundColor=" #fff7f9">

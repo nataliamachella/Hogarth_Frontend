@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Box, Text, Button, UnorderedList, ListItem } from "@chakra-ui/react";
-import Link from "next/link";
+import { Box, Text, UnorderedList } from "@chakra-ui/react";
 import axios from "axios";
 import CreateButtons from "../../components/Admin/CreateButtons";
+import ListSubCategory from "../../commons/Admin/SubCategory.jsx/ListSubCategory";
 
 const ContentAdmin = () => {
   const [subCategories, setSubCategories] = useState(null);
@@ -11,7 +11,7 @@ const ContentAdmin = () => {
     axios
       .get("/api/subcategories")
       .then((subcategories) => setSubCategories(subcategories.data));
-  },[]);
+  }, []);
 
   return (
     <Box width="100%" height="100%" marginLeft="300px">
@@ -28,19 +28,10 @@ const ContentAdmin = () => {
       </Box>
       <Box>
         <Box h="170px" w="70%" marginTop="40px">
-          <UnorderedList templateColumns="repeat( 1fr)" gap={6}>
+          <UnorderedList gap={6}>
             {subCategories ? (
               subCategories.map((subCategory, i) => (
-                <Box display="flex" flexDirection="row" minW="100vh">
-                  <ListItem width="40%" margin="15px 0 15px 0">
-                    {subCategory.name}
-                  </ListItem>
-                  <Box marginLeft="40px" display="flex" alignItems="center">
-                    <Link href={`/admin/EditSubcategory/${subCategory.url}`}>
-                      <Button colorScheme="blue">EDITAR</Button>
-                    </Link>
-                  </Box>
-                </Box>
+                <ListSubCategory subCategory={subCategory} key={i} />
               ))
             ) : (
               <Text>Loading</Text>

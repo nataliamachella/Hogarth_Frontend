@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
 
-import ContentAdmin from "./ContentAdmin.jsx";
+import ContentAdmin from "./Notas.jsx";
 
 const AdminPage = () => {
   return (
