@@ -48,7 +48,7 @@ const BloquePrincipal = () => {
                 display="flex"
                 flexDir="column"
                 justifyContent="center"
-                width="700px"
+                width="600px"
                 paddingRight="10%"
               >
                 <Text
