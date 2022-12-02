@@ -14,6 +14,7 @@ import MenuCategory from "./MenuCategory";
 import axios from "axios";
 import Link from "next/link";
 import CollapseComponent from "./Collapse";
+import SearchButton from "./SearchButton";
 
 const Navbar = () => {
   const [categories, setCategories] = useState(null);
@@ -34,7 +35,7 @@ const Navbar = () => {
     <Box width="100vw">
       {categories ? (
         <Box position="fixed" top="0" background="white" zIndex={10}>
-          <Flex color="black" width="100vw">
+          <Flex color="black" width="100vw" justifyContent="center">
             <Center w="170px" h="45px" marginTop="15px">
               <Image
                 alt="instagram-logo"
@@ -50,7 +51,7 @@ const Navbar = () => {
               />
             </Center>
             <Spacer />
-            <Center bg="blue" h="40px" size="150px" marginTop="15px">
+            <Box display="flex" bg="blue" h="55px" size="150px" marginTop="15px" justifyContent="center" alignItems="center" position="absolute">
               <Link href="/">
                 <Image
                   alt="wow-logo"
@@ -59,22 +60,10 @@ const Navbar = () => {
                   height="50"
                 />
               </Link>
-            </Center>
+            </Box>
             <Spacer />
-            <Center w="170px" h="75px">
-              <Button
-                border="hidden"
-                bg="white"
-                _hover={{ bg: "pink" }}
-                borderRadius="20px"
-              >
-                <Image
-                  alt="search-logo"
-                  src="/assets/search.svg"
-                  width="30"
-                  height="30"
-                />
-              </Button>
+            <Center w="300" h="75px">
+              <SearchButton />
             </Center>
           </Flex>
           <Box pos="absolute" display="block" width="100vw">
