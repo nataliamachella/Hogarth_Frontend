@@ -21,9 +21,9 @@ const BloqueD = ({ url }) => {
           justifyContent="space-around"
           margin="15px 0"
         >
-          {notas.slice(1, 4).map((nota, i) => (
-            <CardItem nota={nota} key={i} />
-          ))}
+          {notas.map((nota, i) => {
+            return <CardItem nota={nota} key={i} />;
+          })}
         </SimpleGrid>
       ) : null}
     </Box>
