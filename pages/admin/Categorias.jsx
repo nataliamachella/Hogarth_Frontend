@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from "react";
-import {
-  Box,
-  Text,
-  Button,
-  UnorderedList,
-  ListItem,
-} from "@chakra-ui/react";
+import { Box, Text, UnorderedList } from "@chakra-ui/react";
 import Link from "next/link";
 import axios from "axios";
 import CreateButtons from "../../components/Admin/CreateButtons";
+import ListCategory from "../../commons/Admin/Categories/ListCategory";
 
 const ContentAdmin = () => {
   const [categories, setCategories] = useState(null);
 
   useEffect(() => {
-    axios.get("/api/categories").then((categories) => setCategories(categories.data));
-  });
+    axios
+      .get("/api/categories")
+      .then((categories) => setCategories(categories.data));
+  }, []);
 
   return (
     <Box width="84vw" height="100%" marginLeft="300px">
@@ -32,17 +29,10 @@ const ContentAdmin = () => {
       </Box>
       <Box>
         <Box h="170px" w="70%" marginTop="40px">
-          <UnorderedList templateColumns="repeat( 1fr)" gap={6}>
+          <UnorderedList gap={6}>
             {categories ? (
               categories.map((category, i) => (
-                <Box display="flex" flexDirection="row" minW="100vh">           
-                    <ListItem width="40%" margin="15px 0 15px 0">{category.name}</ListItem>
-                  <Box marginLeft="40px" display="flex" alignItems="center">
-                    <Link href={`/admin/EditCategory/${category.url}`}>
-                      <Button colorScheme="blue">EDITAR</Button>
-                    </Link>
-                  </Box>
-                </Box>
+                <ListCategory category={category} key={i} />
               ))
             ) : (
               <Text>Loading</Text>

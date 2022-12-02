@@ -16,13 +16,12 @@ const LinkItems = [
   { name: "Notas", icon: FiFileText, url: "/admin" },
   { name: "Categorias", icon: FiUser, url: "/admin/Categorias" },
   { name: "Subcategorias", icon: FiFileText, url: "/admin/Subcategorias" },
-  
 ];
 
 export default function SimpleSidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box >
+    <Box>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
@@ -64,9 +63,9 @@ const SidebarContent = ({ onClose, ...rest }) => {
         </Link>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {LinkItems.map((link) => (
-        <Link href={link.url}>
-          <NavItem key={link.name} icon={link.icon}>
+      {LinkItems.map((link, i) => (
+        <Link href={link.url} key={i}>
+          <NavItem key={i} icon={link.icon}>
             {link.name}
           </NavItem>
         </Link>

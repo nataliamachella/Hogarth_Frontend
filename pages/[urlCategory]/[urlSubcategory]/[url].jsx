@@ -64,6 +64,7 @@ const Post = ({ note }) => {
                 flexDir="column"
                 width="60%"
                 marginTop="40px"
+                key={i}
               >
                 <div
                   key={i}

@@ -10,13 +10,13 @@ import {
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import CardItem from "../../commons/Navbar/CardItem";
 
 const CollapseComponent = ({ isOpen, onOpen, onClose, category }) => {
   const [notes, setNotes] = useState(null);
-
   useEffect(() => {
     axios
-      .get(`api/notes/byCategory/${category.url}`)
+      .get(`/api/notes/byCategory/${category.url}`)
       .then((notes) => setNotes(notes.data));
   }, [category]);
 
@@ -41,11 +41,7 @@ const CollapseComponent = ({ isOpen, onOpen, onClose, category }) => {
             {category
               ? category.subCategories.map((subCategory, i) => {
                   return (
-                    <Link
-                      href={`/${category.url}/${subCategory.url}`}
-                      key={i}
-                      style={{ "font-weight": 600 }}
-                    >
+                    <Link href={`/${category.url}/${subCategory.url}`} key={i}>
                       <Text
                         fontWeight={600}
                         mt="5px"
@@ -54,6 +50,7 @@ const CollapseComponent = ({ isOpen, onOpen, onClose, category }) => {
                         textTransform="uppercase"
                         fontSize="sm"
                         _hover={{ color: "#E32B6C" }}
+                        key={i}
                       >
                         {subCategory.name}
                       </Text>
@@ -66,47 +63,9 @@ const CollapseComponent = ({ isOpen, onOpen, onClose, category }) => {
             <Grid templateColumns={`repeat(3, 1fr)`} gridGap="16px">
               {notes ? (
                 <>
-                  {notes[0] ? (
-                    <Card marginTop={"20px"}>
-                      <CardBody>
-                        <Image
-                          alt="photo"
-                          src={notes[0].field_img_primary}
-                          width="190"
-                          height="130"
-                        />
-                        <Text>{notes[0].title}</Text>
-                      </CardBody>
-                    </Card>
-                  ) : null}
-
-                  {notes[1] ? (
-                    <Card marginTop={"20px"}>
-                      <CardBody>
-                        <Image
-                          alt="photo"
-                          src={notes[1].field_img_primary}
-                          width="190"
-                          height="130"
-                        />
-                        <Text>{notes[1].title}</Text>
-                      </CardBody>
-                    </Card>
-                  ) : null}
-
-                  {notes[2] ? (
-                    <Card marginTop={"20px"}>
-                      <CardBody>
-                        <Image
-                          alt="photo"
-                          src={notes[2].field_img_primary}
-                          width="190"
-                          height="130"
-                        />
-                        <Text>{notes[2].title}</Text>
-                      </CardBody>
-                    </Card>
-                  ) : null}
+                  {notes.slice(0, 3).map((note, i) => (
+                    <CardItem note={note} key={i} />
+                  ))}
                 </>
               ) : null}
             </Grid>

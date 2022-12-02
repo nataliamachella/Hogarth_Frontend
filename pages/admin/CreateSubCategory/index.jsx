@@ -8,11 +8,27 @@ import {
   useColorModeValue,
   Box,
   Select,
-  Textarea,
 } from "@chakra-ui/react";
 import fetch from "isomorphic-fetch";
+import axios from "axios";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
-export default function UserProfileEdit({ categories }) {
+export default function CreateSubCategory({ categories }) {
+  const [name, setName] = useState(null);
+  const [urlCategory, setUrlCategory] = useState(null);
+  const router = useRouter();
+
+  const createSubCategory = () => {
+    axios
+      .post("/api/subcategories/create", {
+        name: name,
+        urlCategory: urlCategory,
+      })
+      .then(() => console.log("success"))
+      .catch((err) => console.error(err));
+    return router.push("/admin/Subcategorias");
+  };
   return (
     <Box
       minH={"100vh"}
@@ -38,15 +54,22 @@ export default function UserProfileEdit({ categories }) {
 
         <FormControl id="name" isRequired>
           <FormLabel>Name</FormLabel>
-          <Input _placeholder={{ color: "gray.500" }} type="text" />
+          <Input
+            _placeholder={{ color: "gray.500" }}
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+          />
         </FormControl>
 
         <FormControl id="urlSubCategory" isRequired>
           <FormLabel>Categoria</FormLabel>
-          <Select placeholder="Select option">
+          <Select
+            placeholder="Select option"
+            onChange={(e) => setUrlCategory(e.target.value)}
+          >
             {categories
               ? categories.map((category) => (
-                  <option key={category.url} value={category.id}>
+                  <option key={category.url} value={category.url}>
                     {category.name}
                   </option>
                 ))
@@ -62,6 +85,7 @@ export default function UserProfileEdit({ categories }) {
             _hover={{
               bg: "red.500",
             }}
+            onClick={() => router.push("/admin/Subcategorias")}
           >
             Cancel
           </Button>
@@ -72,6 +96,8 @@ export default function UserProfileEdit({ categories }) {
             _hover={{
               bg: "blue.500",
             }}
+            type="submit"
+            onClick={createSubCategory}
           >
             Submit
           </Button>

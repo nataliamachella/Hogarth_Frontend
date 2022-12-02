@@ -110,9 +110,9 @@ export default function BloqueB({ url }) {
 
         <Slider {...settings} ref={(slider) => setSlider(slider)}>
           {notas
-            ? notas.map((nota) => (
+            ? notas.map((nota, i) => (
                 <Box
-                  key={nota.id}
+                  key={i}
                   height={"100%"}
                   position="relative"
                   backgroundPosition="center"
@@ -124,6 +124,7 @@ export default function BloqueB({ url }) {
                     size="container.lg"
                     height="600px"
                     position="relative"
+                    key={i}
                   >
                     <Stack
                       spacing={4}
@@ -132,14 +133,20 @@ export default function BloqueB({ url }) {
                       position="absolute"
                       top="70%"
                       transform="translate(-40%, -50%)"
+                      key={i}
                     >
                       <Heading
                         fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
                         color="white"
+                        key={i}
                       >
                         {nota.title}
                       </Heading>
-                      <Text fontSize={{ base: "lg", lg: "xl" }} color="white">
+                      <Text
+                        fontSize={{ base: "lg", lg: "xl" }}
+                        color="white"
+                        key={i}
+                      >
                         {nota.field_description}
                       </Text>
                     </Stack>
