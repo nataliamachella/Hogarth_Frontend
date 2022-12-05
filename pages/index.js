@@ -10,24 +10,23 @@ import BloqueD from "../components/BloqueD/BloqueD";
 import BloqueF from "../components/BloqueF/BloqueF";
 
 const HomePage = ({ typeContent }) => {
-  const bloques = [
-    <BloqueA />,
-    <BloqueB />,
-    //<BloqueE />,
-    //<BloqueD />,
-    <BloqueF />,
-    <Widget />,
-  ];
-
+  let bloques = [<BloqueA />, <BloqueB />, <BloqueE />, <Widget />];
+  function swapElements(arr, i1, i2) {
+    arr[i1] = arr.splice(i2, 1, arr[i1])[0];
+  }
+  typeContent.map((item, i) => {
+    if (item.name === bloques[i].type.name)
+      swapElements(bloques, item.position - 1, i);
+  });
   return (
     <Box>
       <BloquePrincipal />
-      {typeContent.map((typeContent, i) => {
+      {bloques.map((item, i) => {
         return {
-          ...bloques[typeContent.position - 1],
+          ...item,
           key: i,
           props: {
-            url: typeContent.urlCategory ? typeContent.urlCategory : null,
+            data: typeContent.find((content) => content.name == item.type.name),
           },
         };
       })}

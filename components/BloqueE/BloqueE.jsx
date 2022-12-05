@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import {
   Container,
   Card,
@@ -11,26 +10,14 @@ import {
   SimpleGrid,
   Box,
 } from "@chakra-ui/react";
-import axios from "axios";
-import Link from "next/link";
 import CardItem from "../../commons/BloqueB/carditem";
 
-const BloqueE = ({ url }) => {
-  const [notas, setNotes] = useState(null);
-  const [category, setCategory] = useState(null);
-
-  useEffect(() => {
-    axios.get(`/api/notes/byCategory/${url}`).then((notas) => {
-      setNotes(notas.data);
-    });
-    axios.get(`/api/categories/${url}`).then((category) => {
-      setCategory(category.data);
-    });
-  }, [url]);
+const BloqueE = ({ data }) => {
+  const { notesArr } = data;
 
   return (
     <Box>
-      {notas ? (
+      {notesArr ? (
         <Container
           marginTop="40px"
           display="flex"
@@ -47,20 +34,23 @@ const BloqueE = ({ url }) => {
               color: "purple",
             }}
           >
-            {category ? <Link href={`/${category.url}`}>{category.name}</Link>: null}
+            {data.category ? <Link href={`/${data.category.url}`}>{data.category.name}</Link> : null}
           </Text>
           <Box display="flex" flexDirection="column" alignItems="center">
-            {notas ? (
+            {notesArr ? (
               <Card width="80%">
                 <CardBody>
-                  <Image src={notas[0].field_img_primary} borderRadius="lg" />
+                  <Image
+                    src={notesArr[0].field_img_primary}
+                    borderRadius="lg"
+                  />
                   <Stack mt="6" spacing="3" alignItems="center">
                     <Link href={`notes/byURL/${notas[0].url}`}>
                     <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
-                      {notas[0].field_title_pre}
+                      {notesArr[0].field_title_pre}
                     </Heading>
                     <Text fontSize={{ base: "lg", lg: "xl" }}>
-                      {notas[0].field_title}
+                      {notesArr[0].field_title}
                     </Text>
                     </Link>
                   </Stack>
@@ -76,7 +66,7 @@ const BloqueE = ({ url }) => {
               margin="15px 0 15px 0"
               width="80%"
             >
-              {notas.slice(1, 4).map((nota, i) => (
+              {notesArr.slice(1, 4).map((nota, i) => (
                 <CardItem nota={nota} key={i} />
               ))}
             </SimpleGrid>
