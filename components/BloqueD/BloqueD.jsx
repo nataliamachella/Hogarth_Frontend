@@ -1,82 +1,199 @@
 import React, { useState, useEffect } from "react";
 import {
+  Box,
   Grid,
   Card,
   CardBody,
+  Link,
   Image,
-  Stack,
-  Heading,
   Text,
-  Divider,
-  CardFooter,
-  ButtonGroup,
+  Heading,
   Button,
-  Box,
+  Center,
 } from "@chakra-ui/react";
-import CardItem from "../../commons/SeguirLeyendo/cardItem";
 import axios from "axios";
+import { AddIcon } from "@chakra-ui/icons";
+import CardItem from "../../commons/BloqueD/cardItem";
+import {
+  useDisclosure,
+  getButtonProps,
+  getDisclosureProps,
+} from "@chakra-ui/react";
 
-const BloqueD = () => {
-  const [notes, setNotes] = useState([]);
+const BloqueD = ({ url }) => {
+  const [notas, setNotas] = useState(null);
+  const { getDisclosureProps, getButtonProps } = useDisclosure();
 
-  const fetchNotes = () => {
-    axios.get("/byCategory/:url").then((note) => setNotes(note.data));
-  };
+  const buttonProps = getButtonProps();
+  const disclosureProps = getDisclosureProps();
 
   useEffect(() => {
-    fetchNotes();
-  }, []);
+    axios.get(`/api/notes/byCategory/${url}`).then((notas) => {
+      console.log(notas.data);
+    });
+  }, [url]);
 
   return (
-    <Box>
-      {notes ? (
-        <Grid
-          templateColumns="repeat(3, 2fr)"
-          gap={6}
-          margin="20px 30px 30px 120px"
-          w={"70%"}
-        >
-          <Card maxW="sm">
-            <CardBody>
-              <Image
-                src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                alt="Green double couch with wooden legs"
-                borderRadius="lg"
-              />
-              <Stack mt="6" spacing="3">
-                <Heading size="md">Living room Sofa</Heading>
-                <Text>
-                  This sofa is perfect for modern tropical spaces, baroque
-                  inspired spaces, earthy toned spaces and for people who love a
-                  chic design with a sprinkle of vintage design.
-                </Text>
-                <Text color="blue.600" fontSize="2xl">
-                  $450
-                </Text>
-              </Stack>
-            </CardBody>
-            <Divider />
-            <CardFooter>
-              <ButtonGroup spacing="2">
-                <Button variant="solid" colorScheme="blue">
-                  Buy now
-                </Button>
-                <Button variant="ghost" colorScheme="blue">
-                  Add to cart
-                </Button>
-              </ButtonGroup>
-            </CardFooter>
-          </Card>
-          {/*  <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem /> */}
-        </Grid>
-      ) : (
-        <Text>Loading</Text>
-      )}
+    <Box bg="#f7f7f7" h="874px">
+      <Heading
+        as="h3"
+        fontSize="26px"
+        color="#1A202C"
+        fontFamily="sans-serif"
+        ml="250px"
+      >
+        SEGUIR LEYENDO (CATEGORIA)
+      </Heading>
+      <Grid templateColumns="repeat(3, 2fr)" m="30px 250px">
+        {/* {notas.map((nota, i) => {
+            return <CardItem nota={nota} key={i} />;
+          })} */}
+        <Card h="340px" w="300px" mt="10px">
+          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+          <CardBody>
+            <Link href="/">
+              <Text>
+                <strong>Soy el título </strong>
+                Soy el párrafo
+              </Text>
+            </Link>
+          </CardBody>
+        </Card>
+        <Card h="340px" w="300px" mt="10px">
+          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+          <CardBody>
+            <Link href="/">
+              <Text>
+                <strong>Soy el título </strong>
+                Soy el párrafo
+              </Text>
+            </Link>
+          </CardBody>
+        </Card>
+        <Card h="340px" w="300px" mt="10px">
+          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+          <CardBody>
+            <Link href="/">
+              <Text>
+                <strong>Soy el título </strong>
+                Soy el párrafo
+              </Text>
+            </Link>
+          </CardBody>
+        </Card>
+        <Card h="340px" w="300px" mt="10px">
+          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+          <CardBody>
+            <Link href="/">
+              <Text>
+                <strong>Soy el título </strong>
+                Soy el párrafo
+              </Text>
+            </Link>
+          </CardBody>
+        </Card>
+        <Card h="340px" w="300px" mt="10px">
+          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+          <CardBody>
+            <Link href="/">
+              <Text>
+                <strong>Soy el título </strong>
+                Soy el párrafo
+              </Text>
+            </Link>
+          </CardBody>
+        </Card>
+        <Card h="340px" w="300px" mt="10px">
+          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+          <CardBody>
+            <Link href="/">
+              <Text>
+                <strong>Soy el título </strong>
+                Soy el párrafo
+              </Text>
+            </Link>
+          </CardBody>
+        </Card>
+      </Grid>
+      <Center>
+        <Text mr="20px" as="b">
+          Cargar Más
+        </Text>
+        <Button {...buttonProps}>{<AddIcon />}</Button>
+      </Center>
+
+      <Grid
+        templateColumns="repeat(3, 2fr)"
+        m="30px 250px"
+        {...disclosureProps}
+      >
+        <Card h="340px" w="300px" mt="10px">
+          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+          <CardBody>
+            <Link href="/">
+              <Text>
+                <strong>Soy el título </strong>
+                Soy el párrafo
+              </Text>
+            </Link>
+          </CardBody>
+        </Card>
+        <Card h="340px" w="300px" mt="10px">
+          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+          <CardBody>
+            <Link href="/">
+              <Text>
+                <strong>Soy el título </strong>
+                Soy el párrafo
+              </Text>
+            </Link>
+          </CardBody>
+        </Card>
+        <Card h="340px" w="300px" mt="10px">
+          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+          <CardBody>
+            <Link href="/">
+              <Text>
+                <strong>Soy el título </strong>
+                Soy el párrafo
+              </Text>
+            </Link>
+          </CardBody>
+        </Card>
+        <Card h="340px" w="300px" mt="10px">
+          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+          <CardBody>
+            <Link href="/">
+              <Text>
+                <strong>Soy el título </strong>
+                Soy el párrafo
+              </Text>
+            </Link>
+          </CardBody>
+        </Card>
+        <Card h="340px" w="300px" mt="10px">
+          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+          <CardBody>
+            <Link href="/">
+              <Text>
+                <strong>Soy el título </strong>
+                Soy el párrafo
+              </Text>
+            </Link>
+          </CardBody>
+        </Card>
+        <Card h="340px" w="300px" mt="10px">
+          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+          <CardBody>
+            <Link href="/">
+              <Text>
+                <strong>Soy el título </strong>
+                Soy el párrafo
+              </Text>
+            </Link>
+          </CardBody>
+        </Card>
+      </Grid>
     </Box>
   );
 };

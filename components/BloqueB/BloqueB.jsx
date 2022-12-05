@@ -132,7 +132,7 @@ export default function BloqueB({ url }) {
                       maxW={"100%"}
                       position="absolute"
                       top="70%"
-                      transform="translate(-40%, -50%)"
+                      transform="translate(-20%, -50%)"
                       key={i}
                     >
                       <Heading

@@ -6,9 +6,16 @@ import Widget from "../components/Widget/Widget";
 import { Box } from "@chakra-ui/react";
 import BloqueE from "../components/BloqueE/BloqueE";
 import Footer from "../components/Footer/Footer";
+import BloqueD from "../components/BloqueD/BloqueD";
 
 const HomePage = ({ typeContent }) => {
-  const bloques = [<BloqueA />, <BloqueB />, <BloqueE />, <Widget />];
+  const bloques = [
+    <BloqueA />,
+    <BloqueB />,
+    <BloqueE />,
+    <BloqueD />,
+    <Widget />,
+  ];
 
   return (
     <Box>
@@ -22,13 +29,7 @@ const HomePage = ({ typeContent }) => {
           },
         };
       })}
-      {/*
-      <TercerBloque />
-      <CuartoBloque />
-      <QuintoBloque />
-      <SextoBloque />
-      <SeptimoBloque />
-      <Footer /> */}
+
       <Footer />
     </Box>
   );
