@@ -13,6 +13,7 @@ const HomePage = ({ typeContent }) => {
   let bloques = [
     <BloqueA />,
     <BloqueB />,
+    <BloqueD />,
     <BloqueE />,
     <BloqueF />,
     <Widget />,
