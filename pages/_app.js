@@ -10,11 +10,11 @@ import SidebarAdmin from "../commons/Admin/SidebarAdmin";
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
   return (
-    <ChakraProvider theme={theme2}>
+    <ChakraProvider theme={theme}>
       {router.asPath.slice(0, 6) == "/admin" ? <SidebarAdmin /> : <Navbar />}
 
       <Component {...pageProps} />
     </ChakraProvider>
   );
 };
-export default MyApp; 
+export default MyApp;
