@@ -10,6 +10,7 @@ import {
   SimpleGrid,
   Box,
 } from "@chakra-ui/react";
+import Link from "next/link";
 import CardItem from "../../commons/BloqueB/carditem";
 
 const BloqueE = ({ data }) => {
@@ -34,7 +35,9 @@ const BloqueE = ({ data }) => {
               color: "purple",
             }}
           >
-            {data.category ? <Link href={`/${data.category.url}`}>{data.category.name}</Link> : null}
+            {data.category ? (
+              <Link href={`/${data.category.url}`}>{data.category.name}</Link>
+            ) : null}
           </Text>
           <Box display="flex" flexDirection="column" alignItems="center">
             {notesArr ? (
@@ -45,13 +48,13 @@ const BloqueE = ({ data }) => {
                     borderRadius="lg"
                   />
                   <Stack mt="6" spacing="3" alignItems="center">
-                    <Link href={`notes/byURL/${notas[0].url}`}>
-                    <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
-                      {notesArr[0].field_title_pre}
-                    </Heading>
-                    <Text fontSize={{ base: "lg", lg: "xl" }}>
-                      {notesArr[0].field_title}
-                    </Text>
+                    <Link href={`notes/byURL/${notesArr[0].url}`}>
+                      <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
+                        {notesArr[0].field_title_pre}
+                      </Heading>
+                      <Text fontSize={{ base: "lg", lg: "xl" }}>
+                        {notesArr[0].field_title}
+                      </Text>
                     </Link>
                   </Stack>
                 </CardBody>

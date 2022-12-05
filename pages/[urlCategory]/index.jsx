@@ -27,9 +27,7 @@ const UltimasNoticias = ({ categoryNotes, category, url }) => {
               <Text fontSize="md">{category.description}</Text>
             </Stack>
           </Box>
-          <Box width="70%">
-            <BloqueE url={url} />
-          </Box>
+          <Box width="70%">{/* <BloqueE url={url} /> */}</Box>
         </Box>
       ) : null}
     </Box>
