@@ -12,6 +12,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 import axios from "axios";
+import Link from "next/link";
 import CardItem from "../../commons/BloqueB/carditem";
 
 const BloqueE = ({ url }) => {
@@ -46,7 +47,7 @@ const BloqueE = ({ url }) => {
               color: "purple",
             }}
           >
-            {category ? category.name : null}
+            {category ? <Link href={`/${category.url}`}>{category.name}</Link>: null}
           </Text>
           <Box display="flex" flexDirection="column" alignItems="center">
             {notas ? (
@@ -54,12 +55,14 @@ const BloqueE = ({ url }) => {
                 <CardBody>
                   <Image src={notas[0].field_img_primary} borderRadius="lg" />
                   <Stack mt="6" spacing="3" alignItems="center">
+                    <Link href={`notes/byURL/${notas[0].url}`}>
                     <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
                       {notas[0].field_title_pre}
                     </Heading>
                     <Text fontSize={{ base: "lg", lg: "xl" }}>
                       {notas[0].field_title}
                     </Text>
+                    </Link>
                   </Stack>
                 </CardBody>
                 <Divider />

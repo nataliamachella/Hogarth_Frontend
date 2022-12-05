@@ -1,5 +1,6 @@
 import { Text, Box } from "@chakra-ui/react";
 import axios from "axios";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const BloquePrincipal = () => {
@@ -51,19 +52,21 @@ const BloquePrincipal = () => {
                 width="600px"
                 paddingRight="10%"
               >
-                <Text
-                  fontSize="4xl"
-                  color="white"
-                  width="400px"
-                  marginTop="15%"
-                >
-                  {notaPrincipal.field_title_pre}
-                  <br />
-                  {notaPrincipal.field_title}
-                </Text>
-                <Text fontSize="1xl" color="white" width="400px">
-                  por {notaPrincipal.author}
-                </Text>
+                <Link href={`notes/byURL/${notaPrincipal.url}`}>
+                  <Text
+                    fontSize="4xl"
+                    color="white"
+                    width="400px"
+                    marginTop="15%"
+                  >
+                    {notaPrincipal.field_title_pre}
+                    <br />
+                    {notaPrincipal.field_title}
+                  </Text>
+                  <Text fontSize="1xl" color="white" width="400px">
+                    por {notaPrincipal.author}
+                  </Text>
+                </Link>
               </Box>
             ) : null}
           </Box>

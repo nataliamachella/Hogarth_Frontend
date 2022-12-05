@@ -7,6 +7,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 const CardItem = ({ nota }) => {
   return (
@@ -19,8 +20,10 @@ const CardItem = ({ nota }) => {
             borderRadius="lg"
           />
           <Stack mt="6" spacing="3">
-            <Heading size="md">{nota.title}</Heading>
-            <Text>{nota.field_description}</Text>
+            <Link href={`notes/byURL/${nota.url}`}>
+              <Heading size="md">{nota.title}</Heading>
+              <Text>{nota.field_description}</Text>
+            </Link>
           </Stack>
         </>
       </CardBody>
