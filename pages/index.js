@@ -10,7 +10,13 @@ import BloqueD from "../components/BloqueD/BloqueD";
 import BloqueF from "../components/BloqueF/BloqueF";
 
 const HomePage = ({ typeContent }) => {
-  let bloques = [<BloqueA />, <BloqueB />, <BloqueE />, <Widget />];
+  let bloques = [
+    <BloqueA />,
+    <BloqueB />,
+    <BloqueE />,
+    <BloqueF />,
+    <Widget />,
+  ];
   function swapElements(arr, i1, i2) {
     arr[i1] = arr.splice(i2, 1, arr[i1])[0];
   }
