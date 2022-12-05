@@ -34,6 +34,13 @@ export default function BloqueB({ data }) {
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "40px" });
 
+  const redirect = (direccion) => {
+    router.push({
+      ...router,
+      pathname: `/notes/byURL/${direccion}`,
+    });
+  };
+
   return (
     <Container
       marginTop="40px"
@@ -50,7 +57,9 @@ export default function BloqueB({ data }) {
           color: "purple",
         }}
       >
-        {data.category ? <Link href={`/${data.category.url}`}>{data.category.name}</Link> : null}
+        {data.category ? (
+          <Link href={`/${data.category.url}`}>{data.category.name}</Link>
+        ) : null}
       </Text>
       <Box
         marginTop="40px"
@@ -101,7 +110,7 @@ export default function BloqueB({ data }) {
         <Slider {...settings} ref={(slider) => setSlider(slider)}>
           {notesArr
             ? notesArr.map((nota, i) => (
-                <NoteCarrusel key={nota.id} nota={nota} redirect={redirect}/>
+                <NoteCarrusel key={nota.id} nota={nota} redirect={redirect} />
               ))
             : null}
         </Slider>
