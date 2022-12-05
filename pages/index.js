@@ -7,6 +7,7 @@ import { Box } from "@chakra-ui/react";
 import BloqueE from "../components/BloqueE/BloqueE";
 import Footer from "../components/Footer/Footer";
 import BloqueD from "../components/BloqueD/BloqueD";
+import BloqueF from "../components/BloqueF/BloqueF";
 
 const HomePage = ({ typeContent }) => {
   let bloques = [<BloqueA />, <BloqueB />, <BloqueE />, <Widget />];

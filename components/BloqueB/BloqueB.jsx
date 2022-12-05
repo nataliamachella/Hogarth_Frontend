@@ -10,15 +10,16 @@ import {
 } from "@chakra-ui/react";
 
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
-// And react-slick as our Carousel Lib
 import Slider from "react-slick";
 import axios from "axios";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import NoteCarrusel from "./NoteCarrusel";
 
-// Settings for the slider
 const settings = {
   dots: true,
   arrows: false,
-  fade: true,
+  fade: false,
   infinite: true,
   autoplay: true,
   speed: 500,
@@ -49,7 +50,7 @@ export default function BloqueB({ data }) {
           color: "purple",
         }}
       >
-        {data.category ? data.category.name : null}
+        {data.category ? <Link href={`/${data.category.url}`}>{data.category.name}</Link> : null}
       </Text>
       <Box
         marginTop="40px"
@@ -100,47 +101,7 @@ export default function BloqueB({ data }) {
         <Slider {...settings} ref={(slider) => setSlider(slider)}>
           {notesArr
             ? notesArr.map((nota, i) => (
-                <Box
-                  key={i}
-                  height={"100%"}
-                  position="relative"
-                  backgroundPosition="center"
-                  backgroundRepeat="no-repeat"
-                  backgroundSize="cover"
-                  backgroundImage={`url(${nota.field_img_primary})`}
-                >
-                  <Container
-                    size="container.lg"
-                    height="600px"
-                    position="relative"
-                    key={i}
-                  >
-                    <Stack
-                      spacing={4}
-                      w={"100%"}
-                      maxW={"100%"}
-                      position="absolute"
-                      top="70%"
-                      transform="translate(-20%, -50%)"
-                      key={i}
-                    >
-                      <Heading
-                        fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                        color="white"
-                        key={i}
-                      >
-                        {nota.title}
-                      </Heading>
-                      <Text
-                        fontSize={{ base: "lg", lg: "xl" }}
-                        color="white"
-                        key={i}
-                      >
-                        {nota.field_description}
-                      </Text>
-                    </Stack>
-                  </Container>
-                </Box>
+                <NoteCarrusel key={nota.id} nota={nota} redirect={redirect}/>
               ))
             : null}
         </Slider>

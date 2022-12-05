@@ -2,6 +2,7 @@ import React from "react";
 import { Flex, Box, Center, Text, Divider, Stack } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Link from "next/link";
 
 const Footer = () => {
   const [categories, setCategories] = useState(null);
@@ -25,7 +26,9 @@ const Footer = () => {
           />
         </Box>
         <Box maxW="md" bg="white" margin="20px 35px" w="356px" h="193px">
-          <img src="/assets/wow.png" alt="logo-wow" h="50px" w="200px" />
+          <Link href="/">
+            <img src="/assets/wow.png" alt="logo-wow" h="50px" w="200px" />
+          </Link>
 
           <Center justifyContent="space-around">
             <img

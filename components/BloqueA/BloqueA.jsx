@@ -1,5 +1,6 @@
 import { Container, Image, Text, SimpleGrid, Box } from "@chakra-ui/react";
 import CardItem from "../../commons/BloqueA/cardItem";
+import Link from "next/link";
 
 const BloqueA = ({ data }) => {
   const { notesArr } = data;
@@ -24,7 +25,8 @@ const BloqueA = ({ data }) => {
                 color: "purple",
               }}
             >
-              {data.category ? data.category.name : null}
+              {data.category ? <Link href={`/${data.category.url}`}>{data.category.name}</Link> : null}
+
             </Text>
             <Box display="flex" flexDir="row">
               <Box width="100%" height="50%" maxH="50%">
@@ -45,12 +47,14 @@ const BloqueA = ({ data }) => {
                 bottom="50%"
               >
                 <Box position="relative" textAlign="left" paddingLeft="20px">
+                  <Link href={`notes/byURL/${notas[0].url}`}>
                   <Text fontSize="5xl" color="white" as="b">
                     {notesArr[0].field_title_pre}
                   </Text>
                   <Text fontSize="4xl" color="white">
                     {notesArr[0].field_title}
                   </Text>
+                  </Link>
                 </Box>
               </Box>
             </Box>
