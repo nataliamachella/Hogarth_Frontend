@@ -9,12 +9,15 @@ import {
   Stack,
   useColorModeValue,
 } from "@chakra-ui/react";
+import axios from "axios";
 import fetch from "isomorphic-fetch";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function Content({ bloque, categories }) {
   const [name, setName] = useState(bloque.name);
   const [urlCategory, setUrlCategory] = useState(bloque.urlCategory);
+  const [position, setPosition] = useState(bloque.position);
   const router = useRouter();
 
   const updateBloque = () => {
@@ -22,10 +25,11 @@ export default function Content({ bloque, categories }) {
       .put(`/api/typeContent/change/${bloque.id}`, {
         name: name,
         urlCategory: urlCategory,
+        position: position,
       })
       .then(() => console.log("success"))
       .catch((err) => console.error(err));
-    return router.push("/admin/Subcategorias");
+    return router.push("/admin/Contenido");
   };
   return (
     <Box
@@ -47,7 +51,7 @@ export default function Content({ bloque, categories }) {
         my={12}
       >
         <Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
-          Subcategory Edit
+          Content Edit
         </Heading>
         <FormControl id="name" isRequired>
           <FormLabel>Name</FormLabel>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Box,
   IconButton,
@@ -27,20 +27,9 @@ const settings = {
   slidesToScroll: 1,
 };
 
-export default function BloqueB({ url }) {
+export default function BloqueB({ data }) {
   const [slider, setSlider] = useState(null);
-  const [notas, setNotas] = useState(null);
-  const [category, setCategory] = useState(null);
-
-  useEffect(() => {
-    axios.get(`/api/notes/byCategory/${url}`).then((notes) => {
-      setNotas(notes.data);
-    });
-    axios.get(`/api/categories/${url}`).then((category) => {
-      setCategory(category.data);
-    });
-  }, [url]);
-
+  const { notesArr } = data;
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "40px" });
 
@@ -60,7 +49,7 @@ export default function BloqueB({ url }) {
           color: "purple",
         }}
       >
-        {category ? category.name : null}
+        {data.category ? data.category.name : null}
       </Text>
       <Box
         marginTop="40px"
@@ -109,8 +98,8 @@ export default function BloqueB({ url }) {
         </IconButton>
 
         <Slider {...settings} ref={(slider) => setSlider(slider)}>
-          {notas
-            ? notas.map((nota, i) => (
+          {notesArr
+            ? notesArr.map((nota, i) => (
                 <Box
                   key={i}
                   height={"100%"}
