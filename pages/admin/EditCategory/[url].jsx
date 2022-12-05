@@ -12,6 +12,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import fetch from "isomorphic-fetch";
 
 export default function EditCategory({ category }) {
   const [name, setName] = useState(category.name);

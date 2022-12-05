@@ -16,6 +16,7 @@ const LinkItems = [
   { name: "Notas", icon: FiFileText, url: "/admin" },
   { name: "Categorias", icon: FiUser, url: "/admin/Categorias" },
   { name: "Subcategorias", icon: FiFileText, url: "/admin/Subcategorias" },
+  { name: "Contenido", icon: FiFileText, url: "/admin/Contenido" },
 ];
 
 export default function SimpleSidebar({ children }) {

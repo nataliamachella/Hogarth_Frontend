@@ -1,11 +1,11 @@
 import Navbar from "../components/Navbar/Navbar";
 import { ChakraProvider } from "@chakra-ui/react";
-import theme from "../utils/theme"
+//import theme from "../utils/theme"
 import { useRouter } from "next/router";
 import "@fontsource/raleway/400.css";
 import "@fontsource/inter/700.css";
-import theme2 from "../public/fonts/theme";
-import SidebarAdmin from "./admin/SidebarAdmin";
+import theme from "../public/fonts/theme";
+import SidebarAdmin from "../commons/Admin/SidebarAdmin";
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();

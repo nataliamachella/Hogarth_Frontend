@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from "react";
 import { Box, Text, UnorderedList } from "@chakra-ui/react";
-import axios from "axios";
 import CreateButtons from "../../components/Admin/CreateButtons";
-import ListSubCategory from "../../commons/Admin/SubCategory.jsx/ListSubCategory";
+import ListCategory from "../../commons/Admin/ListCategory";
+import fetch from "isomorphic-fetch";
+import { useRouter } from "next/router";
 
-const ContentAdmin = () => {
-  const [subCategories, setSubCategories] = useState(null);
-
-  useEffect(() => {
-    axios
-      .get("/api/subcategories")
-      .then((subcategories) => setSubCategories(subcategories.data));
-  }, []);
-
+const ContentAdmin = ({ subCategories }) => {
+  const router = useRouter();
   return (
     <Box width="84vw" height="100%" marginLeft="300px">
       <Box
@@ -31,7 +24,11 @@ const ContentAdmin = () => {
           <UnorderedList gap={6}>
             {subCategories ? (
               subCategories.map((subCategory, i) => (
-                <ListSubCategory subCategory={subCategory} key={i} />
+                <ListCategory
+                  data={subCategory}
+                  path={router.pathname}
+                  key={i}
+                />
               ))
             ) : (
               <Text>Loading</Text>
@@ -44,3 +41,13 @@ const ContentAdmin = () => {
 };
 
 export default ContentAdmin;
+
+export async function getServerSideProps() {
+  const res = await fetch("http://localhost:3001/api/subcategories");
+  const data = await res.json();
+  return {
+    props: {
+      subCategories: data,
+    },
+  };
+}
