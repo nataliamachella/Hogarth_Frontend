@@ -1,14 +1,19 @@
 import { Box, Button, ListItem } from "@chakra-ui/react";
 import Link from "next/link";
 
-const ListCategory = ({ category }) => {
+const ListCategory = ({ data, path }) => {
+  let route;
+  if (path == "/admin/Subcategorias")
+    route = `/admin/EditSubcategory/${data.url}`;
+  if (path == "/admin/Categorias") route = `/admin/EditCategory/${data.url}`;
+  if (path == "/admin/Contenido") route = `/admin/EditContent/${data.name}`;
   return (
     <Box display="flex" flexDirection="row" minW="100vh">
       <ListItem width="40%" margin="15px 0 15px 0">
-        {category.name}
+        {data.name}
       </ListItem>
       <Box marginLeft="40px" display="flex" alignItems="center">
-        <Link href={`/admin/EditCategory/${category.url}`}>
+        <Link href={`${route}`}>
           <Button colorScheme="blue">EDITAR</Button>
         </Link>
       </Box>

@@ -1,6 +1,7 @@
 import { Box, Text, Image, Divider, Heading, Center } from "@chakra-ui/react";
 import MasNotas from "../../../components/SeguirLeyendo/list";
 import fetch from "isomorphic-fetch";
+const parse = require("html-react-parser");
 
 const Post = ({ note }) => {
   return (
@@ -58,23 +59,14 @@ const Post = ({ note }) => {
                 width="100%"
               />
             </Center>
-            {note.contents.map((itemContent, i) => (
-              <Center
-                display="flex"
-                flexDir="column"
-                width="60%"
-                marginTop="40px"
-                key={i}
-              >
-                <div
-                  key={i}
-                  className="text-container"
-                  dangerouslySetInnerHTML={{
-                    __html: itemContent.field_content,
-                  }}
-                />
-              </Center>
-            ))}
+            <Center
+              display="flex"
+              flexDir="column"
+              width="60%"
+              marginTop="40px"
+            >
+              <Box>{parse(note.field_content)}</Box>
+            </Center>
           </Box>
           <MasNotas />
         </Box>

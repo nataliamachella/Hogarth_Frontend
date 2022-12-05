@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from "react";
 import { Box, Text, UnorderedList } from "@chakra-ui/react";
-import Link from "next/link";
-import axios from "axios";
 import CreateButtons from "../../components/Admin/CreateButtons";
-import ListCategory from "../../commons/Admin/Categories/ListCategory";
+import ListCategory from "../../commons/Admin/ListCategory";
+import fetch from "isomorphic-fetch";
+import { useRouter } from "next/router";
 
-const ContentAdmin = () => {
-  const [categories, setCategories] = useState(null);
-
-  useEffect(() => {
-    axios
-      .get("/api/categories")
-      .then((categories) => setCategories(categories.data));
-  }, []);
-
+const ContentAdmin = ({ categories }) => {
+  const router = useRouter();
   return (
     <Box width="84vw" height="100%" marginLeft="300px">
       <Box
@@ -32,7 +24,7 @@ const ContentAdmin = () => {
           <UnorderedList gap={6}>
             {categories ? (
               categories.map((category, i) => (
-                <ListCategory category={category} key={i} />
+                <ListCategory data={category} path={router.pathname} key={i} />
               ))
             ) : (
               <Text>Loading</Text>
@@ -45,3 +37,13 @@ const ContentAdmin = () => {
 };
 
 export default ContentAdmin;
+
+export async function getServerSideProps() {
+  const res = await fetch("http://localhost:3001/api/categories");
+  const data = await res.json();
+  return {
+    props: {
+      categories: data,
+    },
+  };
+}
