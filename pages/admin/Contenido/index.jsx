@@ -1,10 +1,8 @@
 import { Box, UnorderedList } from "@chakra-ui/react";
 import fetch from "isomorphic-fetch";
-import { useRouter } from "next/router";
-import ListCategory from "../../../commons/Admin/ListCategory";
+import ListContent from "../../../commons/Admin/ListContent";
 
-export default function Content({ bloques }) {
-  const router = useRouter();
+export default function Content({ bloques, categories }) {
   return (
     <Box width="84vw" height="100%" marginLeft="300px">
       <Box>
@@ -12,7 +10,12 @@ export default function Content({ bloques }) {
           <UnorderedList gap={6}>
             {bloques ? (
               bloques.map((bloque, i) => (
-                <ListCategory data={bloque} path={router.pathname} key={i} />
+                <ListContent
+                  data={bloque}
+                  key={i}
+                  categories={categories}
+                  max={bloques.length}
+                />
               ))
             ) : (
               <Text>Loading</Text>
@@ -27,5 +30,7 @@ export default function Content({ bloques }) {
 export async function getServerSideProps() {
   const res = await fetch(`http://localhost:3001/api/typeContent`);
   const data = await res.json();
-  return { props: { bloques: data } };
+  const resCategories = await fetch(`http://localhost:3001/api/categories`);
+  const dataCategories = await resCategories.json();
+  return { props: { bloques: data, categories: dataCategories } };
 }
