@@ -7,22 +7,19 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 const CardItem = ({ nota }) => {
   return (
-    <Card maxW="sm">
+    <Card maxW="sm" width="32%">
       <CardBody>
-        <>
-          <Image
-            src={nota.field_img_primary}
-            alt="Green double couch with wooden legs"
-            borderRadius="lg"
-          />
-          <Stack mt="6" spacing="3">
-            <Heading size="md">{nota.title}</Heading>
-            <Text>{nota.field_description}</Text>
-          </Stack>
-        </>
+        <Image src={nota.field_img_primary} />
+        <Stack mt="6" spacing="3">
+          <Link href={`notes/byURL/${nota.url}`}>
+          <Heading size="md">{nota.title}</Heading>
+          <Text>{nota.field_description}</Text>
+          </Link>
+        </Stack>
       </CardBody>
       <Divider />
     </Card>

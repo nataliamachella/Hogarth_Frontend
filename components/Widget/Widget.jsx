@@ -17,8 +17,8 @@ const Widget = () => {
   const scale2 = useTransform(x2, [0, -230, -460], [1, 1.8, 1]);
 
   const xEx = useMotionValue(0);
-  const scaleEx = useTransform(xEx, [0, -230], [1, 1.8,]);
-  const opacityEx = useTransform(xEx, [0, 10, -220, -230], [0, 1, 1, 0])
+  const scaleEx = useTransform(xEx, [0, -230], [1, 1.8]);
+  const opacityEx = useTransform(xEx, [0, 10, -220, -230], [0, 1, 1, 0]);
 
   const y3 = useMotionValue(0);
   const scale3 = useTransform(y3, [0, -190, -380], [1, 1.8, 1]);
@@ -31,7 +31,7 @@ const Widget = () => {
 
   const [warning, setWarning] = useState(true);
 
-  useEffect(() => setWarning(false), warning);
+  useEffect(() => setWarning(false), [warning]);
 
   const [isDragging, setIsDragging] = useState(false);
 
@@ -49,13 +49,15 @@ const Widget = () => {
       bg="#FDEBEB"
       display="flex"
       alignItems="center"
-      justifyContent="center">
+      justifyContent="center"
+    >
       <Grid
         templateRows="repeat(8, 1fr)"
         templateColumns="repeat(3, 1fr)"
         gap={4}
         height="700px"
-        width="1070px">
+        width="1070px"
+      >
         <GridItem rowStart={2} rowEnd={5}>
           <Heading size="lg" color="#B9459E">
             ¿Cómo te sentís en este momento?
@@ -69,7 +71,8 @@ const Widget = () => {
           colSpan={2}
           display="flex"
           alignItems="center"
-          justifyContent="center">
+          justifyContent="center"
+        >
           <Box
             h="75%"
             w="75%"
@@ -79,7 +82,8 @@ const Widget = () => {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            ref={constraintsRef}>
+            ref={constraintsRef}
+          >
             <Box
               as={motion.div}
               style={{ y: -240 }}
@@ -89,7 +93,8 @@ const Widget = () => {
               w="100px"
               display="flex"
               alignItems="center"
-              justifyContent="center">
+              justifyContent="center"
+            >
               <Box
                 as={motion.div}
                 style={{ y: y1, scale: scale1 }}
@@ -114,7 +119,8 @@ const Widget = () => {
                 onClick={isDragging ? null : setWarning}
                 onDrag={eventControl}
                 onStop={eventControl}
-                onDragEnd={openExcitedNote}>
+                onDragEnd={openExcitedNote}
+              >
                 <Text
                   as={motion.p}
                   fontSize="6xl"
@@ -122,7 +128,8 @@ const Widget = () => {
                     scale: 1.2,
                   }}
                   whileTap={{ scale: 0.9, rotate: -15 }}
-                  cursor="pointer">
+                  cursor="pointer"
+                >
                   😍
                 </Text>
               </Box>
@@ -136,7 +143,8 @@ const Widget = () => {
               w="100px"
               display="flex"
               alignItems="center"
-              justifyContent="center">
+              justifyContent="center"
+            >
               <Box
                 as={motion.div}
                 style={{ x: x2, scale: scale2 }}
@@ -160,7 +168,8 @@ const Widget = () => {
                 dragSnapToOrigin
                 onClick={isDragging ? null : setWarning}
                 onDrag={eventControl}
-                onStop={eventControl}>
+                onStop={eventControl}
+              >
                 <Text
                   as={motion.p}
                   fontSize="6xl"
@@ -168,7 +177,8 @@ const Widget = () => {
                     scale: 1.2,
                   }}
                   whileTap={{ scale: 0.9, rotate: -15 }}
-                  cursor="pointer">
+                  cursor="pointer"
+                >
                   😃
                 </Text>
               </Box>
@@ -189,14 +199,16 @@ const Widget = () => {
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                zIndex="6">
+                zIndex="6"
+              >
                 <Text fontSize="6xl">😃</Text>
                 <Text
                   marginTop="70px"
                   marginLeft="50px"
                   position="absolute"
                   fontSize="6xl"
-                  zIndex="7">
+                  zIndex="7"
+                >
                   👆🏻
                 </Text>
               </Box>
@@ -210,7 +222,8 @@ const Widget = () => {
               w="100px"
               display="flex"
               alignItems="center"
-              justifyContent="center">
+              justifyContent="center"
+            >
               <Box
                 as={motion.div}
                 style={{ y: y3, scale: scale3 }}
@@ -234,7 +247,8 @@ const Widget = () => {
                 dragSnapToOrigin
                 onClick={isDragging ? null : setWarning}
                 onDrag={eventControl}
-                onStop={eventControl}>
+                onStop={eventControl}
+              >
                 <Text
                   as={motion.p}
                   fontSize="6xl"
@@ -242,7 +256,8 @@ const Widget = () => {
                     scale: 1.2,
                   }}
                   whileTap={{ scale: 0.9, rotate: -15 }}
-                  cursor="pointer">
+                  cursor="pointer"
+                >
                   😐
                 </Text>
               </Box>
@@ -256,7 +271,8 @@ const Widget = () => {
               w="100px"
               display="flex"
               alignItems="center"
-              justifyContent="center">
+              justifyContent="center"
+            >
               <Box
                 as={motion.div}
                 style={{ y: y4, scale: scale4 }}
@@ -280,7 +296,8 @@ const Widget = () => {
                 dragSnapToOrigin
                 onClick={isDragging ? null : setWarning}
                 onDrag={eventControl}
-                onStop={eventControl}>
+                onStop={eventControl}
+              >
                 <Text
                   as={motion.p}
                   fontSize="6xl"
@@ -288,7 +305,8 @@ const Widget = () => {
                     scale: 1.2,
                   }}
                   whileTap={{ scale: 0.9, rotate: -15 }}
-                  cursor="pointer">
+                  cursor="pointer"
+                >
                   🙁
                 </Text>
               </Box>
@@ -302,7 +320,8 @@ const Widget = () => {
               w="100px"
               display="flex"
               alignItems="center"
-              justifyContent="center">
+              justifyContent="center"
+            >
               <Box
                 as={motion.div}
                 style={{ x: x5, scale: scale5 }}
@@ -326,7 +345,8 @@ const Widget = () => {
                 dragSnapToOrigin
                 onClick={isDragging ? null : setWarning}
                 onDrag={eventControl}
-                onStop={eventControl}>
+                onStop={eventControl}
+              >
                 <Text
                   as={motion.p}
                   fontSize="6xl"
@@ -334,7 +354,8 @@ const Widget = () => {
                     scale: 1.2,
                   }}
                   whileTap={{ scale: 0.9, rotate: -15 }}
-                  cursor="pointer">
+                  cursor="pointer"
+                >
                   😭
                 </Text>
               </Box>
@@ -403,7 +424,8 @@ const Widget = () => {
           rowSpan={4}
           colSpan={1}
           display="flex"
-          justifyContent="center">
+          justifyContent="center"
+        >
           {warning ? (
             <Box
               as={motion.div}
@@ -418,14 +440,16 @@ const Widget = () => {
               p="2%"
               border
               borderRadius="30px"
-              display="flex">
+              display="flex"
+            >
               <Box
                 w="25%"
                 h="100%"
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
-                borderRight="solid 1px white">
+                borderRight="solid 1px white"
+              >
                 <Text color="white" fontSize="6xl">
                   !
                 </Text>
@@ -436,7 +460,8 @@ const Widget = () => {
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
-                borderLeft="solid 1px white">
+                borderLeft="solid 1px white"
+              >
                 <Text color="white" fontSize="sm" marginLeft="7%">
                   ¡Un click no es suficiente! Arrastrá el emoji al centro.
                 </Text>

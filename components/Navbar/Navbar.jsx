@@ -2,10 +2,8 @@ import {
   Flex,
   Spacer,
   Center,
-  Button,
   Text,
   Box,
-  Grid,
   useDisclosure,
   Drawer,
   DrawerBody,
@@ -74,6 +72,7 @@ const Navbar = () => {
             <Spacer />
             <Box
               display="flex"
+
               h="55px"
               size="150px"
               marginTop="15px"
@@ -117,6 +116,8 @@ const Navbar = () => {
                   </DrawerBody>
                 </DrawerContent>
               </Drawer>
+
+
               <Link href="/">
                 <Image
                   alt="wow-logo"
