@@ -15,7 +15,6 @@ import CardItem from "../../commons/BloqueB/carditem";
 
 const BloqueE = ({ data }) => {
   const { notesArr } = data;
-
   return (
     <Box>
       {notesArr ? (
