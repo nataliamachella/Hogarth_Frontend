@@ -10,6 +10,7 @@ import {
   DrawerContent,
   DrawerOverlay,
   DrawerHeader,
+  Button,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -18,6 +19,7 @@ import axios from "axios";
 import Link from "next/link";
 import CollapseComponent from "./Collapse";
 import SearchButton from "./SearchButton";
+import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 
 const Navbar = () => {
   const [categories, setCategories] = useState(null);
@@ -46,7 +48,6 @@ const Navbar = () => {
           top={{ sm: "50px", md: "0" }}
           background="white"
           zIndex={10}
-          p="10px"
           boxShadow="inner"
         >
           <Flex color="black" width="100vw" justifyContent="center">
@@ -72,42 +73,45 @@ const Navbar = () => {
             <Spacer />
             <Box
               display="flex"
-
               h="55px"
               size="150px"
               marginTop="15px"
               justifyContent={{ sm: "start", md: "center" }}
-              alignItems="center"
-              position="absolute"
             >
               <Button
                 display={{ sm: "flex", md: "none" }}
-                bg="white"
                 onClick={onOpen}
+                background="white"
+                _hover={{ color: "pink" }}
               >
-                <Image
-                  src="/assets/menu_hamburguer.png"
-                  width="50"
-                  height="50"
-                />
+                <HamburgerIcon w={6} h={6} />
               </Button>
               <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
                 <DrawerOverlay />
                 <DrawerContent>
-                  <DrawerHeader borderBottomWidth="1px">
-                    <Image
-                      alt="wow-logo"
-                      src="/assets/wow.png"
-                      width="250"
-                      height="50"
-                    />
+                  <DrawerHeader
+                    borderBottomWidth="1px"
+                    display="flex"
+                    justifyContent="space-between"
+                  >
+                    <Link href="/">
+                      <Image
+                        alt="wow-logo"
+                        src="/assets/wow.png"
+                        width="127"
+                        height="30"
+                      />
+                    </Link>
+                    <Button>
+                      <CloseIcon onClick={onClose} />
+                    </Button>
                   </DrawerHeader>
                   <SearchButton />
                   <DrawerBody>
                     <Flex flexDirection="column">
                       {categories.map((category, i) => {
                         return (
-                          <Link href="/${category.name}" key={i}>
+                          <Link href={`/${category.url}`} key={i}>
                             {category.name}
                           </Link>
                         );
@@ -117,13 +121,12 @@ const Navbar = () => {
                 </DrawerContent>
               </Drawer>
 
-
               <Link href="/">
                 <Image
                   alt="wow-logo"
                   src="/assets/wow.png"
-                  width="250"
-                  height="50"
+                  width="230"
+                  height="40"
                 />
               </Link>
             </Box>
@@ -136,18 +139,14 @@ const Navbar = () => {
             <Flex
               boxSizing="border-box"
               justifyContent="center"
-              width="100%"
+              width="100vw"
               border="1px solid rgba(188, 188, 188, 0.5)"
               bgColor="white"
             >
               <Flex
-                pe="0px"
-                ps="0px"
+                p="10px 0"
                 justifyContent="space-between"
-                width="100%"
-                maxWidth="1200px"
-                pt="10px"
-                pb="10px"
+                width="100vw"
                 onMouseEnter={onOpen}
                 onMouseLeave={onClose}
                 display={{ sm: "none", md: "flex" }}
