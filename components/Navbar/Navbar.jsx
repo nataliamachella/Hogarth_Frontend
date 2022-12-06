@@ -77,8 +77,6 @@ const Navbar = () => {
               size="150px"
               marginTop="15px"
               justifyContent={{ sm: "start", md: "center" }}
-              alignItems="center"
-              position="absolute"
             >
               <Button
                 display={{ sm: "flex", md: "none" }}
@@ -127,8 +125,8 @@ const Navbar = () => {
                 <Image
                   alt="wow-logo"
                   src="/assets/wow.png"
-                  width="250"
-                  height="50"
+                  width="230"
+                  height="40"
                 />
               </Link>
             </Box>
