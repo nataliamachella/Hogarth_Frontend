@@ -1,4 +1,9 @@
 import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
   Box,
   CloseButton,
   Drawer,
@@ -10,7 +15,9 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { FiFileText, FiUser } from "react-icons/fi";
+import axios from "axios";
 
 const LinkItems = [
   { name: "Notas", icon: FiFileText, url: "/admin" },
@@ -65,11 +72,19 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link, i) => (
-        <Link href={link.url} key={i}>
-          <NavItem key={i} icon={link.icon}>
-            {link.name}
-          </NavItem>
-        </Link>
+        <Box key={i}>
+          {link.name == "Contenido" ? (
+            <SubNav key={i} icon={link.icon}>
+              {link.name}
+            </SubNav>
+          ) : (
+            <Link href={link.url} key={i}>
+              <NavItem key={i} icon={link.icon}>
+                {link.name}
+              </NavItem>
+            </Link>
+          )}
+        </Box>
       ))}
     </Box>
   );
@@ -101,6 +116,49 @@ const NavItem = ({ icon, children, ...rest }) => {
         />
       )}
       {children}
+    </Flex>
+  );
+};
+
+const SubNav = ({ icon, children, ...rest }) => {
+  const [categories, setCategories] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("/api/categories")
+      .then((categories) => setCategories(categories.data));
+  }, []);
+  return (
+    <Flex
+      align="center"
+      p="4"
+      mx="4"
+      borderRadius="lg"
+      role="group"
+      cursor="pointer"
+      {...rest}
+    >
+      <Accordion allowMultiple>
+        <AccordionItem>
+          <AccordionButton>
+            {icon && <Icon mr="4" fontSize="16" as={icon} />}
+            {children}
+            <AccordionIcon />
+          </AccordionButton>
+          <AccordionPanel pb={4}>
+            <Link href={`/admin/Contenido`}>
+              <NavItem>{"Home"}</NavItem>
+            </Link>
+            {categories
+              ? categories.map((link, i) => (
+                  <Link href={`/admin/Contenido/${link.url}`} key={i}>
+                    <NavItem key={i}>{link.name}</NavItem>
+                  </Link>
+                ))
+              : null}
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
     </Flex>
   );
 };
