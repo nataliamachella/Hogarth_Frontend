@@ -9,7 +9,7 @@ import {
   Text,
   SimpleGrid,
   Box,
-  Img
+  Img,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import CardItem from "../../commons/BloqueB/carditem";
@@ -30,37 +30,46 @@ const BloqueE = ({ data }) => {
           borderColor=" #f0f0f0"
           height="auto"
           position="relative"
-          >
+        >
           {data.category ? (
-          <Link href={`/${data.category.url}`} textColor={data.category.color}>
-            <Box display="flex" paddingTop="30px" paddingBottom="10px" ml="4%" alignItems="end">
-              <Img
-                mr="10px"
-                width="41"
-                height="49"
-                maxW="100%"
-                color={data.category.color}
-                src={data.category.icon_image}
-              />
-              <Text
-                fontSize="2xl"
-                height="32px"
-                fontWeight="400"
-                textTransform="uppercase"
-                color={data.category.color}
+            <Link href={`/${data.category.url}`}>
+              <Box
+                display="flex"
+                paddingTop="30px"
+                paddingBottom="10px"
+                ml="4%"
+                alignItems="end"
               >
-                {data.category.name}
-              </Text>
-            </Box>
-          </Link>
-        ) : null}
-          <Box display="flex" flexDirection="column" alignItems="center" mt="40px">
+                <Img
+                  mr="10px"
+                  width="41"
+                  height="49"
+                  maxW="100%"
+                  color={data.category.color}
+                  src={data.category.icon_image}
+                />
+                <Text
+                  fontSize="2xl"
+                  height="32px"
+                  fontWeight="400"
+                  textTransform="uppercase"
+                  color={data.category.color}
+                >
+                  {data.category.name}
+                </Text>
+              </Box>
+            </Link>
+          ) : null}
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            mt="40px"
+          >
             {notesArr ? (
               <Card width="100%" variant="unstyled">
                 <CardBody>
-                  <Image
-                    src={notesArr[0].field_img_primary}
-                  />
+                  <Image src={notesArr[0].field_img_primary} />
                   <Stack mt="6" spacing="3" alignItems="center">
                     <Link href={`notes/byURL/${notesArr[0].url}`}>
                       <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
