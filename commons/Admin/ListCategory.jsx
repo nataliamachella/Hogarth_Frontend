@@ -6,7 +6,6 @@ const ListCategory = ({ data, path }) => {
   if (path == "/admin/Subcategorias")
     route = `/admin/EditSubcategory/${data.url}`;
   if (path == "/admin/Categorias") route = `/admin/EditCategory/${data.url}`;
-  if (path == "/admin/Contenido") route = `/admin/EditContent/${data.name}`;
   return (
     <Box display="flex" flexDirection="row" minW="100vh">
       <ListItem width="40%" margin="15px 0 15px 0">

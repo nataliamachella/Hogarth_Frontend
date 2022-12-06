@@ -9,7 +9,7 @@ const BloquePrincipal = () => {
   useEffect(() => {
     axios
       .get(
-        "api/notes/byURL/Horscopo_semanal_signo_por_signo_qu_te_dicen_los_astros"
+        "api/notes/byURL/Cmo_sobrevivir_a_diciembre_8_claves_para_transitar_el_ltimo_mes_del_ao"
       )
       .then((nota) => {
         setNotaPrincipal(nota.data);
@@ -21,12 +21,12 @@ const BloquePrincipal = () => {
       <Box
         display="flex"
         overflow="hidden"
-        height="490px"
+        height="492px"
         position="relative"
         width="100vw"
         flexDirection="row"
-        marginTop="125px"
-        bgGradient='linear(to-r, rgb(0,0,0,0)65%, rgb(1,1,1,1)), url("https://bucket.somosohlala.com.ar/s3fs-public/styles/mainjumbo_1800/public/2022-11/astros-bomba_2.png.webp")'
+        marginTop="115px"
+        bgGradient='linear(to-r, rgb(0,0,0,0)65%, rgb(0,0,0,1)), url("https://bucket.somosohlala.com.ar/s3fs-public/styles/mainjumbo_1800/public/2022-12/demencia-bomba.png.webp?itok=u3HpffUJ")'
       >
         <Box
           width="100%"
@@ -58,6 +58,7 @@ const BloquePrincipal = () => {
                     color="white"
                     width="400px"
                     marginTop="15%"
+                    fontWeight="bold"
                   >
                     {notaPrincipal.field_title_pre}
                     <br />

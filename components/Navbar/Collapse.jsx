@@ -1,12 +1,4 @@
-import {
-  Card,
-  CardBody,
-  Collapse,
-  Flex,
-  Grid,
-  Image,
-  Text,
-} from "@chakra-ui/react";
+import { Collapse, Flex, Grid, Text } from "@chakra-ui/react";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
