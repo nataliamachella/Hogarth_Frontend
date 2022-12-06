@@ -10,6 +10,7 @@ import {
   DrawerContent,
   DrawerOverlay,
   DrawerHeader,
+  Button,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -72,7 +73,6 @@ const Navbar = () => {
             <Spacer />
             <Box
               display="flex"
-
               h="55px"
               size="150px"
               marginTop="15px"
@@ -122,7 +122,6 @@ const Navbar = () => {
                   </DrawerBody>
                 </DrawerContent>
               </Drawer>
-
 
               <Link href="/">
                 <Image
