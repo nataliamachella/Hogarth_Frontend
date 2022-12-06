@@ -7,6 +7,7 @@ import {
   Heading,
   Text,
   Container,
+  Img
 } from "@chakra-ui/react";
 
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
@@ -45,29 +46,43 @@ export default function BloqueB({ data }) {
     <Container
       marginTop="40px"
       display="flex"
+      ml="14%"
       flexDir="column"
-      maxW="67%"
+      maxW="50%"
       border="1px"
       borderRadius="lg"
       borderColor=" #f0f0f0"
     >
-      <Text
-        fontSize="50px"
-        _hover={{
-          color: "purple",
-        }}
-      >
-        {data.category ? (
-          <Link href={`/${data.category.url}`}>{data.category.name}</Link>
+       {data.category ? (
+          <Link href={`/${data.category.url}`} textColor={data.category.color}>
+            <Box display="flex" paddingTop="30px" paddingBottom="10px" ml="4%" alignItems="end">
+              <Img
+                mr="10px"
+                width="41"
+                height="49"
+                maxW="100%"
+                color="rgb(237, 162, 47)"
+                src={data.category.icon_image}
+              />
+              <Text
+                fontSize="2xl"
+                height="32px"
+                
+                fontWeight="400"
+                textTransform="uppercase"
+                color={data.category.color}
+              >
+                {data.category.name}
+              </Text>
+            </Box>
+          </Link>
         ) : null}
-      </Text>
       <Box
         marginTop="40px"
         position={"relative"}
         height={"600px"}
         width={"100%"}
         overflow={"hidden"}
-        borderRadius="lg"
       >
         <link
           rel="stylesheet"
