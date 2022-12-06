@@ -5,12 +5,12 @@ import {
   Text,
   Box,
   useDisclosure,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  DrawerHeader,
-  Button,
+  // Drawer,
+  // DrawerBody,
+  // DrawerContent,
+  // DrawerOverlay,
+  // DrawerHeader,
+  // Button,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -26,37 +26,24 @@ const Navbar = () => {
   const [category, setCategory] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const fetchCategories = () => {
+  useEffect(() => {
     axios
       .get("/api/categories")
       .then((categories) => setCategories(categories.data));
-  };
-
-  useEffect(() => {
-    fetchCategories();
   }, []);
 
   return (
-    <Box
-      width="100vw"
-      bgImage={{ sm: "url('/assets/trama.svg')" }}
-      bgSize="cover"
-    >
+    <Box width="100vw">
       {categories ? (
         <Box
           position="fixed"
-          top={{ sm: "50px", md: "0" }}
+          top="0"
           background="white"
           zIndex={10}
           boxShadow="inner"
         >
           <Flex color="black" width="100vw" justifyContent="center">
-            <Center
-              w="170px"
-              h="45px"
-              marginTop="15px"
-              display={{ sm: "none" }}
-            >
+            <Center w="170px" h="45px" marginTop="15px">
               <Image
                 alt="instagram-logo"
                 src="/assets/instagram-logo.svg"
@@ -76,9 +63,11 @@ const Navbar = () => {
               h="55px"
               size="150px"
               marginTop="15px"
-              justifyContent={{ sm: "start", md: "center" }}
+              justifyContent="center"
+              alignItems="center"
+              position="absolute"
             >
-              <Button
+              {/* <Button
                 display={{ sm: "flex", md: "none" }}
                 onClick={onOpen}
                 background="white"
@@ -119,7 +108,7 @@ const Navbar = () => {
                     </Flex>
                   </DrawerBody>
                 </DrawerContent>
-              </Drawer>
+              </Drawer> */}
 
               <Link href="/">
                 <Image
@@ -131,7 +120,7 @@ const Navbar = () => {
               </Link>
             </Box>
             <Spacer />
-            <Center w="300" h="75px" display={{ sm: "none", md: "flex" }}>
+            <Center w="300" h="75px">
               <SearchButton />
             </Center>
           </Flex>
@@ -144,12 +133,15 @@ const Navbar = () => {
               bgColor="white"
             >
               <Flex
-                p="10px 0"
+                pe="0px"
+                ps="0px"
                 justifyContent="space-between"
-                width="100vw"
+                width="100%"
+                maxWidth="1200px"
+                pt="10px"
+                pb="10px"
                 onMouseEnter={onOpen}
                 onMouseLeave={onClose}
-                display={{ sm: "none", md: "flex" }}
               >
                 {categories.map((category, i) => {
                   return (
