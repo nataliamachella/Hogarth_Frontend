@@ -9,7 +9,6 @@ import {
   Container,
   Img,
 } from "@chakra-ui/react";
-
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import Slider from "react-slick";
 import axios from "axios";
@@ -34,11 +33,12 @@ export default function BloqueB({ data }) {
   const { notesArr } = data;
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "40px" });
+  const router = useRouter();
 
-  const redirect = (direccion) => {
+  const redirect = (nota) => {
     router.push({
       ...router,
-      pathname: `/notes/byURL/${direccion}`,
+      pathname: `/${nota.subCategory.url}/${nota.subCategory.category.url}/${nota.url}`,
     });
   };
 

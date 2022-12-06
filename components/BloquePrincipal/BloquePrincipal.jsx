@@ -17,7 +17,7 @@ const BloquePrincipal = () => {
   }, []);
 
   return (
-    <Box>
+    <Box bg="#f7f7f7">
       <Box
         display="flex"
         overflow="hidden"
@@ -52,7 +52,7 @@ const BloquePrincipal = () => {
                 width="600px"
                 paddingRight="10%"
               >
-                <Link href={`notes/byURL/${notaPrincipal.url}`}>
+                <Link href={`${notaPrincipal.subCategory.url}/${notaPrincipal.subCategory.category.url}/${notaPrincipal.url}`}>
                   <Text
                     fontSize="4xl"
                     color="white"
@@ -71,6 +71,30 @@ const BloquePrincipal = () => {
               </Box>
             ) : null}
           </Box>
+        </Box>
+      </Box>
+      <Box
+        display="flex"
+        justifyContent="center"
+        pt="40px"
+        pb="40px"
+        width="100%"
+      >
+        <Box p="15px" bg="white" borderRadius="15px" display="flex" alignItems="center">
+          <Text mr="10px"
+            fontSize="2xl"
+            height="32px"
+            fontWeight="400"
+            textTransform="uppercase"> LEE UNA NOTA SEGUN TU ESTADO DE ANIMO </Text>
+          <Text
+            fontSize="6xl"
+            whileHover={{
+              scale: 1.2,
+            }}
+            whileTap={{ scale: 0.9, rotate: -15 }}
+            cursor="pointer"
+            ml="10px"
+          >😃</Text>
         </Box>
       </Box>
     </Box>
