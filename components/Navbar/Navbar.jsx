@@ -5,6 +5,11 @@ import {
   Text,
   Box,
   useDisclosure,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerOverlay,
+  DrawerHeader,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -30,11 +35,27 @@ const Navbar = () => {
   }, []);
 
   return (
-    <Box width="100vw">
+    <Box
+      width="100vw"
+      bgImage={{ sm: "url('/assets/trama.svg')" }}
+      bgSize="cover"
+    >
       {categories ? (
-        <Box position="fixed" top="0" background="white" zIndex={10}>
+        <Box
+          position="fixed"
+          top={{ sm: "50px", md: "0" }}
+          background="white"
+          zIndex={10}
+          p="10px"
+          boxShadow="inner"
+        >
           <Flex color="black" width="100vw" justifyContent="center">
-            <Center w="170px" h="45px" marginTop="15px">
+            <Center
+              w="170px"
+              h="45px"
+              marginTop="15px"
+              display={{ sm: "none" }}
+            >
               <Image
                 alt="instagram-logo"
                 src="/assets/instagram-logo.svg"
@@ -51,14 +72,52 @@ const Navbar = () => {
             <Spacer />
             <Box
               display="flex"
-              bg="blue"
+
               h="55px"
               size="150px"
               marginTop="15px"
-              justifyContent="center"
+              justifyContent={{ sm: "start", md: "center" }}
               alignItems="center"
               position="absolute"
             >
+              <Button
+                display={{ sm: "flex", md: "none" }}
+                bg="white"
+                onClick={onOpen}
+              >
+                <Image
+                  src="/assets/menu_hamburguer.png"
+                  width="50"
+                  height="50"
+                />
+              </Button>
+              <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+                <DrawerOverlay />
+                <DrawerContent>
+                  <DrawerHeader borderBottomWidth="1px">
+                    <Image
+                      alt="wow-logo"
+                      src="/assets/wow.png"
+                      width="250"
+                      height="50"
+                    />
+                  </DrawerHeader>
+                  <SearchButton />
+                  <DrawerBody>
+                    <Flex flexDirection="column">
+                      {categories.map((category, i) => {
+                        return (
+                          <Link href="/${category.name}" key={i}>
+                            {category.name}
+                          </Link>
+                        );
+                      })}
+                    </Flex>
+                  </DrawerBody>
+                </DrawerContent>
+              </Drawer>
+
+
               <Link href="/">
                 <Image
                   alt="wow-logo"
@@ -69,7 +128,7 @@ const Navbar = () => {
               </Link>
             </Box>
             <Spacer />
-            <Center w="300" h="75px">
+            <Center w="300" h="75px" display={{ sm: "none", md: "flex" }}>
               <SearchButton />
             </Center>
           </Flex>
@@ -91,6 +150,7 @@ const Navbar = () => {
                 pb="10px"
                 onMouseEnter={onOpen}
                 onMouseLeave={onClose}
+                display={{ sm: "none", md: "flex" }}
               >
                 {categories.map((category, i) => {
                   return (
