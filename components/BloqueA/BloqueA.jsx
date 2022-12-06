@@ -20,10 +20,7 @@ const BloqueA = ({ data }) => {
           position="relative"
         >
           {data.category ? (
-            <Link
-              href={`/${data.category.url}`}
-              textColor={data.category.color}
-            >
+            <Link href={`/${data.category.url}`}>
               <Box
                 display="flex"
                 paddingTop="30px"

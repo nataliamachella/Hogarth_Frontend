@@ -1,26 +1,6 @@
-import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Grid,
-  Card,
-  CardBody,
-  Link,
-  Image,
-  Text,
-  Heading,
-  Button,
-  Center,
-  Container,
-  Img,
-} from "@chakra-ui/react";
-import axios from "axios";
-import { AddIcon } from "@chakra-ui/icons";
+import { Box, Grid, Link, Text, Container, Img } from "@chakra-ui/react";
 import CardItem from "../../commons/BloqueD/cardItem";
-import {
-  useDisclosure,
-  getButtonProps,
-  getDisclosureProps,
-} from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
 
 const BloqueD = ({ data }) => {
   const { notesArr } = data;
@@ -42,8 +22,14 @@ const BloqueD = ({ data }) => {
         borderColor=" #f0f0f0"
       >
         {data.category ? (
-          <Link href={`/${data.category.url}`} textColor={data.category.color}>
-            <Box display="flex" paddingTop="30px" paddingBottom="10px" ml="4%" alignItems="end">
+          <Link href={`/${data.category.url}`}>
+            <Box
+              display="flex"
+              paddingTop="30px"
+              paddingBottom="10px"
+              ml="4%"
+              alignItems="end"
+            >
               <Img
                 mr="10px"
                 width="41"
@@ -55,7 +41,6 @@ const BloqueD = ({ data }) => {
               <Text
                 fontSize="2xl"
                 height="32px"
-                
                 fontWeight="400"
                 textTransform="uppercase"
                 color={data.category.color}
@@ -65,7 +50,7 @@ const BloqueD = ({ data }) => {
             </Box>
           </Link>
         ) : null}
-        <Grid display="flex" flexDir="row" flexFlow="wrap" >
+        <Grid display="flex" flexDir="row" flexFlow="wrap">
           {notesArr
             ? notesArr.map((nota, i) => {
                 return <CardItem nota={nota} key={i} />;

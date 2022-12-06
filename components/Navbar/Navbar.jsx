@@ -2,10 +2,8 @@ import {
   Flex,
   Spacer,
   Center,
-  Button,
   Text,
   Box,
-  Grid,
   useDisclosure,
 } from "@chakra-ui/react";
 import Image from "next/image";
@@ -51,7 +49,16 @@ const Navbar = () => {
               />
             </Center>
             <Spacer />
-            <Box display="flex" bg="blue" h="55px" size="150px" marginTop="15px" justifyContent="center" alignItems="center" position="absolute">
+            <Box
+              display="flex"
+              bg="blue"
+              h="55px"
+              size="150px"
+              marginTop="15px"
+              justifyContent="center"
+              alignItems="center"
+              position="absolute"
+            >
               <Link href="/">
                 <Image
                   alt="wow-logo"
