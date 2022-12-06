@@ -9,6 +9,7 @@ import {
   Text,
   SimpleGrid,
   Box,
+  Img
 } from "@chakra-ui/react";
 import Link from "next/link";
 import CardItem from "../../commons/BloqueB/carditem";
@@ -22,30 +23,44 @@ const BloqueE = ({ data }) => {
         <Container
           marginTop="40px"
           display="flex"
+          ml="14%"
           flexDir="column"
-          maxW="67%"
+          maxW="50%"
           border="1px"
           borderRadius="lg"
           borderColor=" #f0f0f0"
           height="auto"
-        >
-          <Text
-            fontSize="50px"
-            _hover={{
-              color: "purple",
-            }}
+          position="relative"
           >
-            {data.category ? (
-              <Link href={`/${data.category.url}`}>{data.category.name}</Link>
-            ) : null}
-          </Text>
-          <Box display="flex" flexDirection="column" alignItems="center">
+          {data.category ? (
+          <Link href={`/${data.category.url}`} textColor={data.category.color}>
+            <Box display="flex" paddingTop="30px" paddingBottom="10px" ml="4%" alignItems="end">
+              <Img
+                mr="10px"
+                width="41"
+                height="49"
+                maxW="100%"
+                color={data.category.color}
+                src={data.category.icon_image}
+              />
+              <Text
+                fontSize="2xl"
+                height="32px"
+                fontWeight="400"
+                textTransform="uppercase"
+                color={data.category.color}
+              >
+                {data.category.name}
+              </Text>
+            </Box>
+          </Link>
+        ) : null}
+          <Box display="flex" flexDirection="column" alignItems="center" mt="40px">
             {notesArr ? (
-              <Card width="80%">
+              <Card width="100%" variant="unstyled">
                 <CardBody>
                   <Image
                     src={notesArr[0].field_img_primary}
-                    borderRadius="lg"
                   />
                   <Stack mt="6" spacing="3" alignItems="center">
                     <Link href={`notes/byURL/${notesArr[0].url}`}>
@@ -58,7 +73,7 @@ const BloqueE = ({ data }) => {
                     </Link>
                   </Stack>
                 </CardBody>
-                <Divider />
+                <Divider m="2% 0 2% 0" />
               </Card>
             ) : null}
 
@@ -67,7 +82,6 @@ const BloqueE = ({ data }) => {
               flexDir="row"
               justifyContent="space-around"
               margin="15px 0 15px 0"
-              width="80%"
             >
               {notesArr.slice(1, 4).map((nota, i) => (
                 <CardItem nota={nota} key={i} />
