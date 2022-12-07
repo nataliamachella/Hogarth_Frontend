@@ -3,7 +3,6 @@ import CardItem from "../../commons/BloqueA/cardItem";
 import Link from "next/link";
 
 const BloqueA = ({ data }) => {
-  console.log(data)
   const { notesArr } = data;
   
   return (
@@ -49,7 +48,33 @@ const BloqueA = ({ data }) => {
                 </Text>
               </Box>
             </Link>
-          ) : null}
+          ) : (
+            <Link href={`/${data.urlCategory}/${data.urlSubCategory}`}>
+              <Box
+                display="flex"
+                paddingTop="30px"
+                paddingBottom="10px"
+                ml="4%"
+                alignItems="end"
+              >
+                <Img
+                  mr="10px"
+                  width="41"
+                  height="49"
+                  maxW="100%"
+                  color="rgb(237, 162, 47)"
+                />
+                <Text
+                  fontSize="2xl"
+                  height="32px"
+                  fontWeight="400"
+                  textTransform="uppercase"
+                >
+                  {notesArr[0].subCategory.name}
+                </Text>
+              </Box>
+            </Link>
+          )}
           <Box display="flex" flexDir="row" mt="40px">
             <Box width="100%" height="50%" maxH="50%">
               <picture position="absolute" display="flex">
@@ -67,6 +92,7 @@ const BloqueA = ({ data }) => {
             >
               <Box position="relative" textAlign="left" paddingLeft="20px">
               <Link href={`/${data.urlCategory}/${notesArr[0].subCategory.url}/${notesArr[0].url}`}>
+
                   <Text fontSize="5xl" color="white" as="b">
                     {notesArr[0].field_title_pre}
                   </Text>

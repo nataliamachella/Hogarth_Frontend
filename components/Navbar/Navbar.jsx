@@ -5,6 +5,12 @@ import {
   Text,
   Box,
   useDisclosure,
+  // Drawer,
+  // DrawerBody,
+  // DrawerContent,
+  // DrawerOverlay,
+  // DrawerHeader,
+  // Button,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -13,26 +19,29 @@ import axios from "axios";
 import Link from "next/link";
 import CollapseComponent from "./Collapse";
 import SearchButton from "./SearchButton";
+import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 
 const Navbar = () => {
   const [categories, setCategories] = useState(null);
   const [category, setCategory] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const fetchCategories = () => {
+  useEffect(() => {
     axios
       .get("/api/categories")
       .then((categories) => setCategories(categories.data));
-  };
-
-  useEffect(() => {
-    fetchCategories();
   }, []);
 
   return (
     <Box width="100vw">
       {categories ? (
-        <Box position="fixed" top="0" background="white" zIndex={10}>
+        <Box
+          position="fixed"
+          top="0"
+          background="white"
+          zIndex={10}
+          boxShadow="inner"
+        >
           <Flex color="black" width="100vw" justifyContent="center">
             <Center w="170px" h="45px" marginTop="15px">
               <Image
@@ -51,7 +60,6 @@ const Navbar = () => {
             <Spacer />
             <Box
               display="flex"
-              bg="blue"
               h="55px"
               size="150px"
               marginTop="15px"
@@ -59,12 +67,55 @@ const Navbar = () => {
               alignItems="center"
               position="absolute"
             >
+              {/* <Button
+                display={{ sm: "flex", md: "none" }}
+                onClick={onOpen}
+                background="white"
+                _hover={{ color: "pink" }}
+              >
+                <HamburgerIcon w={6} h={6} />
+              </Button>
+              <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+                <DrawerOverlay />
+                <DrawerContent>
+                  <DrawerHeader
+                    borderBottomWidth="1px"
+                    display="flex"
+                    justifyContent="space-between"
+                  >
+                    <Link href="/">
+                      <Image
+                        alt="wow-logo"
+                        src="/assets/wow.png"
+                        width="127"
+                        height="30"
+                      />
+                    </Link>
+                    <Button>
+                      <CloseIcon onClick={onClose} />
+                    </Button>
+                  </DrawerHeader>
+                  <SearchButton />
+                  <DrawerBody>
+                    <Flex flexDirection="column">
+                      {categories.map((category, i) => {
+                        return (
+                          <Link href={`/${category.url}`} key={i}>
+                            {category.name}
+                          </Link>
+                        );
+                      })}
+                    </Flex>
+                  </DrawerBody>
+                </DrawerContent>
+              </Drawer> */}
+
               <Link href="/">
                 <Image
                   alt="wow-logo"
                   src="/assets/wow.png"
-                  width="250"
-                  height="50"
+                  width="230"
+                  height="40"
                 />
               </Link>
             </Box>
@@ -77,7 +128,7 @@ const Navbar = () => {
             <Flex
               boxSizing="border-box"
               justifyContent="center"
-              width="100%"
+              width="100vw"
               border="1px solid rgba(188, 188, 188, 0.5)"
               bgColor="white"
             >

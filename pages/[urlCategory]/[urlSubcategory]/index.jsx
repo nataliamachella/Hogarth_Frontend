@@ -33,7 +33,6 @@ export async function getServerSideProps({ query }) {
   );
   const data = await res.json();
   return { props: { subcategory: data } };
-  return { props: {} };
 }
 
 export default ListNotes;
