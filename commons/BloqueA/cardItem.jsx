@@ -15,7 +15,9 @@ const CardItem = ({ nota }) => {
       <CardBody>
         <Image src={nota.field_img_primary} />
         <Stack mt="6" spacing="3">
-          <Link href={`notes/byURL/${nota.url}`}>
+          <Link
+            href={`/${nota.subCategory.url}/${nota.subCategory.category.url}/${nota.url}`}
+          >
             <Heading size="md">{nota.title}</Heading>
             <Text>{nota.field_description}</Text>
           </Link>

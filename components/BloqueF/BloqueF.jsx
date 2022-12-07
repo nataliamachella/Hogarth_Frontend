@@ -77,7 +77,7 @@ const BloqueF = ({ data }) => {
                       <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
                         {notesArr[0]?.field_title_pre}
                       </Heading>
-                      <Text fontSize={{ base: "lg", lg: "xl" }}>
+                      <Text fontSize={{ base: "md", lg: "lg" }}>
                         {notesArr[0]?.field_title}
                       </Text>
                     </Link>

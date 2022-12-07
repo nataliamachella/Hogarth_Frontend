@@ -22,7 +22,7 @@ const NoteCarrusel = ({ nota, redirect }) => {
           transform="translate(-20%, -50%)"
           cursor="pointer"
           onClick={() => {
-            redirect(nota.url);
+            redirect(nota);
           }}
         >
           <Heading

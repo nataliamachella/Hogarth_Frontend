@@ -3,8 +3,8 @@ import CardItem from "../../commons/BloqueA/cardItem";
 import Link from "next/link";
 
 const BloqueA = ({ data }) => {
-  console.log(data);
   const { notesArr } = data;
+  
   return (
     <Box>
       {notesArr ? (
