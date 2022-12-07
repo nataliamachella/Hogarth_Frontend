@@ -40,7 +40,7 @@ const UltimasNoticias = ({ data, category, url }) => {
               <Text fontSize="md">{category.description}</Text>
             </Stack>
           </Box>
-          <Box width="70%">
+          <Box>
             {filterBlocks.map((item, i) => {
               return {
                 ...item,

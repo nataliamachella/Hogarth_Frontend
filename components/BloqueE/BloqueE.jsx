@@ -15,9 +15,7 @@ import Link from "next/link";
 import CardItem from "../../commons/BloqueB/carditem";
 
 const BloqueE = ({ data }) => {
-  console.log(data);
   const { notesArr } = data;
-  console.log(data)
   return (
     <Box>
       {notesArr ? (
@@ -61,7 +59,27 @@ const BloqueE = ({ data }) => {
                 </Text>
               </Box>
             </Link>
-          ) : null}
+          ) : (
+            <Link href={`/${data.urlCategory}/${data.urlSubCategory}`}>
+              <Box
+                display="flex"
+                paddingTop="30px"
+                paddingBottom="10px"
+                ml="4%"
+                alignItems="end"
+              >
+                <Img mr="10px" width="41" height="49" maxW="100%" />
+                <Text
+                  fontSize="2xl"
+                  height="32px"
+                  fontWeight="400"
+                  textTransform="uppercase"
+                >
+                  {notesArr[0].subCategory.name}
+                </Text>
+              </Box>
+            </Link>
+          )}
           <Box
             display="flex"
             flexDirection="column"
@@ -69,7 +87,6 @@ const BloqueE = ({ data }) => {
             mt="40px"
           >
             {notesArr ? (
-              
               <Card width="100%" variant="unstyled">
                 <CardBody>
                   <Image src={notesArr[0].field_img_primary} />
