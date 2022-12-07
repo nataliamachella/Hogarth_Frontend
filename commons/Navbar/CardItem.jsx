@@ -13,12 +13,14 @@ const CardItem = ({ note }) => {
           width="190"
           height="130"
         />
-        <Text 
+        <Text
           cursor="pointer"
-          onClick={()=>router.replace({
-            ...router,
-            pathname: `/notes/byURL/${note.url}`,
-          })}
+          onClick={() =>
+            router.replace({
+              ...router,
+              pathname: `${note.subCategory.url}/${note.subCategory.category.url}/${note.url}`,
+            })
+          }
         >
           {note.title}
         </Text>

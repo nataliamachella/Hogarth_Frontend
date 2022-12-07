@@ -3,15 +3,12 @@ import {
   Box,
   IconButton,
   useBreakpointValue,
-  Stack,
-  Heading,
   Text,
   Container,
+  Img,
 } from "@chakra-ui/react";
-
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import Slider from "react-slick";
-import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import NoteCarrusel from "./NoteCarrusel";
@@ -33,11 +30,12 @@ export default function BloqueB({ data }) {
   const { notesArr } = data;
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "40px" });
+  const router = useRouter();
 
-  const redirect = (direccion) => {
+  const redirect = (nota) => {
     router.push({
       ...router,
-      pathname: `/notes/byURL/${direccion}`,
+      pathname: `/${nota.subCategory.url}/${nota.subCategory.category.url}/${nota.url}`,
     });
   };
 
@@ -45,29 +43,74 @@ export default function BloqueB({ data }) {
     <Container
       marginTop="40px"
       display="flex"
+      ml="14%"
       flexDir="column"
-      maxW="67%"
+      maxW="50%"
       border="1px"
       borderRadius="lg"
       borderColor=" #f0f0f0"
     >
-      <Text
-        fontSize="50px"
-        _hover={{
-          color: "purple",
-        }}
-      >
-        {data.category ? (
-          <Link href={`/${data.category.url}`}>{data.category.name}</Link>
-        ) : null}
-      </Text>
+      {data.category ? (
+        <Link href={`/${data.category.url}`}>
+          <Box
+            display="flex"
+            paddingTop="30px"
+            paddingBottom="10px"
+            ml="4%"
+            alignItems="end"
+          >
+            <Img
+              mr="10px"
+              width="41"
+              height="49"
+              maxW="100%"
+              color="rgb(237, 162, 47)"
+              src={data.category.icon_image}
+            />
+            <Text
+              fontSize="2xl"
+              height="32px"
+              fontWeight="400"
+              textTransform="uppercase"
+              color={data.category.color}
+            >
+              {data.category.name}
+            </Text>
+          </Box>
+        </Link>
+      ) : (
+        <Link href={`/${data.urlCategory}/${data.urlSubCategory}`}>
+          <Box
+            display="flex"
+            paddingTop="30px"
+            paddingBottom="10px"
+            ml="4%"
+            alignItems="end"
+          >
+            <Img
+              mr="10px"
+              width="41"
+              height="49"
+              maxW="100%"
+              color="rgb(237, 162, 47)"
+            />
+            <Text
+              fontSize="2xl"
+              height="32px"
+              fontWeight="400"
+              textTransform="uppercase"
+            >
+              {notesArr[0].subCategory.name}
+            </Text>
+          </Box>
+        </Link>
+      )}
       <Box
         marginTop="40px"
         position={"relative"}
         height={"600px"}
         width={"100%"}
         overflow={"hidden"}
-        borderRadius="lg"
       >
         <link
           rel="stylesheet"

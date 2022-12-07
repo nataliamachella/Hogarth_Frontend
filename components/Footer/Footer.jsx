@@ -17,7 +17,14 @@ const Footer = () => {
   }, []);
 
   return (
-    <Flex h="370px" zIndex="-1" alignItems="center" justifyContent="center">
+    <Flex
+      h="370px"
+      zIndex="-1"
+      alignItems="center"
+      justifyContent="center"
+      mt={270}
+      bg="#E2E8F0"
+    >
       <Flex h="300px" w="1250px" padding="35px auto" flexWrap="wrap">
         <Box maxW="md" margin="0px 40px" h="193px" w="158px">
           <img
@@ -25,7 +32,7 @@ const Footer = () => {
             alt="revista"
           />
         </Box>
-        <Box maxW="md" bg="white" margin="20px 35px" w="356px" h="193px">
+        <Box maxW="md" margin="20px 35px" w="356px" h="193px">
           <Link href="/">
             <img src="/assets/wow.png" alt="logo-wow" h="50px" w="200px" />
           </Link>
@@ -50,7 +57,6 @@ const Footer = () => {
         </Box>
 
         <Box
-          bg="white"
           maxW="md"
           margin="20px 20px"
           padding="40px 30px 20px 0"

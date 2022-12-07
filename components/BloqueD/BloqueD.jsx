@@ -1,131 +1,169 @@
-import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Grid,
-  Card,
-  CardBody,
-  Link,
-  Image,
-  Text,
-  Heading,
-  Button,
-  Center,
-} from "@chakra-ui/react";
-import axios from "axios";
-import { AddIcon } from "@chakra-ui/icons";
+import { Box, Grid, Link, Text, Container, Img } from "@chakra-ui/react";
 import CardItem from "../../commons/BloqueD/cardItem";
-import {
-  useDisclosure,
-  getButtonProps,
-  getDisclosureProps,
-} from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
 
 const BloqueD = ({ data }) => {
   const { notesArr } = data;
-  const { getDisclosureProps, getButtonProps } = useDisclosure();
 
+  const { getDisclosureProps, getButtonProps } = useDisclosure();
   const buttonProps = getButtonProps();
   const disclosureProps = getDisclosureProps();
 
-
   return (
-    <Box bg="#f7f7f7" h="874px">
-      <Heading
-        as="h3"
-        fontSize="26px"
-        color="#1A202C"
-        fontFamily="sans-serif"
-        ml="250px"
+    <Box>
+      <Container
+        marginTop="40px"
+        display="flex"
+        ml="14%"
+        flexDir="column"
+        maxW="50%"
+        border="1px"
+        borderRadius="lg"
+        borderColor=" #f0f0f0"
       >
-         {data.category ? (
-          <Link href={`/${data.category.url}`}>{data.category.name}</Link>
-        ) : null}
-      </Heading>
-      <Grid templateColumns="repeat(3, 2fr)" m="30px 250px">
-        {notesArr.map((nota, i) => {
-            return <CardItem nota={nota} key={i} />;
-          })}
-      </Grid>
-      
-      <Center>
-        <Text mr="20px" as="b">
-          Cargar Más
-        </Text>
-        <Button {...buttonProps}>{<AddIcon />}</Button>
-      </Center>
+        {data.category ? (
+          <Link href={`/${data.category.url}`}>
+            <Box
+              display="flex"
+              paddingTop="30px"
+              paddingBottom="10px"
+              ml="4%"
+              alignItems="end"
+            >
+              <Img
+                mr="10px"
+                width="41"
+                height="49"
+                maxW="100%"
+                color="rgb(237, 162, 47)"
+                src={data.category.icon_image}
+              />
+              <Text
+                fontSize="2xl"
+                height="32px"
+                fontWeight="400"
+                textTransform="uppercase"
+                color={data.category.color}
+              >
+                {data.category.name}
+              </Text>
+            </Box>
+          </Link>
+        ) : (
+          <Link href={`/${data.urlCategory}/${data.urlSubCategory}`}>
+            <Box
+              display="flex"
+              paddingTop="30px"
+              paddingBottom="10px"
+              ml="4%"
+              alignItems="end"
+            >
+              <Img
+                mr="10px"
+                width="41"
+                height="49"
+                maxW="100%"
+                color="rgb(237, 162, 47)"
+              />
+              <Text
+                fontSize="2xl"
+                height="32px"
+                fontWeight="400"
+                textTransform="uppercase"
+              >
+                {notesArr[0].subCategory.name}
+              </Text>
+            </Box>
+          </Link>
+        )}
+        <Grid display="flex" flexDir="row" flexFlow="wrap">
+          {notesArr
+            ? notesArr.map((nota, i) => {
+                return <CardItem nota={nota} data={data} key={i} />;
+              })
+            : null}
+        </Grid>
 
-      <Grid
-        templateColumns="repeat(3, 2fr)"
-        m="30px 250px"
-        {...disclosureProps}
-      >
-        <Card h="340px" w="300px" mt="10px">
-          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
-          <CardBody>
-            <Link href="/">
-              <Text>
-                <strong>Soy el título </strong>
-                Soy el párrafo
-              </Text>
-            </Link>
-          </CardBody>
-        </Card>
-        <Card h="340px" w="300px" mt="10px">
-          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
-          <CardBody>
-            <Link href="/">
-              <Text>
-                <strong>Soy el título </strong>
-                Soy el párrafo
-              </Text>
-            </Link>
-          </CardBody>
-        </Card>
-        <Card h="340px" w="300px" mt="10px">
-          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
-          <CardBody>
-            <Link href="/">
-              <Text>
-                <strong>Soy el título </strong>
-                Soy el párrafo
-              </Text>
-            </Link>
-          </CardBody>
-        </Card>
-        <Card h="340px" w="300px" mt="10px">
-          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
-          <CardBody>
-            <Link href="/">
-              <Text>
-                <strong>Soy el título </strong>
-                Soy el párrafo
-              </Text>
-            </Link>
-          </CardBody>
-        </Card>
-        <Card h="340px" w="300px" mt="10px">
-          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
-          <CardBody>
-            <Link href="/">
-              <Text>
-                <strong>Soy el título </strong>
-                Soy el párrafo
-              </Text>
-            </Link>
-          </CardBody>
-        </Card>
-        <Card h="340px" w="300px" mt="10px">
-          <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
-          <CardBody>
-            <Link href="/">
-              <Text>
-                <strong>Soy el título </strong>
-                Soy el párrafo
-              </Text>
-            </Link>
-          </CardBody>
-        </Card>
-      </Grid>
+        {/* <Center>
+          <Text mr="20px" as="b">
+            Cargar Más
+          </Text>
+          <Button {...buttonProps}>{<AddIcon />}</Button>
+        </Center> */}
+
+        {/* <Grid
+          templateColumns="repeat(3, 2fr)"
+          m="30px 250px"
+          {...disclosureProps}
+        >
+          <Card h="340px" w="300px" mt="10px">
+            <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+            <CardBody>
+              <Link href="/">
+                <Text>
+                  <strong>Soy el título </strong>
+                  Soy el párrafo
+                </Text>
+              </Link>
+            </CardBody>
+          </Card>
+          <Card h="340px" w="300px" mt="10px">
+            <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+            <CardBody>
+              <Link href="/">
+                <Text>
+                  <strong>Soy el título </strong>
+                  Soy el párrafo
+                </Text>
+              </Link>
+            </CardBody>
+          </Card>
+          <Card h="340px" w="300px" mt="10px">
+            <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+            <CardBody>
+              <Link href="/">
+                <Text>
+                  <strong>Soy el título </strong>
+                  Soy el párrafo
+                </Text>
+              </Link>
+            </CardBody>
+          </Card>
+          <Card h="340px" w="300px" mt="10px">
+            <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+            <CardBody>
+              <Link href="/">
+                <Text>
+                  <strong>Soy el título </strong>
+                  Soy el párrafo
+                </Text>
+              </Link>
+            </CardBody>
+          </Card>
+          <Card h="340px" w="300px" mt="10px">
+            <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+            <CardBody>
+              <Link href="/">
+                <Text>
+                  <strong>Soy el título </strong>
+                  Soy el párrafo
+                </Text>
+              </Link>
+            </CardBody>
+          </Card>
+          <Card h="340px" w="300px" mt="10px">
+            <Image src="/assets/photoFaker.jpg" h="200px" w="100%" />
+            <CardBody>
+              <Link href="/">
+                <Text>
+                  <strong>Soy el título </strong>
+                  Soy el párrafo
+                </Text>
+              </Link>
+            </CardBody>
+          </Card>
+        </Grid> */}
+      </Container>
     </Box>
   );
 };

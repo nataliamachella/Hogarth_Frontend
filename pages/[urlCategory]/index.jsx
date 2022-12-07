@@ -1,10 +1,23 @@
 import { Box, Heading, Stack, Text } from "@chakra-ui/react";
 import BloqueA from "../../components/BloqueA/BloqueA";
 import BloqueE from "../../components/BloqueE/BloqueE";
-import MasNotas from "../../components/SeguirLeyendo/list";
+import BloqueB from "../../components/BloqueB/BloqueB";
+import BloqueD from "../../components/BloqueD/BloqueD";
+import BloqueF from "../../components/BloqueF/BloqueF";
 import fetch from "isomorphic-fetch";
 
-const UltimasNoticias = ({ categoryNotes, category, url }) => {
+const UltimasNoticias = ({ data, category, url }) => {
+  let bloques = [
+    <BloqueA />,
+    <BloqueB />,
+    <BloqueD />,
+    <BloqueE />,
+    <BloqueF />,
+  ];
+  let filterBlocks = [];
+  data.map((item) => {
+    filterBlocks.push(bloques.find((block) => block.type.name == item.name));
+  });
   return (
     <Box>
       {category ? (
@@ -14,7 +27,7 @@ const UltimasNoticias = ({ categoryNotes, category, url }) => {
             height="220"
             width="100vw"
             flexDirection="row"
-            marginTop="125px"
+            marginTop="118px"
             backgroundImage={category.image}
             backgroundSize="cover"
             justifyContent="center"
@@ -27,7 +40,17 @@ const UltimasNoticias = ({ categoryNotes, category, url }) => {
               <Text fontSize="md">{category.description}</Text>
             </Stack>
           </Box>
-          <Box width="70%">{/* <BloqueE url={url} /> */}</Box>
+          <Box>
+            {filterBlocks.map((item, i) => {
+              return {
+                ...item,
+                key: i,
+                props: {
+                  data: data.find((content) => content.name == item.type.name),
+                },
+              };
+            })}
+          </Box>
         </Box>
       ) : null}
     </Box>
@@ -37,7 +60,7 @@ const UltimasNoticias = ({ categoryNotes, category, url }) => {
 export async function getServerSideProps({ query }) {
   const { urlCategory } = query;
   const res = await fetch(
-    `http://localhost:3001/api/notes/byCategory/${urlCategory}`
+    `http://localhost:3001/api/typeContentBC/findByCategory/${urlCategory}`
   );
   const data = await res.json();
   const resCategory = await fetch(
@@ -45,7 +68,7 @@ export async function getServerSideProps({ query }) {
   );
   const dataCategory = await resCategory.json();
   return {
-    props: { categoryNotes: data, category: dataCategory, url: urlCategory },
+    props: { data: data, category: dataCategory, url: urlCategory },
   };
 }
 

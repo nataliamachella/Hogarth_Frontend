@@ -6,6 +6,7 @@ import "@fontsource/raleway/400.css";
 import "@fontsource/inter/700.css";
 // import theme2 from "../public/fonts/theme";
 import SidebarAdmin from "../commons/Admin/SidebarAdmin";
+import Footer from "../components/Footer/Footer";
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -14,6 +15,7 @@ const MyApp = ({ Component, pageProps }) => {
       {router.asPath.slice(0, 6) == "/admin" ? <SidebarAdmin /> : <Navbar />}
 
       <Component {...pageProps} />
+      {router.asPath.slice(0, 6) == "/admin" ? null : <Footer />}
     </ChakraProvider>
   );
 };

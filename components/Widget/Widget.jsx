@@ -29,7 +29,7 @@ const Widget = () => {
 
   const [warning, setWarning] = useState(true);
 
-  useEffect(() => setWarning(false), warning);
+  useEffect(() => setWarning(false), [warning]);
 
   const [isDragging, setIsDragging] = useState(false);
 
@@ -101,7 +101,9 @@ const Widget = () => {
       bg="#FDEBEB"
       display="flex"
       alignItems="center"
-      justifyContent="center">
+      justifyContent="center"
+      id="Widget"
+    >
       <Grid
         m={{ sm: "0", md: "25px" }}
         templateRows={{ sm: "repeat(5, 1fr)", md: "repeat(8, 1fr)" }}
@@ -140,7 +142,8 @@ const Widget = () => {
           colEnd={{ sm: 1, md: 4 }}
           display="flex"
           alignItems="center"
-          justifyContent="center">
+          justifyContent="center"
+        >
           <Box
             h={{ sm: "80vw", md: "42vw" }}
             w={{ sm: "80%", md: "42vw" }}
@@ -150,7 +153,8 @@ const Widget = () => {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            ref={constraintsRef}>
+            ref={constraintsRef}
+          >
             <Box
               as={motion.div}
               style={{ y: "-240%" }}
@@ -160,7 +164,8 @@ const Widget = () => {
               w={{ sm: "15%", md: "8%" }}
               display="flex"
               alignItems="center"
-              justifyContent="center">
+              justifyContent="center"
+            >
               <Box
                 as={motion.div}
                 style={{ y: y1, scale: scale1 }}
@@ -207,7 +212,8 @@ const Widget = () => {
               w={{ sm: "15%", md: "8%" }}
               display="flex"
               alignItems="center"
-              justifyContent="center">
+              justifyContent="center"
+            >
               <Box
                 as={motion.div}
                 style={{ x: x2, scale: scale2 }}
@@ -296,7 +302,8 @@ const Widget = () => {
               w={{ sm: "15%", md: "8%" }}
               display="flex"
               alignItems="center"
-              justifyContent="center">
+              justifyContent="center"
+            >
               <Box
                 as={motion.div}
                 style={{ y: y3, scale: scale3 }}
@@ -343,7 +350,8 @@ const Widget = () => {
               w={{ sm: "15%", md: "8%" }}
               display="flex"
               alignItems="center"
-              justifyContent="center">
+              justifyContent="center"
+            >
               <Box
                 as={motion.div}
                 style={{ y: y4, scale: scale4 }}
@@ -390,7 +398,8 @@ const Widget = () => {
               w={{ sm: "15%", md: "8%" }}
               display="flex"
               alignItems="center"
-              justifyContent="center">
+              justifyContent="center"
+            >
               <Box
                 as={motion.div}
                 style={{ x: x5, scale: scale5 }}
@@ -468,14 +477,16 @@ const Widget = () => {
               p="2%"
               border
               borderRadius="30px"
-              display="flex">
+              display="flex"
+            >
               <Box
                 w="25%"
                 h="100%"
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
-                borderRight="solid 1px white">
+                borderRight="solid 1px white"
+              >
                 <Text color="white" fontSize="6xl">
                   !
                 </Text>
@@ -486,7 +497,8 @@ const Widget = () => {
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
-                borderLeft="solid 1px white">
+                borderLeft="solid 1px white"
+              >
                 <Text color="white" fontSize="sm" marginLeft="7%">
                   ¡Un click no es suficiente! Arrastrá el emoji al centro.
                 </Text>

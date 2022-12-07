@@ -1,15 +1,17 @@
-import { Text, Box } from "@chakra-ui/react";
+import { Text, Box, LinkOverlay } from "@chakra-ui/react";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const BloquePrincipal = () => {
   const [notaPrincipal, setNotaPrincipal] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     axios
       .get(
-        "api/notes/byURL/Horscopo_semanal_signo_por_signo_qu_te_dicen_los_astros"
+        "api/notes/byURL/Cmo_sobrevivir_a_diciembre_8_claves_para_transitar_el_ltimo_mes_del_ao"
       )
       .then((nota) => {
         setNotaPrincipal(nota.data);
@@ -17,16 +19,16 @@ const BloquePrincipal = () => {
   }, []);
 
   return (
-    <Box>
+    <Box bg="#f7f7f7">
       <Box
         display="flex"
         overflow="hidden"
-        height="490px"
+        height="492px"
         position="relative"
         width="100vw"
         flexDirection="row"
-        marginTop="125px"
-        bgGradient='linear(to-r, rgb(0,0,0,0)65%, rgb(1,1,1,1)), url("https://bucket.somosohlala.com.ar/s3fs-public/styles/mainjumbo_1800/public/2022-11/astros-bomba_2.png.webp")'
+        marginTop="115px"
+        bgGradient='linear(to-r, rgb(0,0,0,0)65%, rgb(0,0,0,1)), url("https://bucket.somosohlala.com.ar/s3fs-public/styles/mainjumbo_1800/public/2022-12/demencia-bomba.png.webp?itok=u3HpffUJ")'
       >
         <Box
           width="100%"
@@ -52,12 +54,15 @@ const BloquePrincipal = () => {
                 width="600px"
                 paddingRight="10%"
               >
-                <Link href={`notes/byURL/${notaPrincipal.url}`}>
+                <Link
+                  href={`${notaPrincipal.subCategory.url}/${notaPrincipal.subCategory.category.url}/${notaPrincipal.url}`}
+                >
                   <Text
                     fontSize="4xl"
                     color="white"
                     width="400px"
                     marginTop="15%"
+                    fontWeight="bold"
                   >
                     {notaPrincipal.field_title_pre}
                     <br />
@@ -70,6 +75,48 @@ const BloquePrincipal = () => {
               </Box>
             ) : null}
           </Box>
+        </Box>
+      </Box>
+      <Box
+        display="flex"
+        justifyContent="center"
+        pt="40px"
+        pb="40px"
+        width="100%"
+      >
+        <Box
+          p="15px"
+          bg="white"
+          borderRadius="15px"
+          display="flex"
+          alignItems="center"
+          cursor="pointer"
+          onClick={()=>{
+            router.push(
+              "/#Widget"
+            )}
+          }
+        >
+            <Text
+              mr="10px"
+              fontSize="2xl"
+              height="32px"
+              fontWeight="400"
+              textTransform="uppercase"
+            >
+              LEE UNA NOTA SEGUN TU ESTADO DE ANIMO
+            </Text>
+          <Text
+            fontSize="6xl"
+            whileHover={{
+              scale: 1.2,
+            }}
+            whileTap={{ scale: 0.9, rotate: -15 }}
+            cursor="pointer"
+            ml="10px"
+          >
+            😃
+          </Text>
         </Box>
       </Box>
     </Box>

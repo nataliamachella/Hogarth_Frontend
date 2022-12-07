@@ -6,12 +6,24 @@ import {
   CardFooter,
   Divider,
   Heading,
+  IconButton,
   Image,
   Stack,
 } from "@chakra-ui/react";
+import axios from "axios";
 import Link from "next/link";
+import { FiTrash2 } from "react-icons/fi";
+import { useRouter } from "next/router";
 
 const CardNotes = ({ note }) => {
+  const router = useRouter();
+  const removeBlock = () => {
+    axios
+      .delete(`/api/notes/delete/${note.id}`)
+      .then(() => console.log("success"))
+      .catch((err) => console.error(err));
+    return router.push(`/admin/`);
+  };
   return (
     <Box display="flex" flexDirection="row" minW="100vh">
       <Box minW={"100%"}>
@@ -53,6 +65,13 @@ const CardNotes = ({ note }) => {
         <Link href={`/admin/EditNote/${note.url}`}>
           <Button colorScheme="blue">EDITAR</Button>
         </Link>
+      </Box>
+      <Box marginLeft="40px" display="flex" alignItems="center">
+        <IconButton
+          aria-label="Search database"
+          icon={<FiTrash2 />}
+          onClick={removeBlock}
+        />
       </Box>
     </Box>
   );

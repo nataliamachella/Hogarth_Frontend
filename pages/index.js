@@ -37,8 +37,6 @@ const HomePage = ({ typeContent }) => {
           },
         };
       })}
-
-      <Footer />
     </Box>
   );
 };
