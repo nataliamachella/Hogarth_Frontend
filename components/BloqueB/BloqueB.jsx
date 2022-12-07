@@ -3,15 +3,12 @@ import {
   Box,
   IconButton,
   useBreakpointValue,
-  Stack,
-  Heading,
   Text,
   Container,
   Img,
 } from "@chakra-ui/react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import Slider from "react-slick";
-import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import NoteCarrusel from "./NoteCarrusel";
@@ -81,7 +78,33 @@ export default function BloqueB({ data }) {
             </Text>
           </Box>
         </Link>
-      ) : null}
+      ) : (
+        <Link href={`/${data.urlCategory}/${data.urlSubCategory}`}>
+          <Box
+            display="flex"
+            paddingTop="30px"
+            paddingBottom="10px"
+            ml="4%"
+            alignItems="end"
+          >
+            <Img
+              mr="10px"
+              width="41"
+              height="49"
+              maxW="100%"
+              color="rgb(237, 162, 47)"
+            />
+            <Text
+              fontSize="2xl"
+              height="32px"
+              fontWeight="400"
+              textTransform="uppercase"
+            >
+              {notesArr[0].subCategory.name}
+            </Text>
+          </Box>
+        </Link>
+      )}
       <Box
         marginTop="40px"
         position={"relative"}

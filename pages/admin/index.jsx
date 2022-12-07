@@ -1,12 +1,11 @@
 import { Box } from "@chakra-ui/react";
 import fetch from "isomorphic-fetch";
-import React from "react";
 import Notas from "../../commons/Admin/Notes/Notas";
 
-const AdminPage = ({ notes }) => {
+const AdminPage = () => {
   return (
     <Box display="flex" flexDir="row">
-      <Notas notes={notes} />
+      <Notas />
     </Box>
   );
 };

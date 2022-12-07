@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 const CardItem = ({ note }) => {
-  console.log(note)
   const router = useRouter();
   return (
     <Card marginTop={"20px"}>
@@ -14,12 +13,14 @@ const CardItem = ({ note }) => {
           width="190"
           height="130"
         />
-        <Text 
+        <Text
           cursor="pointer"
-          onClick={()=>router.replace({
-            ...router,
-            pathname: `${note.subCategory.url}/${note.subCategory.category.url}/${note.url}`,
-          })}
+          onClick={() =>
+            router.replace({
+              ...router,
+              pathname: `${note.subCategory.url}/${note.subCategory.category.url}/${note.url}`,
+            })
+          }
         >
           {note.title}
         </Text>
