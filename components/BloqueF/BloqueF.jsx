@@ -70,9 +70,11 @@ const BloqueF = ({ data }) => {
               <Card width="100%" variant="unstyled">
                 <CardBody>
                   <Image src={notesArr[0]?.field_img_primary} />
-                  <Stack mt="6" spacing="3" alignItems="center" textAlign="center">
-                    <Link href={`/${data.urlCategory}/${notesArr[0].subCategory.url}/${notesArr[0].url}`}>
-                      <Heading fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}>
+                  <Stack mt="6" spacing="3" alignItems="center">
+                    <Link
+                      href={`/${data.urlCategory}/${notesArr[0].subCategory.url}/${notesArr[0].url}`}
+                    >
+                      <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
                         {notesArr[0]?.field_title_pre}
                       </Heading>
                       <Text fontSize={{ base: "md", lg: "lg" }}>

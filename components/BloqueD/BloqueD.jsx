@@ -53,7 +53,7 @@ const BloqueD = ({ data }) => {
         <Grid display="flex" flexDir="row" flexFlow="wrap">
           {notesArr
             ? notesArr.map((nota, i) => {
-                return <CardItem nota={nota} key={i} />;
+                return <CardItem nota={nota} data={data} key={i} />;
               })
             : null}
         </Grid>
