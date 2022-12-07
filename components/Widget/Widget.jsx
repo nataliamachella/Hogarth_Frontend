@@ -50,6 +50,7 @@ const Widget = () => {
       display="flex"
       alignItems="center"
       justifyContent="center"
+      id="Widget"
     >
       <Grid
         templateRows="repeat(8, 1fr)"

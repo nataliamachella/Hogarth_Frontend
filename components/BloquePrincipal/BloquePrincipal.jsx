@@ -1,10 +1,12 @@
-import { Text, Box } from "@chakra-ui/react";
+import { Text, Box, LinkOverlay } from "@chakra-ui/react";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const BloquePrincipal = () => {
   const [notaPrincipal, setNotaPrincipal] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     axios
@@ -52,7 +54,9 @@ const BloquePrincipal = () => {
                 width="600px"
                 paddingRight="10%"
               >
-                <Link href={`${notaPrincipal.subCategory.url}/${notaPrincipal.subCategory.category.url}/${notaPrincipal.url}`}>
+                <Link
+                  href={`${notaPrincipal.subCategory.url}/${notaPrincipal.subCategory.category.url}/${notaPrincipal.url}`}
+                >
                   <Text
                     fontSize="4xl"
                     color="white"
@@ -80,12 +84,28 @@ const BloquePrincipal = () => {
         pb="40px"
         width="100%"
       >
-        <Box p="15px" bg="white" borderRadius="15px" display="flex" alignItems="center">
-          <Text mr="10px"
-            fontSize="2xl"
-            height="32px"
-            fontWeight="400"
-            textTransform="uppercase"> LEE UNA NOTA SEGUN TU ESTADO DE ANIMO </Text>
+        <Box
+          p="15px"
+          bg="white"
+          borderRadius="15px"
+          display="flex"
+          alignItems="center"
+          cursor="pointer"
+          onClick={()=>{
+            router.push(
+              "/#Widget"
+            )}
+          }
+        >
+            <Text
+              mr="10px"
+              fontSize="2xl"
+              height="32px"
+              fontWeight="400"
+              textTransform="uppercase"
+            >
+              LEE UNA NOTA SEGUN TU ESTADO DE ANIMO
+            </Text>
           <Text
             fontSize="6xl"
             whileHover={{
@@ -94,7 +114,9 @@ const BloquePrincipal = () => {
             whileTap={{ scale: 0.9, rotate: -15 }}
             cursor="pointer"
             ml="10px"
-          >😃</Text>
+          >
+            😃
+          </Text>
         </Box>
       </Box>
     </Box>

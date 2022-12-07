@@ -27,7 +27,7 @@ const UltimasNoticias = ({ data, category, url }) => {
             height="220"
             width="100vw"
             flexDirection="row"
-            marginTop="125px"
+            marginTop="118px"
             backgroundImage={category.image}
             backgroundSize="cover"
             justifyContent="center"
