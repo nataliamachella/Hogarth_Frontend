@@ -6,6 +6,6 @@
   },
   "fonts": {
     "heading": "Inter",
-    "body": "Raleway"
+    "body": "`'Raleway', sans-serif`"
   }
 }
