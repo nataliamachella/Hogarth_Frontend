@@ -18,7 +18,7 @@ const List = () => {
       .then((res) => setNotes(res.data));
   }, [maxNotes]);
   return (
-    <Box marginTop="80px" width="100vw" backgroundColor=" #fff7f9">
+    <Box marginTop="80px" width="100vw" backgroundColor=" #f4f4f4">
       <Box
         display="flex"
         flexDir="column"
@@ -34,7 +34,7 @@ const List = () => {
         >
           SEGUIR LEYENDO
         </Heading>
-        <Center marginTop="40px">
+        <Center marginTop="40px" pb="30px">
           {notes ? (
             <Grid templateColumns="repeat(3, 1fr)" gap={6} width="60%">
               {notes.rows.slice(0, maxNotes).map((note) => (

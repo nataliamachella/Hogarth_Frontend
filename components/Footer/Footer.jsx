@@ -22,8 +22,6 @@ const Footer = () => {
       zIndex="-1"
       alignItems="center"
       justifyContent="center"
-      mt={270}
-      bg="#E2E8F0"
     >
       <Flex h="300px" w="1250px" padding="35px auto" flexWrap="wrap">
         <Box maxW="md" margin="0px 40px" h="193px" w="158px">

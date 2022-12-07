@@ -14,9 +14,6 @@ const BloqueA = ({ data }) => {
           ml="14%"
           flexDir="column"
           maxW="50%"
-          border="1px"
-          borderRadius="lg"
-          borderColor=" #f0f0f0"
           height="auto"
           position="relative"
         >

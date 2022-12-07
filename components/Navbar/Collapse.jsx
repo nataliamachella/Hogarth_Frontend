@@ -20,7 +20,7 @@ const CollapseComponent = ({ isOpen, onOpen, onClose, category }) => {
       style={{ width: "100%", position: "absolute", zIndex: 2 }}
     >
       <Flex
-        bg="#E2E8F0"
+        bg="#f4f4f4"
         justifyContent="center"
         w="100%"
         pt="10px"
@@ -29,7 +29,7 @@ const CollapseComponent = ({ isOpen, onOpen, onClose, category }) => {
         pe="10px"
       >
         <Flex justifyContent="space-between" width="100%" maxW="1200px">
-          <Flex flexDirection="column" pt="10px" pb="10px">
+          <Flex flexDirection="column" pt="30px" pb="10px">
             {category
               ? category.subCategories.map((subCategory, i) => {
                   return (
