@@ -1,19 +1,20 @@
 import { Card, CardBody, Image, Text } from "@chakra-ui/react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 const CardItem = ({ note }) => {
   const router = useRouter();
   return (
-    <Card marginTop={"20px"}>
+    <Card marginTop={"20px"} variant="unstyled">
       <CardBody>
         <Image
           alt="photo"
           src={note.field_img_primary}
-          width="190"
-          height="130"
+          width="100%"
+          height="auto"
         />
         <Text
+          mt="5px"
+          textAlign="left"
           cursor="pointer"
           onClick={() =>
             router.replace({
@@ -22,7 +23,7 @@ const CardItem = ({ note }) => {
             })
           }
         >
-          {note.title}
+          <Text fontWeight="bold" fontFamily="PPEiko-Black">{note.field_title_pre}</Text><Text>{note.field_title}</Text>
         </Text>
       </CardBody>
     </Card>

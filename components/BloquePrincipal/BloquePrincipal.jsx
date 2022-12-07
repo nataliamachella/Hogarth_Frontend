@@ -19,7 +19,7 @@ const BloquePrincipal = () => {
   }, []);
 
   return (
-    <Box bg="#f7f7f7">
+    <Box bg="#f4f4f4">
       <Box
         display="flex"
         overflow="hidden"
@@ -52,7 +52,6 @@ const BloquePrincipal = () => {
                 flexDir="column"
                 justifyContent="center"
                 width="600px"
-                paddingRight="10%"
               >
                 <Link
                   href={`${notaPrincipal.subCategory.url}/${notaPrincipal.subCategory.category.url}/${notaPrincipal.url}`}
@@ -63,6 +62,8 @@ const BloquePrincipal = () => {
                     width="400px"
                     marginTop="15%"
                     fontWeight="bold"
+                    fontFamily="PPEiko-Black"
+                    letterSpacing="0.2px"
                   >
                     {notaPrincipal.field_title_pre}
                     <br />
@@ -91,21 +92,19 @@ const BloquePrincipal = () => {
           display="flex"
           alignItems="center"
           cursor="pointer"
-          onClick={()=>{
-            router.push(
-              "/#Widget"
-            )}
-          }
+          onClick={() => {
+            router.push("/#Widget");
+          }}
         >
-            <Text
-              mr="10px"
-              fontSize="2xl"
-              height="32px"
-              fontWeight="400"
-              textTransform="uppercase"
-            >
-              LEE UNA NOTA SEGUN TU ESTADO DE ANIMO
-            </Text>
+          <Text
+            mr="10px"
+            fontSize="2xl"
+            height="32px"
+            fontWeight="400"
+            textTransform="uppercase"
+          >
+            LEE UNA NOTA SEGUN TU ESTADO DE ANIMO
+          </Text>
           <Text
             fontSize="6xl"
             whileHover={{

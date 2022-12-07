@@ -46,9 +46,6 @@ export default function BloqueB({ data }) {
       ml="14%"
       flexDir="column"
       maxW="50%"
-      border="1px"
-      borderRadius="lg"
-      borderColor=" #f0f0f0"
     >
       {data.category ? (
         <Link href={`/${data.category.url}`}>

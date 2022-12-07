@@ -25,9 +25,6 @@ const BloqueF = ({ data }) => {
           ml="14%"
           flexDir="column"
           maxW="50%"
-          border="1px"
-          borderRadius="lg"
-          borderColor=" #f0f0f0"
           height="auto"
           position="relative"
         >
@@ -87,10 +84,16 @@ const BloqueF = ({ data }) => {
             mt="40px"
           >
             {notesArr ? (
-              <Card width="100%" variant="unstyled">
+              <Card
+                width="100%"
+                variant="unstyled"
+                border="1px"
+                borderColor=" #f0f0f0"
+                pb="20px"
+              >
                 <CardBody>
                   <Image src={notesArr[0]?.field_img_primary} />
-                  <Stack mt="6" spacing="3" alignItems="center">
+                  <Stack mt="6" spacing="3" alignItems="center" textAlign="center">
                     <Link
                       href={`/${data.urlCategory}/${notesArr[0].subCategory.url}/${notesArr[0].url}`}
                     >
@@ -103,10 +106,10 @@ const BloqueF = ({ data }) => {
                     </Link>
                   </Stack>
                 </CardBody>
-                <Divider m="2% 0 2% 0" />
               </Card>
             ) : null}
 
+            <Divider m="2% 0 2% 0" />
             <SimpleGrid
               display="flex"
               flexDir="row"
