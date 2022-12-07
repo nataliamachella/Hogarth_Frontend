@@ -91,9 +91,8 @@ const BloqueA = ({ data }) => {
               bottom="50%"
             >
               <Box position="relative" textAlign="left" paddingLeft="20px">
-                <Link
-                  href={`/${data.urlCategory}/${notesArr[0].subCategory.url}/${notesArr[0].url}`}
-                >
+              <Link href={`/${data.urlCategory}/${notesArr[0].subCategory.url}/${notesArr[0].url}`}>
+
                   <Text fontSize="5xl" color="white" as="b">
                     {notesArr[0].field_title_pre}
                   </Text>
