@@ -2,9 +2,8 @@ import { Box, Grid, Text } from "@chakra-ui/react";
 import CardItem from "../commons/ListSubcategory/cardItem";
 import fetch from "isomorphic-fetch";
 
-
 const SearchNotes = ({ input }) => {
-    //input es un array de notas
+  //input es un array de notas
   return (
     <Box h="170px" w="100%">
       <Box mr={300} ml={300} mt={40}>
@@ -28,12 +27,13 @@ const SearchNotes = ({ input }) => {
 };
 
 export async function getServerSideProps({ query }) {
-    const { input } = query;
-    const res = await fetch(
-      `http://localhost:3001/api/notes/search?queryString=${input}`
-    );
-    const data = await res.json();
-    return { props: { input: data } };
-  }
-  
+  const { input } = query;
+  const res = await fetch(
+    `https://wow-r0wf.onrender.com/api/notes/search?queryString=${input}`,
+    { withCredentials: true, credentials: "include" }
+  );
+  const data = await res.json();
+  return { props: { input: data } };
+}
+
 export default SearchNotes;

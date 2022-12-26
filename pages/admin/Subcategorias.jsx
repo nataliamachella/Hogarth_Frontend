@@ -43,7 +43,10 @@ const ContentAdmin = ({ subCategories }) => {
 export default ContentAdmin;
 
 export async function getServerSideProps() {
-  const res = await fetch("http://localhost:3001/api/subcategories");
+  const res = await fetch("https://wow-r0wf.onrender.com/api/subcategories", {
+    withCredentials: true,
+    credentials: "include",
+  });
   const data = await res.json();
   return {
     props: {

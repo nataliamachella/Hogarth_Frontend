@@ -111,11 +111,15 @@ export default function UpdateSubCategory({ subcategory, categories }) {
 export async function getServerSideProps({ query }) {
   const { url } = query;
   const res = await fetch(
-    `http://localhost:3001/api/subcategories/findByUrl/${url}`
+    `https://wow-r0wf.onrender.com/api/subcategories/findByUrl/${url}`,
+    { withCredentials: true, credentials: "include" }
   );
   const data = await res.json();
 
-  const resCategories = await fetch(`http://localhost:3001/api/categories`);
+  const resCategories = await fetch(
+    `https://wow-r0wf.onrender.com/api/categories`,
+    { withCredentials: true, credentials: "include" }
+  );
   const dataCategories = await resCategories.json();
 
   return { props: { subcategory: data, categories: dataCategories } };

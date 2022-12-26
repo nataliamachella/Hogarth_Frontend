@@ -13,7 +13,10 @@ const AdminPage = () => {
 export default AdminPage;
 
 export async function getServerSideProps() {
-  const res = await fetch("http://localhost:3001/api/notes");
+  const res = await fetch("https://wow-r0wf.onrender.com/api/notes", {
+    withCredentials: true,
+    credentials: "include",
+  });
   const data = await res.json();
   return {
     props: {

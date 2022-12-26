@@ -108,7 +108,10 @@ export default function CreateSubCategory({ categories }) {
 }
 
 export async function getServerSideProps() {
-  const resCategories = await fetch(`http://localhost:3001/api/categories`);
+  const resCategories = await fetch(
+    `https://wow-r0wf.onrender.com/api/categories`,
+    { withCredentials: true, credentials: "include" }
+  );
   const dataCategories = await resCategories.json();
 
   return { props: { categories: dataCategories } };

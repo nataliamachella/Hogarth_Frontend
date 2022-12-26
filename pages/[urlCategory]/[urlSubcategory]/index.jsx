@@ -29,7 +29,8 @@ const ListNotes = ({ subcategory }) => {
 export async function getServerSideProps({ query }) {
   const { urlSubcategory } = query;
   const res = await fetch(
-    `http://localhost:3001/api/subcategories/findByUrl/${urlSubcategory}`
+    `https://wow-r0wf.onrender.com/api/subcategories/findByUrl/${urlSubcategory}`,
+    { withCredentials: true, credentials: "include" }
   );
   const data = await res.json();
   return { props: { subcategory: data } };

@@ -28,9 +28,15 @@ export default function Content({ bloques, categories }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`http://localhost:3001/api/typeContent`);
+  const res = await fetch(`https://wow-r0wf.onrender.com/api/typeContent`, {
+    withCredentials: true,
+    credentials: "include",
+  });
   const data = await res.json();
-  const resCategories = await fetch(`http://localhost:3001/api/categories`);
+  const resCategories = await fetch(
+    `https://wow-r0wf.onrender.com/api/categories`,
+    { withCredentials: true, credentials: "include" }
+  );
   const dataCategories = await resCategories.json();
   return { props: { bloques: data, categories: dataCategories } };
 }

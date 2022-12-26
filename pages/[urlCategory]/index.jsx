@@ -60,11 +60,13 @@ const UltimasNoticias = ({ data, category, url }) => {
 export async function getServerSideProps({ query }) {
   const { urlCategory } = query;
   const res = await fetch(
-    `http://localhost:3001/api/typeContentBC/findByCategory/${urlCategory}`
+    `https://wow-r0wf.onrender.com/api/typeContentBC/findByCategory/${urlCategory}`,
+    { withCredentials: true, credentials: "include" }
   );
   const data = await res.json();
   const resCategory = await fetch(
-    `http://localhost:3001/api/categories/${urlCategory}`
+    `https://wow-r0wf.onrender.com/api/categories/${urlCategory}`,
+    { withCredentials: true, credentials: "include" }
   );
   const dataCategory = await resCategory.json();
   return {

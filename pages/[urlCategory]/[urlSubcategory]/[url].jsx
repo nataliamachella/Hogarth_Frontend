@@ -79,7 +79,10 @@ const Post = ({ note }) => {
 
 export async function getServerSideProps({ query }) {
   const { url } = query;
-  const res = await fetch(`http://localhost:3001/api/notes/byURL/${url}`);
+  const res = await fetch(
+    `https://wow-r0wf.onrender.com/api/notes/byURL/${url}`,
+    { withCredentials: true, credentials: "include" }
+  );
   const data = await res.json();
   return { props: { note: data } };
 }

@@ -72,11 +72,13 @@ export default function Content({ bloques, category }) {
 export async function getServerSideProps({ query }) {
   const { urlcategory } = query;
   const res = await fetch(
-    `http://localhost:3001/api/typeContentBC/findByCategoryForAdmin/${urlcategory}`
+    `https://wow-r0wf.onrender.com/api/typeContentBC/findByCategoryForAdmin/${urlcategory}`,
+    { withCredentials: true, credentials: "include" }
   );
   const data = await res.json();
   const resCategory = await fetch(
-    `http://localhost:3001/api/categories/${urlcategory}`
+    `https://wow-r0wf.onrender.com/api/categories/${urlcategory}`,
+    { withCredentials: true, credentials: "include" }
   );
   const dataCategory = await resCategory.json();
   return { props: { bloques: data, category: dataCategory } };

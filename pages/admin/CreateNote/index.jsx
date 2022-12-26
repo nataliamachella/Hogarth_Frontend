@@ -19,11 +19,15 @@ export default function UserProfileEdit({ subCategories, subjects }) {
 
 export async function getServerSideProps() {
   const resSubCategories = await fetch(
-    `http://localhost:3001/api/subcategories`
+    `https://wow-r0wf.onrender.com/api/subcategories`,
+    { withCredentials: true, credentials: "include" }
   );
   const dataSubCategories = await resSubCategories.json();
 
-  const resSubject = await fetch(`http://localhost:3001/api/subjects`);
+  const resSubject = await fetch(`https://wow-r0wf.onrender.com/api/subjects`, {
+    withCredentials: true,
+    credentials: "include",
+  });
   const dataSubject = await resSubject.json();
 
   return { props: { subCategories: dataSubCategories, subjects: dataSubject } };

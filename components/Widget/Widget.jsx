@@ -50,27 +50,42 @@ const Widget = () => {
 
   const openSubject1 = (e) => {
     e.preventDefault();
-    window.open(`http://localhost:3000/${subjects[0].urlNote}`);
+    window.open(`https://wow-r0wf.onrender.com/${subjects[0].urlNote}`, {
+      withCredentials: true,
+      credentials: "include",
+    });
   };
 
   const openSubject2 = (e) => {
     e.preventDefault();
-    window.open(`http://localhost:3000/${subjects[1].urlNote}`);
+    window.open(`https://wow-r0wf.onrender.com/${subjects[1].urlNote}`, {
+      withCredentials: true,
+      credentials: "include",
+    });
   };
 
   const openSubject3 = (e) => {
     e.preventDefault();
-    window.open(`http://localhost:3000/${subjects[2].urlNote}`);
+    window.open(`https://wow-r0wf.onrender.com/${subjects[2].urlNote}`, {
+      withCredentials: true,
+      credentials: "include",
+    });
   };
 
   const openSubject4 = (e) => {
     e.preventDefault();
-    window.open(`http://localhost:3000/${subjects[3].urlNote}`);
+    window.open(`https://wow-r0wf.onrender.com/${subjects[3].urlNote}`, {
+      withCredentials: true,
+      credentials: "include",
+    });
   };
 
   const openSubject5 = (e) => {
     e.preventDefault();
-    window.open(`http://localhost:3000/${subjects[4].urlNote}`);
+    window.open(`https://wow-r0wf.onrender.com/${subjects[4].urlNote}`, {
+      withCredentials: true,
+      credentials: "include",
+    });
   };
 
   function useMediaQuery(query) {
@@ -110,7 +125,8 @@ const Widget = () => {
         templateColumns={{ sm: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }}
         height="100%"
         width="100%"
-        flexDirection={{ sm: "column", md: "row" }}>
+        flexDirection={{ sm: "column", md: "row" }}
+      >
         <GridItem
           p={{ sm: "0% 5%", md: "10%" }}
           rowStart={{ sm: 1, md: 1 }}
@@ -120,18 +136,21 @@ const Widget = () => {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          flexDirection="column">
+          flexDirection="column"
+        >
           <Heading
             size="lg"
             color="#B9459E"
-            textAlign={{ sm: "center", md: "left" }}>
+            textAlign={{ sm: "center", md: "left" }}
+          >
             ¿Cómo te sentís en este momento?
           </Heading>
           <Text
             size="md"
             color="#757575"
             p="10px 0px"
-            textAlign={{ sm: "center", md: "left" }}>
+            textAlign={{ sm: "center", md: "left" }}
+          >
             Te recomendamos una nota adecuada para tu mood de hoy.
           </Text>
         </GridItem>
@@ -190,7 +209,8 @@ const Widget = () => {
                 onClick={isDragging ? null : setWarning}
                 onDrag={eventControl}
                 onStop={eventControl}
-                onDragEnd={openSubject1}>
+                onDragEnd={openSubject1}
+              >
                 <Text
                   as={motion.p}
                   fontSize={{ sm: "5xl", md: "6xl" }}
@@ -198,7 +218,8 @@ const Widget = () => {
                     scale: 1.2,
                   }}
                   whileTap={{ scale: 0.9, rotate: -15 }}
-                  cursor="pointer">
+                  cursor="pointer"
+                >
                   {subjects ? subjects[0].name : null}
                 </Text>
               </Box>
@@ -238,7 +259,8 @@ const Widget = () => {
                 onClick={isDragging ? null : setWarning}
                 onDrag={eventControl}
                 onStop={eventControl}
-                onDragEnd={openSubject2}>
+                onDragEnd={openSubject2}
+              >
                 <Text
                   as={motion.p}
                   fontSize={{ sm: "5xl", md: "6xl" }}
@@ -246,7 +268,8 @@ const Widget = () => {
                     scale: 1.2,
                   }}
                   whileTap={{ scale: 0.9, rotate: -15 }}
-                  cursor="pointer">
+                  cursor="pointer"
+                >
                   {subjects ? subjects[1].name : null}
                 </Text>
               </Box>
@@ -279,7 +302,8 @@ const Widget = () => {
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                zIndex="6">
+                zIndex="6"
+              >
                 <Text fontSize={{ sm: "5xl", md: "6xl" }}>
                   {subjects ? subjects[1].name : null}
                 </Text>
@@ -288,7 +312,8 @@ const Widget = () => {
                   marginLeft="50px"
                   position="absolute"
                   fontSize={{ sm: "5xl", md: "6xl" }}
-                  zIndex="7">
+                  zIndex="7"
+                >
                   👆🏻
                 </Text>
               </Box>
@@ -328,7 +353,8 @@ const Widget = () => {
                 onClick={isDragging ? null : setWarning}
                 onDrag={eventControl}
                 onStop={eventControl}
-                onDragEnd={openSubject3}>
+                onDragEnd={openSubject3}
+              >
                 <Text
                   as={motion.p}
                   fontSize={{ sm: "5xl", md: "6xl" }}
@@ -336,7 +362,8 @@ const Widget = () => {
                     scale: 1.2,
                   }}
                   whileTap={{ scale: 0.9, rotate: -15 }}
-                  cursor="pointer">
+                  cursor="pointer"
+                >
                   {subjects ? subjects[2].name : null}
                 </Text>
               </Box>
@@ -376,7 +403,8 @@ const Widget = () => {
                 onClick={isDragging ? null : setWarning}
                 onDrag={eventControl}
                 onStop={eventControl}
-                onDragEnd={openSubject4}>
+                onDragEnd={openSubject4}
+              >
                 <Text
                   as={motion.p}
                   fontSize={{ sm: "5xl", md: "6xl" }}
@@ -384,7 +412,8 @@ const Widget = () => {
                     scale: 1.2,
                   }}
                   whileTap={{ scale: 0.9, rotate: -15 }}
-                  cursor="pointer">
+                  cursor="pointer"
+                >
                   {subjects ? subjects[3].name : null}
                 </Text>
               </Box>
@@ -424,7 +453,8 @@ const Widget = () => {
                 onClick={isDragging ? null : setWarning}
                 onDrag={eventControl}
                 onStop={eventControl}
-                onDragEnd={openSubject5}>
+                onDragEnd={openSubject5}
+              >
                 <Text
                   as={motion.p}
                   fontSize={{ sm: "5xl", md: "6xl" }}
@@ -432,7 +462,8 @@ const Widget = () => {
                     scale: 1.2,
                   }}
                   whileTap={{ scale: 0.9, rotate: -15 }}
-                  cursor="pointer">
+                  cursor="pointer"
+                >
                   {subjects ? subjects[4].name : null}
                 </Text>
               </Box>
@@ -447,7 +478,8 @@ const Widget = () => {
               bg="radial-gradient(#FDEBEB, #FDC6C6)"
               display="flex"
               alignItems="center"
-              justifyContent="center">
+              justifyContent="center"
+            >
               <Text color="#FDC6C6" fontSize="6xl">
                 ?
               </Text>
@@ -461,7 +493,8 @@ const Widget = () => {
           colEnd={{ sm: 1, md: 1 }}
           display="flex"
           justifyContent="center"
-          alignItems={{ sm: "center", md: "start" }}>
+          alignItems={{ sm: "center", md: "start" }}
+        >
           {warning ? (
             <Box
               as={motion.div}

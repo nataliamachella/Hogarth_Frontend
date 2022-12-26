@@ -115,7 +115,10 @@ export default function EditCategory({ category }) {
 
 export async function getServerSideProps({ query }) {
   const { url } = query;
-  const res = await fetch(`http://localhost:3001/api/categories/${url}`);
+  const res = await fetch(
+    `https://wow-r0wf.onrender.com/api/categories/${url}`,
+    { withCredentials: true, credentials: "include" }
+  );
   const data = await res.json();
 
   return { props: { category: data } };
